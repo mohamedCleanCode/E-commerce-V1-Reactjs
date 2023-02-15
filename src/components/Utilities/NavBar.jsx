@@ -14,7 +14,12 @@ const NavBar = () => {
     >
       <Container>
         <a className="navbar-brand" href="/">
-          <img src={Logo} alt="Logo" className="logo-img" />
+          <img
+            src={Logo}
+            alt="Logo"
+            className="logo-img"
+            style={{ width: "50px", height: "50px", objectFit: "contain" }}
+          />
         </a>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
@@ -22,7 +27,6 @@ const NavBar = () => {
             className="w-100"
             type="search"
             placeholder="Search..."
-            // style={{ width: "700px" }}
           />
           <Nav className="me-auto">
             <Nav.Link
