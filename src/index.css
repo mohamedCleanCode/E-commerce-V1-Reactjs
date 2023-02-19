@@ -33,4 +33,31 @@ body {
   width: 50% !important;
   height: 100%;
 }
+.sub-title p {
+  color: #444;
+  font-size: 20px;
+  font-weight: bold;
+  margin: 0;
+}
+.sub-title button {
+  border: none;
+  padding: 5px 13px;
+  border: 1px solid #444;
+  border-radius: 18px;
+  color: #444;
+  font-weight: bold;
+  transition: 0.4s;
+}
+.sub-title button:hover {
+  background-color: #444;
+  color: white;
+}
+.category-card-image {
+  border-radius: 50%;
+  width: 160px;
+  height: 160px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 /* End Home Page  */
