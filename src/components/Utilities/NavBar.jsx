@@ -1,5 +1,6 @@
 import React from "react";
 import { Container, Form, Nav, Navbar } from "react-bootstrap";
+import { Link } from "react-router-dom";
 import CartIcon from "../../assets/images/cart.png";
 import LoginIcon from "../../assets/images/login.png";
 import Logo from "../../assets/images/logo.png";
@@ -13,14 +14,14 @@ const NavBar = () => {
       style={{ minHeight: "76px" }}
     >
       <Container>
-        <a className="navbar-brand" href="/">
+        <Link className="navbar-brand" to="/">
           <img
             src={Logo}
             alt="Logo"
             className="logo-img"
             style={{ width: "50px", height: "50px", objectFit: "contain" }}
           />
-        </a>
+        </Link>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
           <Form.Control
