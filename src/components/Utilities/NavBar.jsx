@@ -30,9 +30,9 @@ const NavBar = () => {
             placeholder="Search..."
           />
           <Nav className="me-auto">
-            <Nav.Link
-              href="#link"
-              className=" text-light"
+            <Link
+              to="/login"
+              className=" text-light nav-link"
               style={{ width: "100px" }}
             >
               Login
@@ -45,10 +45,10 @@ const NavBar = () => {
                   marginLeft: "10px",
                 }}
               />
-            </Nav.Link>
-            <Nav.Link
-              href="#link"
-              className=" text-light"
+            </Link>
+            <Link
+              to="/cart"
+              className=" text-light nav-link"
               style={{ width: "100px" }}
             >
               Cart
@@ -61,7 +61,7 @@ const NavBar = () => {
                   marginLeft: "10px",
                 }}
               />
-            </Nav.Link>
+            </Link>
           </Nav>
         </Navbar.Collapse>
       </Container>
