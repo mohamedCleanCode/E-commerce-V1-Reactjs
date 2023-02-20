@@ -1,18 +1,18 @@
 import React from "react";
-import { Row } from "react-bootstrap";
+import { Container, Row } from "react-bootstrap";
 import cat2 from "../../assets/images/cat2.png";
 import clothe from "../../assets/images/clothe.png";
 import labtop from "../../assets/images/labtop.png";
 import pic from "../../assets/images/pic.png";
 import sale from "../../assets/images/sale.png";
-import CategoriesCard from "../Categories/CategoriesCard";
 import SubTitle from "../Utilities/SubTitle";
+import CategoriesCard from "./CategoriesCard";
 
-const HomeCategories = () => {
+const CategriesContainer = () => {
   return (
-    <div className="home-categories container py-4">
-      <SubTitle title="Categories" btnTitle="More" path="/categries" />
-      <Row className="mt-5">
+    <Container>
+      <SubTitle title="Categories" />
+      <Row className="mt-3">
         <CategoriesCard
           src={clothe}
           title="Discounts"
@@ -35,8 +35,8 @@ const HomeCategories = () => {
         />
         <CategoriesCard src={pic} title="Discounts" backgroundColor="#f4dba5" />
       </Row>
-    </div>
+    </Container>
   );
 };
 
-export default HomeCategories;
+export default CategriesContainer;
