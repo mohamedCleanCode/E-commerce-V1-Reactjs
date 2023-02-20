@@ -79,3 +79,22 @@ p {
   background-color: #444;
   color: white;
 }
+.card-filter {
+  background-color: white;
+  padding: 10px;
+  width: 250px;
+  margin-left: -77px;
+  box-shadow: 17px 2px 15px #0000006b;
+}
+.card-filter div {
+  padding: 10px 5px;
+  transition: 0.4s;
+}
+.card-filter div:hover {
+  color: white;
+  background-color: #444;
+}
+
+.card-filter div:not(:last-child) {
+  border-bottom: 1px solid #444;
+}
