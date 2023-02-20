@@ -7,7 +7,9 @@ body {
   font-family: Arial, Helvetica, sans-serif;
   text-transform: capitalize;
 }
-
+p {
+  margin-bottom: 0;
+}
 /* Start Home Page  */
 .carousel-inner {
   height: 100%;
