@@ -9,7 +9,7 @@ const Footer = () => {
   return (
     <div
       className="footer d-flex align-items-center"
-      style={{ backgroundColor: "silver", paddingTop: "10px" }}
+      style={{ backgroundColor: "silver" }}
     >
       <Container>
         <Row>

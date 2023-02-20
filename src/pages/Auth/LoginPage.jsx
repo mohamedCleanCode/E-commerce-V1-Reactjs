@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 
 const LoginPage = () => {
   return (
-    <div className="login-page" style={{ height: "650px" }}>
+    <div className="login-page" style={{ height: "calc(100vh - 144px)" }}>
       <Container>
         <Form
           style={{ width: "50%", margin: "20px auto", textAlign: "center" }}
