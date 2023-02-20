@@ -3,10 +3,10 @@ import { Row } from "react-bootstrap";
 import SubTitle from "../Utilities/SubTitle";
 import ProductCard from "./ProductCard";
 
-const HomeProducts = ({ title }) => {
+const HomeProducts = ({ title, path }) => {
   return (
     <div className="home-products container">
-      <SubTitle title={title} btnTitle="More" />
+      <SubTitle title={title} btnTitle="More" path={path} />
       <Row className="mt-3">
         <ProductCard />
         <ProductCard />

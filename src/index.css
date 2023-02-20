@@ -63,3 +63,19 @@ p {
   align-items: center;
 }
 /* End Home Page  */
+.categries-header {
+  padding: 5px;
+  min-height: 60px;
+  display: flex;
+  align-items: center;
+}
+.categries-header .row .col-sm-12 div {
+  color: #444;
+  cursor: pointer;
+  transition: 0.4s;
+  width: 90px;
+}
+.categries-header .row .col-sm-12 div:hover {
+  background-color: #444;
+  color: white;
+}

@@ -10,9 +10,9 @@ const HomePage = () => {
     <div className="home-page">
       <Slider />
       <HomeCategories />
-      <HomeProducts title="best saller" />
+      <HomeProducts title="best saller" path="/products" />
       <DiscountSection />
-      <HomeProducts title="latest fashion" />
+      <HomeProducts title="latest fashion" path="/products" />
       <HomeBrands title="famous brands" />
     </div>
   );
