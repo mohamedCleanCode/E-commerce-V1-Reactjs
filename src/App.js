@@ -3,6 +3,7 @@ import Footer from "./components/Utilities/Footer";
 import NavBar from "./components/Utilities/NavBar";
 import LoginPage from "./pages/Auth/LoginPage";
 import SignupPage from "./pages/Auth/SignupPage";
+import BrandsPage from "./pages/Brand/BrandsPage";
 import CategriesPage from "./pages/Categries/CategriesPage";
 import HomePage from "./pages/HomePage/HomePage";
 
@@ -15,6 +16,7 @@ function App() {
         <Route path="/login" element={<LoginPage />} />
         <Route path="/signup" element={<SignupPage />} />
         <Route path="/categries" element={<CategriesPage />} />
+        <Route path="/brands" element={<BrandsPage />} />
       </Routes>
       <Footer />
     </div>
