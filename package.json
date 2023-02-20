@@ -13,6 +13,7 @@
     "react-paginate": "^8.1.4",
     "react-router-dom": "^6.8.1",
     "react-scripts": "5.0.1",
+    "unop-react-dropdown": "^0.2.3",
     "web-vitals": "^2.1.4"
   },
   "scripts": {
