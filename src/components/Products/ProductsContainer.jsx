@@ -3,10 +3,10 @@ import { Row } from "react-bootstrap";
 import SubTitle from "../Utilities/SubTitle";
 import ProductCard from "./ProductCard";
 
-const HomeProducts = ({ title, path }) => {
+const ProductsContainer = ({ title, btnTitle, path }) => {
   return (
     <div className="home-products container">
-      <SubTitle title={title} btnTitle="More" path={path} />
+      <SubTitle title={title} btnTitle={btnTitle} path={path} />
       <Row className="mt-3">
         <ProductCard />
         <ProductCard />
@@ -17,4 +17,4 @@ const HomeProducts = ({ title, path }) => {
   );
 };
 
-export default HomeProducts;
+export default ProductsContainer;

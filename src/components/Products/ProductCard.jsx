@@ -4,7 +4,7 @@ import item from "../../assets/images/item.png";
 
 const ProductCard = ({ src, title, price, rate }) => {
   return (
-    <Col xs="12" sm="6" md="4" lg="3" className="mb-3">
+    <Col xs="10" sm="10" md="5" lg="3" className="mb-3 m-auto">
       <Card style={{ width: "100%" }}>
         <Card.Img
           variant="top"
