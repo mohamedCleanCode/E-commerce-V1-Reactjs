@@ -10,6 +10,11 @@ body {
 p {
   margin-bottom: 0;
 }
+ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
 /* Start Home Page  */
 .carousel-inner {
   height: 100%;
