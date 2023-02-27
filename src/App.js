@@ -6,6 +6,7 @@ import SignupPage from "./pages/Auth/SignupPage";
 import BrandsPage from "./pages/Brand/BrandsPage";
 import CategriesPage from "./pages/Categries/CategriesPage";
 import HomePage from "./pages/HomePage/HomePage";
+import ProductDetailsPage from "./pages/Products/ProductDetailsPage";
 import ShopProductsPage from "./pages/Products/ShopProductsPage";
 
 function App() {
@@ -19,6 +20,7 @@ function App() {
         <Route path="/categries" element={<CategriesPage />} />
         <Route path="/brands" element={<BrandsPage />} />
         <Route path="/products" element={<ShopProductsPage />} />
+        <Route path="/products/:id" element={<ProductDetailsPage />} />
       </Routes>
       <Footer />
     </div>

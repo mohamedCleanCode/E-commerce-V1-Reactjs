@@ -103,3 +103,13 @@ ul {
 .card-filter div:not(:last-child) {
   border-bottom: 1px solid #444;
 }
+.image-gallery-content .image-gallery-slide .image-gallery-image {
+  width: 65%;
+  height: 340px;
+  border-radius: 15px;
+  object-fit: cover;
+}
+.image-gallery-left-nav .image-gallery-svg,
+.image-gallery-right-nav .image-gallery-svg {
+  width: 35px;
+}
