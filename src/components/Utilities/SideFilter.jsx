@@ -9,7 +9,7 @@ const SideFilter = () => {
           <input className="form-check-input" type="checkbox" value="" id="" />
           <label
             style={{ fontSize: "12px" }}
-            class="form-check-label"
+            className="form-check-label"
             htmlFor=""
           >
             All

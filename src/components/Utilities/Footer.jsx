@@ -8,22 +8,28 @@ import twitter from "../../assets/images/twitter.png";
 const Footer = () => {
   return (
     <div
-      className="footer d-flex align-items-center"
+      className="footer d-flex align-items-center mt-5"
       style={{ backgroundColor: "silver" }}
     >
       <Container>
-        <Row>
-          <Col xm="12" sm="12" md="6" lg="6" className="d-flex">
+        <Row className="justify-content-between align-items-center">
+          <Col
+            xs="12"
+            sm="12"
+            md="6"
+            lg="6"
+            className="d-flex justify-content-sm-center"
+          >
             <p className="me-2">Terms and Conditions</p>
             <p className="me-2">privacy policy</p>
             <p className="me-2">Call us</p>
           </Col>
           <Col
-            xm="12"
+            xs="12"
             sm="12"
             md="6"
             lg="6"
-            className="d-flex align-itams-center"
+            className="d-flex justify-content-between align-items-center"
           >
             <img src={facebook} alt="" />
             <img src={instagram} alt="" />
