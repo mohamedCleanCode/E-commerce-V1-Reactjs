@@ -12,6 +12,7 @@
     "react-dom": "^18.2.0",
     "react-image-gallery": "^1.2.11",
     "react-paginate": "^8.1.4",
+    "react-rating-stars-component": "^2.2.0",
     "react-router-dom": "^6.8.1",
     "react-scripts": "5.0.1",
     "unop-react-dropdown": "^0.2.3",

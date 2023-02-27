@@ -174,3 +174,15 @@ ul {
   background-color: #eee;
   border-radius: 12px;
 }
+.ratings-container {
+  margin-top: 20px;
+  background-color: #fff;
+  box-shadow: 10px 10px 10px #eee;
+}
+.ratnigs-title-rate {
+  color: #ffc107;
+}
+.ratnigs-title-heading {
+  font-weight: bold;
+  font-size: 18px;
+}
