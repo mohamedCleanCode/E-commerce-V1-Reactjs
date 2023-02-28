@@ -26,6 +26,7 @@ const LoginPage = () => {
           </p>
         </div>
       </Container>
+      <Link to="/admin">login with admin</Link>
     </div>
   );
 };
