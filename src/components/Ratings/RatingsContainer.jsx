@@ -1,6 +1,7 @@
 import React from "react";
 import { Col, Row } from "react-bootstrap";
 import ProductsContainer from "../Products/ProductsContainer";
+import Pagination from "../Utilities/Pagination";
 import RateComment from "./RateComment";
 import RatePost from "./RatePost";
 
@@ -20,6 +21,7 @@ const RatingsContainer = () => {
           <RateComment />
           <RateComment />
           <RateComment />
+          <Pagination />
         </Row>
       </div>
       <Row>

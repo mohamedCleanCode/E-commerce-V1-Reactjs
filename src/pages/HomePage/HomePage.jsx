@@ -13,7 +13,7 @@ const HomePage = () => {
     <div className="home-page">
       <Slider />
       <HomeCategories />
-      <HomeProducts title="best saller" path="/products" />
+      <HomeProducts title="best saller" btnTitle="More" path="/products" />
       <DiscountSection />
       <ProductsContainer
         title="latest fashion"
