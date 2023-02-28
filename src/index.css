@@ -6,6 +6,7 @@
 body {
   font-family: Arial, Helvetica, sans-serif;
   text-transform: capitalize;
+  background-color: #eee;
 }
 p {
   margin-bottom: 0;
@@ -185,4 +186,26 @@ ul {
 .ratnigs-title-heading {
   font-weight: bold;
   font-size: 18px;
+}
+.product-cart {
+  width: 100%;
+  height: 100%;
+  background-color: #fff;
+  padding: 10px 0;
+  border-radius: 12px;
+  box-shadow: 2px 4px 10px #0000007a;
+}
+.product-cart img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.product-cart-info-quantity {
+  width: 50px;
+}
+.product-cart-info-price {
+  text-align: right;
+  color: #444;
+  font-weight: bold;
+  font-size: 24px;
 }

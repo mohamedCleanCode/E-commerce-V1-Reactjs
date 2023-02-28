@@ -1,6 +1,5 @@
 import React from "react";
-import { Col, Row } from "react-bootstrap";
-import ProductsContainer from "../Products/ProductsContainer";
+import { Row } from "react-bootstrap";
 import Pagination from "../Utilities/Pagination";
 import RateComment from "./RateComment";
 import RatePost from "./RatePost";
@@ -24,11 +23,6 @@ const RatingsContainer = () => {
           <Pagination />
         </Row>
       </div>
-      <Row>
-        <Col>
-          <ProductsContainer title="Products may you like it" />
-        </Col>
-      </Row>
     </>
   );
 };

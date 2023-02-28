@@ -4,6 +4,7 @@ import NavBar from "./components/Utilities/NavBar";
 import LoginPage from "./pages/Auth/LoginPage";
 import SignupPage from "./pages/Auth/SignupPage";
 import BrandsPage from "./pages/Brand/BrandsPage";
+import CartPage from "./pages/Cart/CartPage";
 import CategriesPage from "./pages/Categries/CategriesPage";
 import HomePage from "./pages/HomePage/HomePage";
 import ProductDetailsPage from "./pages/Products/ProductDetailsPage";
@@ -21,6 +22,7 @@ function App() {
         <Route path="/brands" element={<BrandsPage />} />
         <Route path="/products" element={<ShopProductsPage />} />
         <Route path="/products/:id" element={<ProductDetailsPage />} />
+        <Route path="/cart" element={<CartPage />} />
       </Routes>
       <Footer />
     </div>
