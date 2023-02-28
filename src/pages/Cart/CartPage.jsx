@@ -1,5 +1,6 @@
 import React from "react";
 import { Col, Container, Row } from "react-bootstrap";
+import CartCheckOut from "../../components/Cart/CartCheckOut";
 import ProductCart from "../../components/Cart/ProductCart";
 
 const CartPage = () => {
@@ -10,7 +11,9 @@ const CartPage = () => {
         <Col xs="9">
           <ProductCart />
         </Col>
-        <Col xs="3">weqrqwe</Col>
+        <Col xs="3">
+          <CartCheckOut />
+        </Col>
       </Row>
     </Container>
   );
