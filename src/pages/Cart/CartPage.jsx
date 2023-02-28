@@ -8,10 +8,10 @@ const CartPage = () => {
     <Container style={{ minHeight: "72vh" }}>
       <h1 className="my-2">Your Cart</h1>
       <Row>
-        <Col xs="9">
+        <Col xs="12" sm="8" lg="9">
           <ProductCart />
         </Col>
-        <Col xs="3">
+        <Col xs="12" sm="4" lg="3">
           <CartCheckOut />
         </Col>
       </Row>

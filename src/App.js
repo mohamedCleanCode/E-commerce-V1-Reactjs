@@ -6,6 +6,7 @@ import SignupPage from "./pages/Auth/SignupPage";
 import BrandsPage from "./pages/Brand/BrandsPage";
 import CartPage from "./pages/Cart/CartPage";
 import CategriesPage from "./pages/Categries/CategriesPage";
+import PaymentMethod from "./pages/Checkout/PaymentMethod";
 import HomePage from "./pages/HomePage/HomePage";
 import ProductDetailsPage from "./pages/Products/ProductDetailsPage";
 import ShopProductsPage from "./pages/Products/ShopProductsPage";
@@ -23,6 +24,7 @@ function App() {
         <Route path="/products" element={<ShopProductsPage />} />
         <Route path="/products/:id" element={<ProductDetailsPage />} />
         <Route path="/cart" element={<CartPage />} />
+        <Route path="order/payment-method" element={<PaymentMethod />} />
       </Routes>
       <Footer />
     </div>

@@ -188,10 +188,12 @@ ul {
   font-size: 18px;
 }
 .product-cart {
+  position: relative;
   width: 100%;
   height: 100%;
   background-color: #fff;
   padding: 10px 0;
+  margin-bottom: 20px;
   border-radius: 12px;
   box-shadow: 2px 4px 10px #0000007a;
 }
@@ -202,16 +204,19 @@ ul {
 }
 .product-cart-info-quantity {
   width: 50px;
+  margin-top: 15px;
 }
 .product-cart-info-price {
-  text-align: right;
+  position: absolute;
+  bottom: 15px;
+  right: 20px;
   color: #444;
   font-weight: bold;
   font-size: 24px;
 }
 .cart-check-out {
   width: 100%;
-  height: 72%;
+  height: 180px;
   background-color: #fff;
   padding: 10px;
   border-radius: 12px;
