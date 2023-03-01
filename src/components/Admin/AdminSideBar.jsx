@@ -27,6 +27,11 @@ const AdminSideBar = () => {
           Add Category
         </Link>
       </li>
+      <li className="admin-side-bar-item">
+        <Link to="/admin/add-subcategory" className="admin-side-bar-item-link">
+          Add Subcategory
+        </Link>
+      </li>
     </ul>
   );
 };
