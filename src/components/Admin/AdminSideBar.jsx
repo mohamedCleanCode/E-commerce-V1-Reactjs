@@ -22,6 +22,11 @@ const AdminSideBar = () => {
           Add Brand
         </Link>
       </li>
+      <li className="admin-side-bar-item">
+        <Link to="/admin/add-category" className="admin-side-bar-item-link">
+          Add Category
+        </Link>
+      </li>
     </ul>
   );
 };

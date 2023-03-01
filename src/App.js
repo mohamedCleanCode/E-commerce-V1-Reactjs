@@ -2,6 +2,7 @@ import { Route, Routes } from "react-router-dom";
 import Footer from "./components/Utilities/Footer";
 import NavBar from "./components/Utilities/NavBar";
 import AdminAddBrandPage from "./pages/Admin/AdminAddBrandPage";
+import AdminAddCategoryPage from "./pages/Admin/AdminAddCategoryPage";
 import AdminOrderDetailsPage from "./pages/Admin/AdminOrderDetailsPage";
 import AdminOrdersManagmentPage from "./pages/Admin/AdminOrdersManagmentPage";
 import AdminProductsManagmentPage from "./pages/Admin/AdminProductsManagmentPage";
@@ -40,6 +41,7 @@ function App() {
         />
         <Route path="/admin/order/25" element={<AdminOrderDetailsPage />} />
         <Route path="/admin/add-brnad" element={<AdminAddBrandPage />} />
+        <Route path="/admin/add-category" element={<AdminAddCategoryPage />} />
       </Routes>
       <Footer />
     </div>
