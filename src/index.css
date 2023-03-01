@@ -285,3 +285,31 @@ ul {
   cursor: pointer;
   color: #444;
 }
+.admin-order-details-user {
+  background-color: #fff;
+  padding: 10px;
+  border-radius: 12px;
+}
+.admin-order-details-user-name,
+.admin-order-details-user-phone,
+.admin-order-details-user-email {
+  color: #444;
+  font-weight: bold;
+  font-size: 20px;
+}
+.admin-order-details-user-name span,
+.admin-order-details-user-phone span,
+.admin-order-details-user-email span {
+  color: silver;
+  font-size: 18px;
+  font-weight: normal;
+}
+.admin-order-details-user-actions {
+  text-align: center;
+  margin-top: 20px;
+}
+.admin-order-details-user-actions-total {
+  border: 1px solid silver;
+  margin-bottom: 10px;
+  padding: 10px;
+}
