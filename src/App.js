@@ -1,7 +1,8 @@
 import { Route, Routes } from "react-router-dom";
 import Footer from "./components/Utilities/Footer";
 import NavBar from "./components/Utilities/NavBar";
-import OrdersManagmentPage from "./pages/Admin/OrdersManagmentPage";
+import AdminOrdersManagmentPage from "./pages/Admin/AdminOrdersManagmentPage";
+import AdminProductsManagmentPage from "./pages/Admin/AdminProductsManagmentPage";
 import LoginPage from "./pages/Auth/LoginPage";
 import SignupPage from "./pages/Auth/SignupPage";
 import BrandsPage from "./pages/Brand/BrandsPage";
@@ -29,7 +30,11 @@ function App() {
 
         <Route
           path="/admin/orders-managment"
-          element={<OrdersManagmentPage />}
+          element={<AdminOrdersManagmentPage />}
+        />
+        <Route
+          path="/admin/products-managment"
+          element={<AdminProductsManagmentPage />}
         />
       </Routes>
       <Footer />

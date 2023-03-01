@@ -6,11 +6,16 @@ const AdminSideBar = () => {
     <ul className="admin-side-bar">
       <li className="admin-side-bar-item">
         <Link to="/admin/orders-managment" className="admin-side-bar-item-link">
-          All Products
+          Oreders Managment
         </Link>
       </li>
       <li className="admin-side-bar-item">
-        <a className="admin-side-bar-item-link">All Products</a>
+        <Link
+          to="/admin/products-managment"
+          className="admin-side-bar-item-link"
+        >
+          Products Managment
+        </Link>
       </li>
       <li className="admin-side-bar-item">
         <a className="admin-side-bar-item-link">All Products</a>

@@ -1,5 +1,6 @@
 import React from "react";
 import { Col, Container, Row } from "react-bootstrap";
+import AdminOrdersManagment from "../../components/Admin/AdminOrdersManagment";
 import AdminSideBar from "../../components/Admin/AdminSideBar";
 
 const OrdersManagmentPage = () => {
@@ -9,7 +10,9 @@ const OrdersManagmentPage = () => {
         <Col xs="2" md="3">
           <AdminSideBar />
         </Col>
-        <Col xs="10" md="9"></Col>
+        <Col xs="10" md="9">
+          <AdminOrdersManagment />
+        </Col>
       </Row>
     </Container>
   );
