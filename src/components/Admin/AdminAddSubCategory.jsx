@@ -4,7 +4,7 @@ import { Button, Form } from "react-bootstrap";
 const AdminAddSubCategory = () => {
   return (
     <>
-      <h1>Add A New Category</h1>
+      <h1>Add A New Subcategory Category</h1>
       <Form.Control
         className="mb-3"
         type="text"

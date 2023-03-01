@@ -32,6 +32,11 @@ const AdminSideBar = () => {
           Add Subcategory
         </Link>
       </li>
+      <li className="admin-side-bar-item">
+        <Link to="/admin/add-product" className="admin-side-bar-item-link">
+          Add Product
+        </Link>
+      </li>
     </ul>
   );
 };
