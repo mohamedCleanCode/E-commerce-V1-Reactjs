@@ -2,7 +2,7 @@ import React from "react";
 import { Col, Container, Row } from "react-bootstrap";
 import AdminSideBar from "../../components/Admin/AdminSideBar";
 
-const AdminPage = () => {
+const OrdersManagmentPage = () => {
   return (
     <Container className="my-3" style={{ minHeight: "72vh" }}>
       <Row>
@@ -15,4 +15,4 @@ const AdminPage = () => {
   );
 };
 
-export default AdminPage;
+export default OrdersManagmentPage;
