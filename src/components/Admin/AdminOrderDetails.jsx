@@ -7,11 +7,11 @@ const AdminOrderDetails = () => {
   return (
     <>
       <h1>Order Details Num #123</h1>
-      <Row className="justify-content-end">
+      <Row className="justify-content-center">
         <AdminOrderDetailsCard />
         <AdminOrderDetailsCard />
       </Row>
-      <Row>
+      <Row className="bg-white rounded">
         <AdminOrderDetailsUser />
       </Row>
     </>

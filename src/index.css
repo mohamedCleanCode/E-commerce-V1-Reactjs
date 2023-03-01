@@ -313,3 +313,18 @@ ul {
   margin-bottom: 10px;
   padding: 10px;
 }
+.admin-add-image p {
+  color: silver;
+  margin-bottom: 10px;
+}
+.admin-add-image img {
+  width: 120px;
+  height: 100px;
+}
+.admin-add-brand-name {
+  display: block;
+  width: 100%;
+  margin: 15px 0;
+  padding: 10px;
+  border-radius: 10px;
+}

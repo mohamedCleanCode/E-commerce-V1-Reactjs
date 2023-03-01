@@ -18,7 +18,9 @@ const AdminSideBar = () => {
         </Link>
       </li>
       <li className="admin-side-bar-item">
-        <a className="admin-side-bar-item-link">All Products</a>
+        <Link to="/admin/add-brnad" className="admin-side-bar-item-link">
+          Add Brand
+        </Link>
       </li>
     </ul>
   );
