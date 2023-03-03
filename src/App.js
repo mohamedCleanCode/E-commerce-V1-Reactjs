@@ -19,6 +19,7 @@ import ProductDetailsPage from "./pages/Products/ProductDetailsPage";
 import ShopProductsPage from "./pages/Products/ShopProductsPage";
 import UserFavoriteProductsPage from "./pages/User/UserFavoriteProductsPage";
 import UserOrdersManagmentPage from "./pages/User/UserOrdersManagmentPage";
+import UserPersonalAddressesPage from "./pages/User/UserPersonalAddressesPage";
 
 function App() {
   return (
@@ -59,6 +60,14 @@ function App() {
         <Route
           path="/user/favorite-products"
           element={<UserFavoriteProductsPage />}
+        />
+        <Route
+          path="/user/personal-addresses"
+          element={<UserPersonalAddressesPage />}
+        />
+        <Route
+          path="/user/add-address"
+          element={<UserPersonalAddressesPage />}
         />
       </Routes>
       <Footer />

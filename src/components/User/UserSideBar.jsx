@@ -16,7 +16,7 @@ const UserSideBar = () => {
       </li>
       <li className="admin-side-bar-item">
         <Link
-          to="/user/personal-dddresses"
+          to="/user/personal-addresses"
           className="admin-side-bar-item-link"
         >
           Personal Addresses
