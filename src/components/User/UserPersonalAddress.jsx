@@ -1,5 +1,6 @@
 import React from "react";
 import { Col, Row } from "react-bootstrap";
+import { Link } from "react-router-dom";
 
 const UserPersonalAddress = () => {
   return (
@@ -12,9 +13,13 @@ const UserPersonalAddress = () => {
           >
             <h4 className="mb-0">Home</h4>
             <div className="user-personl-address-actions d-flex">
-              <button className="btn" style={{ fontSize: "14px" }}>
+              <Link
+                to="/user/edit-address"
+                className="btn"
+                style={{ fontSize: "14px" }}
+              >
                 Edit <i className="fa-solid fa-gear"></i>
-              </button>
+              </Link>
               <button className="btn" style={{ fontSize: "14px" }}>
                 Remove <i className="fa-solid fa-trash"></i>
               </button>

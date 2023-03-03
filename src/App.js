@@ -18,6 +18,7 @@ import HomePage from "./pages/HomePage/HomePage";
 import ProductDetailsPage from "./pages/Products/ProductDetailsPage";
 import ShopProductsPage from "./pages/Products/ShopProductsPage";
 import UserAddAddressPage from "./pages/User/UserAddAddressPage";
+import UserEditAddressPage from "./pages/User/UserEditAddressPage";
 import UserFavoriteProductsPage from "./pages/User/UserFavoriteProductsPage";
 import UserOrdersManagmentPage from "./pages/User/UserOrdersManagmentPage";
 import UserPersonalAddressesPage from "./pages/User/UserPersonalAddressesPage";
@@ -67,6 +68,7 @@ function App() {
           element={<UserPersonalAddressesPage />}
         />
         <Route path="/user/add-address" element={<UserAddAddressPage />} />
+        <Route path="/user/edit-address" element={<UserEditAddressPage />} />
       </Routes>
       <Footer />
     </div>
