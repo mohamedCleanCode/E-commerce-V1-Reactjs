@@ -17,6 +17,7 @@ import PaymentMethod from "./pages/Checkout/PaymentMethod";
 import HomePage from "./pages/HomePage/HomePage";
 import ProductDetailsPage from "./pages/Products/ProductDetailsPage";
 import ShopProductsPage from "./pages/Products/ShopProductsPage";
+import UserAddAddressPage from "./pages/User/UserAddAddressPage";
 import UserFavoriteProductsPage from "./pages/User/UserFavoriteProductsPage";
 import UserOrdersManagmentPage from "./pages/User/UserOrdersManagmentPage";
 import UserPersonalAddressesPage from "./pages/User/UserPersonalAddressesPage";
@@ -65,10 +66,7 @@ function App() {
           path="/user/personal-addresses"
           element={<UserPersonalAddressesPage />}
         />
-        <Route
-          path="/user/add-address"
-          element={<UserPersonalAddressesPage />}
-        />
+        <Route path="/user/add-address" element={<UserAddAddressPage />} />
       </Routes>
       <Footer />
     </div>
