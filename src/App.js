@@ -22,6 +22,7 @@ import UserEditAddressPage from "./pages/User/UserEditAddressPage";
 import UserFavoriteProductsPage from "./pages/User/UserFavoriteProductsPage";
 import UserOrdersManagmentPage from "./pages/User/UserOrdersManagmentPage";
 import UserPersonalAddressesPage from "./pages/User/UserPersonalAddressesPage";
+import UserProfilePage from "./pages/User/UserProfilePage";
 
 function App() {
   return (
@@ -69,6 +70,7 @@ function App() {
         />
         <Route path="/user/add-address" element={<UserAddAddressPage />} />
         <Route path="/user/edit-address" element={<UserEditAddressPage />} />
+        <Route path="/user/profile" element={<UserProfilePage />} />
       </Routes>
       <Footer />
     </div>
