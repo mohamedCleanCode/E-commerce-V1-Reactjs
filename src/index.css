@@ -195,7 +195,6 @@ ul {
   padding: 10px 0;
   margin-bottom: 20px;
   border-radius: 12px;
-  box-shadow: 2px 4px 10px #0000007a;
 }
 .product-cart img {
   width: 100%;
@@ -327,4 +326,11 @@ ul {
   margin: 15px 0;
   padding: 10px;
   border-radius: 10px;
+}
+.user-order-status {
+  color: #444;
+  font-size: 20px;
+}
+.user-order-status p {
+  color: silver;
 }
