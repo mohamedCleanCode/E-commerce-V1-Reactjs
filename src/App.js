@@ -17,7 +17,8 @@ import PaymentMethod from "./pages/Checkout/PaymentMethod";
 import HomePage from "./pages/HomePage/HomePage";
 import ProductDetailsPage from "./pages/Products/ProductDetailsPage";
 import ShopProductsPage from "./pages/Products/ShopProductsPage";
-import UserOrdersManagment from "./pages/User/UserOrdersManagment";
+import UserFavoriteProductsPage from "./pages/User/UserFavoriteProductsPage";
+import UserOrdersManagmentPage from "./pages/User/UserOrdersManagmentPage";
 
 function App() {
   return (
@@ -53,7 +54,11 @@ function App() {
 
         <Route
           path="/user/orders-managment"
-          element={<UserOrdersManagment />}
+          element={<UserOrdersManagmentPage />}
+        />
+        <Route
+          path="/user/favorite-products"
+          element={<UserFavoriteProductsPage />}
         />
       </Routes>
       <Footer />
