@@ -17,6 +17,7 @@ import PaymentMethod from "./pages/Checkout/PaymentMethod";
 import HomePage from "./pages/HomePage/HomePage";
 import ProductDetailsPage from "./pages/Products/ProductDetailsPage";
 import ShopProductsPage from "./pages/Products/ShopProductsPage";
+import UserOrdersManagment from "./pages/User/UserOrdersManagment";
 
 function App() {
   return (
@@ -49,6 +50,11 @@ function App() {
           element={<AdminAddSubCategoryPage />}
         />
         <Route path="/admin/add-product" element={<AdminAddProductPage />} />
+
+        <Route
+          path="/user/orders-managment"
+          element={<UserOrdersManagment />}
+        />
       </Routes>
       <Footer />
     </div>
