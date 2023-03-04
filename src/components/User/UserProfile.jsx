@@ -18,7 +18,7 @@ const UserProfile = () => {
               </button>
             </div>
             <div className="mb-3 text-dark fs-4 fw-bold">
-              Phone Number:{" "}
+              Phone Number:
               <span className="text-black-50 fs-6">010123456789</span>
             </div>
             <div className="mb-3 text-dark fs-4 fw-bold">
