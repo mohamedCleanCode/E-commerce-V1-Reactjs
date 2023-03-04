@@ -15,8 +15,12 @@
     "react-image-gallery": "^1.2.11",
     "react-paginate": "^8.1.4",
     "react-rating-stars-component": "^2.2.0",
+    "react-redux": "^8.0.5",
     "react-router-dom": "^6.8.1",
     "react-scripts": "5.0.1",
+    "redux": "^4.2.1",
+    "redux-devtools-extension": "^2.13.9",
+    "redux-thunk": "^2.4.2",
     "unop-react-dropdown": "^0.2.3",
     "web-vitals": "^2.1.4"
   },
