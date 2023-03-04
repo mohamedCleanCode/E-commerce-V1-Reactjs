@@ -1,3 +1,5 @@
+import { useEffect } from "react";
+import { useDispatch } from "react-redux";
 import { Route, Routes } from "react-router-dom";
 import Footer from "./components/Utilities/Footer";
 import NavBar from "./components/Utilities/NavBar";
@@ -23,8 +25,13 @@ import UserFavoriteProductsPage from "./pages/User/UserFavoriteProductsPage";
 import UserOrdersManagmentPage from "./pages/User/UserOrdersManagmentPage";
 import UserPersonalAddressesPage from "./pages/User/UserPersonalAddressesPage";
 import UserProfilePage from "./pages/User/UserProfilePage";
+import { fetchData } from "./redux/actions/categoriesActions";
 
 function App() {
+  const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(fetchData());
+  }, []);
   return (
     <div className="App">
       <NavBar />
