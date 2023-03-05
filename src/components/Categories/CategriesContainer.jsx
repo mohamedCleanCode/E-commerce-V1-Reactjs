@@ -1,17 +1,12 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { Button, Container, Row, Spinner } from "react-bootstrap";
-import { useDispatch, useSelector } from "react-redux";
-import { getAllCategories } from "../../redux/actions/categoriesActions";
+import { useDispatch } from "react-redux";
 import SubTitle from "../Utilities/SubTitle";
 import CategoriesCard from "./CategoriesCard";
 
-const CategriesContainer = () => {
+const CategriesContainer = ({ data, loading }) => {
   const colors = ["#FFD3E8", "#F4DBA5", "#55CFDf", "#0034FF", "#FFD3EB"];
-  const { categories, loading } = useSelector((state) => state.categories);
   const dispatch = useDispatch();
-  useEffect(() => {
-    dispatch(getAllCategories());
-  }, []);
   return (
     <Container>
       <SubTitle title="Categories" />
@@ -30,8 +25,8 @@ const CategriesContainer = () => {
         </div>
       ) : (
         <Row className="mt-3">
-          {categories.data ? (
-            categories.data.slice(0, 5).map((cat, i) => {
+          {data ? (
+            data.slice(0, 5).map((cat, i) => {
               return (
                 <CategoriesCard
                   key={cat._id}

@@ -1,13 +1,19 @@
 import React from "react";
 import ReactPaginate from "react-paginate";
+import { useDispatch } from "react-redux";
+import { getAllCategories } from "../../redux/actions/categoriesActions";
 
-const Pagination = () => {
-  const handlePageClick = (e) => {};
+const Pagination = ({ pageCount }) => {
+  const dispatch = useDispatch();
+  const handlePageClick = (e) => {
+    dispatch(getAllCategories(3, e.selected + 1));
+  };
   return (
     <ReactPaginate
       className="pagination justify-content-center"
       pageClassName="page-item"
       breakClassName="page-item"
+      breakLinkClassName="page-link"
       pageLinkClassName="page-link text-dark"
       previousClassName="page-item"
       nextClassName="page-item"
@@ -19,7 +25,7 @@ const Pagination = () => {
       onPageChange={handlePageClick}
       pageRangeDisplayed={3}
       marginPagesDisplayed={2}
-      pageCount={100}
+      pageCount={pageCount}
       previousLabel="< previous"
     />
   );
