@@ -26,7 +26,7 @@ const CategriesContainer = ({ data, loading }) => {
       ) : (
         <Row className="mt-3">
           {data ? (
-            data.slice(0, 5).map((cat, i) => {
+            data.map((cat, i) => {
               return (
                 <CategoriesCard
                   key={cat._id}

@@ -31,7 +31,7 @@ const HomeCategories = () => {
       ) : (
         <Row className="mt-5">
           {categories.data ? (
-            categories.data.slice(0, 5).map((cat, i) => {
+            categories.data.slice(0, 6).map((cat, i) => {
               return (
                 <CategoriesCard
                   key={cat._id}
