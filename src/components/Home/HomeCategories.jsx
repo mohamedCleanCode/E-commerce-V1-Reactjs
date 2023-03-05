@@ -1,40 +1,51 @@
-import React from "react";
-import { Row } from "react-bootstrap";
-import cat2 from "../../assets/images/cat2.png";
-import clothe from "../../assets/images/clothe.png";
-import labtop from "../../assets/images/labtop.png";
-import pic from "../../assets/images/pic.png";
-import sale from "../../assets/images/sale.png";
+import React, { useEffect } from "react";
+import { Button, Row, Spinner } from "react-bootstrap";
+import { useDispatch, useSelector } from "react-redux";
+import { getAllCategories } from "../../redux/actions/categoriesActions";
 import CategoriesCard from "../Categories/CategoriesCard";
 import SubTitle from "../Utilities/SubTitle";
 
 const HomeCategories = () => {
+  const colors = ["#FFD3E8", "#F4DBA5", "#55CFDf", "#0034FF", "#FFD3EB"];
+  const { categories, loading } = useSelector((state) => state.categories);
+  const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(getAllCategories());
+  }, []);
   return (
     <div className="home-categories container py-4">
       <SubTitle title="Categories" btnTitle="More" path="/categries" />
-      <Row className="mt-5">
-        <CategoriesCard
-          src={clothe}
-          title="Discounts"
-          backgroundColor="#f4dba5"
-        />
-        <CategoriesCard
-          src={cat2}
-          title="Discounts"
-          backgroundColor="#f4dba5"
-        />
-        <CategoriesCard
-          src={sale}
-          title="Discounts"
-          backgroundColor="#f4dba5"
-        />
-        <CategoriesCard
-          src={labtop}
-          title="Discounts"
-          backgroundColor="#f4dba5"
-        />
-        <CategoriesCard src={pic} title="Discounts" backgroundColor="#f4dba5" />
-      </Row>
+      {loading ? (
+        <div className="text-center">
+          <Button variant="primary" disabled>
+            <Spinner
+              as="span"
+              animation="grow"
+              size="sm"
+              role="status"
+              aria-hidden="true"
+            />
+            Loading...
+          </Button>
+        </div>
+      ) : (
+        <Row className="mt-5">
+          {categories.data ? (
+            categories.data.slice(0, 5).map((cat, i) => {
+              return (
+                <CategoriesCard
+                  key={cat._id}
+                  src={cat.image}
+                  title={cat.name}
+                  backgroundColor={colors[i]}
+                />
+              );
+            })
+          ) : (
+            <p>There are no categories yet...!</p>
+          )}
+        </Row>
+      )}
     </div>
   );
 };
