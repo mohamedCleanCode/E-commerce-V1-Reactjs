@@ -1,12 +1,11 @@
 import React from "react";
 import ReactPaginate from "react-paginate";
 import { useDispatch } from "react-redux";
-import { getAllCategories } from "../../redux/actions/categoriesActions";
 
-const Pagination = ({ pageCount }) => {
+const Pagination = ({ pageCount, onPress }) => {
   const dispatch = useDispatch();
   const handlePageClick = (e) => {
-    dispatch(getAllCategories(3, e.selected + 1));
+    onPress(e.selected + 1);
   };
   return (
     <ReactPaginate

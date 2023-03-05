@@ -8,15 +8,20 @@ const CategriesPage = () => {
   const { categories, loading } = useSelector((state) => state.categories);
   const dispatch = useDispatch();
   useEffect(() => {
-    dispatch(getAllCategories(3));
+    dispatch(getAllCategories(8));
   }, []);
+  const onPress = (page) => {
+    dispatch(getAllCategories(8, page));
+  };
   return (
     <div className="mt-2">
       <CategriesContainer data={categories?.data} loading={loading} />
-      <Pagination
-        pageCount={categories.paginationResult?.numberOfPages}
-        nextPage={categories.paginationResult?.nextPage}
-      />
+      {categories.paginationResult?.numberOfPages === 1 ? null : (
+        <Pagination
+          pageCount={categories.paginationResult?.numberOfPages}
+          onPress={onPress}
+        />
+      )}
     </div>
   );
 };
