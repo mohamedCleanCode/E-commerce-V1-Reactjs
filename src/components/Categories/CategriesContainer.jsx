@@ -1,12 +1,10 @@
 import React from "react";
 import { Button, Container, Row, Spinner } from "react-bootstrap";
-import { useDispatch } from "react-redux";
 import SubTitle from "../Utilities/SubTitle";
 import CategoriesCard from "./CategoriesCard";
 
 const CategriesContainer = ({ data, loading }) => {
   const colors = ["#FFD3E8", "#F4DBA5", "#55CFDf", "#0034FF", "#FFD3EB"];
-  const dispatch = useDispatch();
   return (
     <Container>
       <SubTitle title="Categories" />

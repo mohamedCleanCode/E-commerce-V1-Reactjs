@@ -1,9 +1,7 @@
 import React from "react";
 import ReactPaginate from "react-paginate";
-import { useDispatch } from "react-redux";
 
 const Pagination = ({ pageCount, onPress }) => {
-  const dispatch = useDispatch();
   const handlePageClick = (e) => {
     onPress(e.selected + 1);
   };
