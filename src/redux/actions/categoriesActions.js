@@ -1,5 +1,6 @@
 import useGetData from "../../hooks/useGetData";
-import { GET_ALL_CATEGORIES } from "../types";
+import usePostData from "../../hooks/usePostData";
+import { GET_ALL_CATEGORIES, SET_CATEGORY } from "../types";
 
 export const getAllCategories = (limit, page) => async (dispatch) => {
   try {
@@ -8,6 +9,17 @@ export const getAllCategories = (limit, page) => async (dispatch) => {
     );
     dispatch({
       type: GET_ALL_CATEGORIES,
+      payload: data,
+    });
+  } catch (error) {
+    console.log(error);
+  }
+};
+export const setCategory = () => async (dispatch) => {
+  try {
+    const data = await usePostData(`/api/v1/categories`);
+    dispatch({
+      type: SET_CATEGORY,
       payload: data,
     });
   } catch (error) {
