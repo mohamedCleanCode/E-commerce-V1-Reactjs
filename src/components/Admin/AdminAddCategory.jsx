@@ -9,8 +9,6 @@ const AdminAddCategory = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     if (text && img) {
-      console.log(text);
-      console.log(img);
     } else {
       alert("please fell inputs");
     }
