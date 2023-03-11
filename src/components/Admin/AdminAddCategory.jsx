@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from "react";
 import { Button, Form } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
-import { toast, ToastContainer } from "react-toastify";
-import avatar from "../../assets/images/avatar.png";
-import { setCategory } from "../../redux/actions/categoriesActions";
-
+import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import avatar from "../../assets/images/avatar.png";
+import notify from "../../hook/useNotification";
+import { setCategory } from "../../redux/actions/categoriesActions";
 
 const AdminAddCategory = () => {
   const [img, setImg] = useState(avatar);
@@ -40,21 +40,14 @@ const AdminAddCategory = () => {
       setLoading(false);
       if (res.status === 201) {
         notify("Success", "success");
+      } else if (res.status === 400) {
+        notify("Error", "error");
       } else {
         notify("Error", "error");
       }
     }
   }, [loading]);
 
-  const notify = (msg, type) => {
-    if (type === "success") {
-      toast.success(msg);
-    } else if (type === "warn") {
-      toast.warn(msg);
-    } else if (type === "error") {
-      toast.error(msg);
-    }
-  };
   return (
     <Form className="admin-add" onSubmit={handleSubmit}>
       <h1>Add A New Category</h1>
