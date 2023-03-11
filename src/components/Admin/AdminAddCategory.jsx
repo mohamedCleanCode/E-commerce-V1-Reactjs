@@ -1,27 +1,44 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Button, Form } from "react-bootstrap";
 import { useDispatch } from "react-redux";
-import avater from "../../assets/images/avatar.png";
+import avatar from "../../assets/images/avatar.png";
 import { setCategory } from "../../redux/actions/categoriesActions";
 
 const AdminAddCategory = () => {
-  const [img, setImg] = useState(avater);
+  const [img, setImg] = useState(avatar);
   const [imgPath, setImgPath] = useState("");
   const [text, setText] = useState("");
+  const [loading, setLoading] = useState(true);
+  const [isPress, setiIsPress] = useState(false);
   const dispatch = useDispatch();
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    if (text && img) {
-      const formDate = new FormData();
-      console.log(formDate);
-      formDate.append("name", text);
-      formDate.append("image", imgPath);
-      dispatch(setCategory(formDate));
-    } else {
-      alert("please fell inputs");
+    try {
+      if (text && img) {
+        const formDate = new FormData();
+        formDate.append("name", text);
+        formDate.append("image", imgPath);
+        setiIsPress(true);
+        setLoading(true);
+        await dispatch(setCategory(formDate));
+        setLoading(false);
+      } else {
+        alert("please fell inputs");
+      }
+    } catch (error) {
+      console.log(error);
     }
   };
+  useEffect(() => {
+    if (!loading) {
+      setImg(avatar);
+      setImgPath(null);
+      setText("");
+      setLoading(true);
+      setiIsPress(false);
+    }
+  }, [loading]);
   return (
     <Form className="admin-add" onSubmit={handleSubmit}>
       <h1>Add A New Category</h1>
@@ -45,7 +62,7 @@ const AdminAddCategory = () => {
       <Form.Control
         type="text"
         className="admin-add-brand-name"
-        placeholder="Brand Name"
+        placeholder="Category Name"
         value={text}
         onChange={(e) => {
           setText(e.target.value.trim());
@@ -54,6 +71,7 @@ const AdminAddCategory = () => {
       <Button variant="dark" type="submit">
         Save
       </Button>
+      {isPress ? loading ? <h1>Loading.....</h1> : <h1>Done</h1> : null}
     </Form>
   );
 };
