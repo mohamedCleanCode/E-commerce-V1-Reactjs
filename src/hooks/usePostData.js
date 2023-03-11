@@ -6,8 +6,7 @@ const usePostData = async (url, formData) => {
   };
   try {
     const res = await baseURL.post(url, formData, config);
-    const data = await res.data;
-    return data;
+    return res;
   } catch (error) {
     console.log(error);
   }

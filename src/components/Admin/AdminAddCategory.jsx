@@ -1,16 +1,19 @@
 import React, { useEffect, useState } from "react";
 import { Button, Form } from "react-bootstrap";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { toast, ToastContainer } from "react-toastify";
 import avatar from "../../assets/images/avatar.png";
 import { setCategory } from "../../redux/actions/categoriesActions";
+
+import "react-toastify/dist/ReactToastify.css";
 
 const AdminAddCategory = () => {
   const [img, setImg] = useState(avatar);
   const [imgPath, setImgPath] = useState("");
   const [text, setText] = useState("");
-  const [loading, setLoading] = useState(true);
-  const [isPress, setiIsPress] = useState(false);
+  const [loading, setLoading] = useState(false);
   const dispatch = useDispatch();
+  const res = useSelector((state) => state.categories.categories);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -19,26 +22,39 @@ const AdminAddCategory = () => {
         const formDate = new FormData();
         formDate.append("name", text);
         formDate.append("image", imgPath);
-        setiIsPress(true);
         setLoading(true);
         await dispatch(setCategory(formDate));
         setLoading(false);
       } else {
-        alert("please fell inputs");
+        notify("Warn", "warn");
       }
     } catch (error) {
       console.log(error);
     }
   };
   useEffect(() => {
-    if (!loading) {
+    if (loading) {
       setImg(avatar);
       setImgPath(null);
       setText("");
-      setLoading(true);
-      setiIsPress(false);
+      setLoading(false);
+      if (res.status === 201) {
+        notify("Success", "success");
+      } else {
+        notify("Error", "error");
+      }
     }
   }, [loading]);
+
+  const notify = (msg, type) => {
+    if (type === "success") {
+      toast.success(msg);
+    } else if (type === "warn") {
+      toast.warn(msg);
+    } else if (type === "error") {
+      toast.error(msg);
+    }
+  };
   return (
     <Form className="admin-add" onSubmit={handleSubmit}>
       <h1>Add A New Category</h1>
@@ -65,13 +81,13 @@ const AdminAddCategory = () => {
         placeholder="Category Name"
         value={text}
         onChange={(e) => {
-          setText(e.target.value.trim());
+          setText(e.target.value);
         }}
       />
-      <Button variant="dark" type="submit">
+      <Button disabled={loading} variant="dark" type="submit">
         Save
       </Button>
-      {isPress ? loading ? <h1>Loading.....</h1> : <h1>Done</h1> : null}
+      <ToastContainer autoClose={1000} />
     </Form>
   );
 };
