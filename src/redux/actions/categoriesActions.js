@@ -15,9 +15,9 @@ export const getAllCategories = (limit, page) => async (dispatch) => {
     console.log(error);
   }
 };
-export const setCategory = () => async (dispatch) => {
+export const setCategory = (formData) => async (dispatch) => {
   try {
-    const data = await usePostData(`/api/v1/categories`);
+    const data = await usePostData(`/api/v1/categories`, formData);
     dispatch({
       type: SET_CATEGORY,
       payload: data,
