@@ -3,6 +3,7 @@ import { GET_ALL_CATEGORIES, SET_CATEGORY } from "../types";
 const intialState = {
   categories: [],
   loading: true,
+  response: {},
 };
 
 const categoriesReducer = (state = intialState, action) => {
@@ -15,8 +16,8 @@ const categoriesReducer = (state = intialState, action) => {
       };
     case SET_CATEGORY:
       return {
-        categories: action.payload,
-        loading: false,
+        ...state,
+        response: action.payload,
       };
     default:
       return state;

@@ -13,7 +13,7 @@ const AdminAddCategory = () => {
   const [text, setText] = useState("");
   const [loading, setLoading] = useState(false);
   const dispatch = useDispatch();
-  const res = useSelector((state) => state.categories.categories);
+  const { response: res } = useSelector((state) => state.categories);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -24,7 +24,6 @@ const AdminAddCategory = () => {
         formDate.append("image", imgPath);
         setLoading(true);
         await dispatch(setCategory(formDate));
-        setLoading(false);
       } else {
         notify("Warn", "warn");
       }
@@ -46,7 +45,7 @@ const AdminAddCategory = () => {
         notify("Error", "error");
       }
     }
-  }, [loading]);
+  }, [loading, res]);
 
   return (
     <Form className="admin-add" onSubmit={handleSubmit}>
