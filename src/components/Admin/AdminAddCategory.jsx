@@ -1,52 +1,10 @@
-import React, { useEffect, useState } from "react";
 import { Button, Form } from "react-bootstrap";
-import { useDispatch, useSelector } from "react-redux";
 import { ToastContainer } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
-import avatar from "../../assets/images/avatar.png";
-import notify from "../../hook/useNotification";
-import { setCategory } from "../../redux/actions/categoriesActions";
+import useAddCategory from "../../hook/categories/useAddCategory";
 
 const AdminAddCategory = () => {
-  const [img, setImg] = useState(avatar);
-  const [imgPath, setImgPath] = useState("");
-  const [text, setText] = useState("");
-  const [loading, setLoading] = useState(false);
-  const dispatch = useDispatch();
-  const { response: res } = useSelector((state) => state.categories);
-
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    try {
-      if (text && img) {
-        const formDate = new FormData();
-        formDate.append("name", text);
-        formDate.append("image", imgPath);
-        setLoading(true);
-        await dispatch(setCategory(formDate));
-      } else {
-        notify("Warn", "warn");
-      }
-    } catch (error) {
-      console.log(error);
-    }
-  };
-  useEffect(() => {
-    if (loading) {
-      setImg(avatar);
-      setImgPath(null);
-      setText("");
-      setLoading(false);
-      if (res.status === 201) {
-        notify("Success", "success");
-      } else if (res.status === 400) {
-        notify("Error", "error");
-      } else {
-        notify("Error", "error");
-      }
-    }
-  }, [loading, res]);
-
+  const [img, name, loading, handleSubmit, onChangeName, onChangeImg] =
+    useAddCategory();
   return (
     <Form className="admin-add" onSubmit={handleSubmit}>
       <h1>Add A New Category</h1>
@@ -60,10 +18,7 @@ const AdminAddCategory = () => {
             type="file"
             id="upload-image"
             style={{ opacity: "0", width: "100%" }}
-            onChange={(e) => {
-              setImg(URL.createObjectURL(e.target.files[0]));
-              setImgPath(e.target.files[0]);
-            }}
+            onChange={onChangeImg}
           />
         </div>
       </div>
@@ -71,10 +26,8 @@ const AdminAddCategory = () => {
         type="text"
         className="admin-add-brand-name"
         placeholder="Category Name"
-        value={text}
-        onChange={(e) => {
-          setText(e.target.value);
-        }}
+        value={name}
+        onChange={onChangeName}
       />
       <Button disabled={loading} variant="dark" type="submit">
         Save
