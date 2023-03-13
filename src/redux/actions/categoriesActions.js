@@ -4,7 +4,11 @@ import { GET_ALL_CATEGORIES, SET_CATEGORY } from "../types";
 
 export const getAllCategories = (limit, page) => async (dispatch) => {
   try {
-    const data = await useGetData(`/api/v1/categories`);
+    const data = await useGetData(
+      `/api/v1/categories${
+        limit ? `?limit=${limit ? limit : ""}&page=${page ? page : ""}` : ""
+      }`
+    );
     dispatch({
       type: GET_ALL_CATEGORIES,
       payload: data,
@@ -24,5 +28,4 @@ export const setCategory = (formData) => async (dispatch) => {
   } catch (error) {
     console.log(error);
   }
-  // ${limit ? `?limit=${limit ? limit : ""}&page=${page ? page : ""}` : ""}
 };
