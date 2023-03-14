@@ -1,18 +1,54 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Button, Form } from "react-bootstrap";
+import { useDispatch, useSelector } from "react-redux";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import avater from "../../assets/images/avatar.png";
+import notify from "../../hook/useNotification";
+import { setBrand } from "../../redux/actions/brandsActions";
 
 const AdminAddBrand = () => {
   const [img, setImg] = useState(avater);
-  const [text, setText] = useState("");
+  const [imgPath, setImgPath] = useState("");
+  const [name, setName] = useState("");
+  const [loading, setLoading] = useState(false);
+  const dispatch = useDispatch();
+  const res = useSelector((state) => state.brands.response);
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    if (text && img) {
-    } else {
-      alert("please fell inputs");
+    try {
+      if (name && img) {
+        const formData = new FormData();
+        formData.append("name", name);
+        formData.append("image", imgPath);
+        await dispatch(setBrand(formData));
+        setLoading(true);
+      } else {
+        notify("Warn", "warn");
+      }
+    } catch (error) {
+      console.log(error);
     }
   };
+  useEffect(() => {
+    if (loading) {
+      setImg(avater);
+      setImgPath("");
+      setName("");
+      setLoading(false);
+      if (res.status === 201) {
+        notify("Success", "success");
+      } else if (res.status === 400) {
+        notify("Error", "error");
+        console.log(res);
+      } else {
+        console.log(res);
+        notify("Error", "error");
+      }
+    }
+  }, [loading, res]);
+
   return (
     <Form className="admin-add" onSubmit={handleSubmit}>
       <h1>Add A New Brand</h1>
@@ -28,6 +64,7 @@ const AdminAddBrand = () => {
             style={{ opacity: "0", width: "100%" }}
             onChange={(e) => {
               setImg(URL.createObjectURL(e.target.files[0]));
+              setImgPath(e.target.files[0]);
             }}
           />
         </div>
@@ -36,13 +73,15 @@ const AdminAddBrand = () => {
         type="text"
         className="admin-add-brand-name"
         placeholder="Brand Name"
+        value={name}
         onChange={(e) => {
-          setText(e.target.value);
+          setName(e.target.value);
         }}
       />
-      <Button variant="dark" type="submit">
+      <Button variant="dark" type="submit" disabled={loading}>
         Save
       </Button>
+      <ToastContainer autoClose={1000} />
     </Form>
   );
 };
