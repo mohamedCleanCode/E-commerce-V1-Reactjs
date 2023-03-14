@@ -1,23 +1,36 @@
 import React from "react";
-import { Container, Row } from "react-bootstrap";
-import brand1 from "../../assets/images/brand1.png";
-import brand2 from "../../assets/images/brand2.png";
-import brand3 from "../../assets/images/brand3.png";
+import { Button, Container, Row, Spinner } from "react-bootstrap";
 import SubTitle from "../Utilities/SubTitle";
 import BrandCard from "./BrandCard";
 
-const BrandContainer = () => {
+const BrandContainer = ({ brands, loading }) => {
   return (
     <Container>
       <SubTitle title="Brands" />
-      <Row className="my-3">
-        <BrandCard src={brand1} />
-        <BrandCard src={brand2} />
-        <BrandCard src={brand3} />
-        <BrandCard src={brand1} />
-        <BrandCard src={brand2} />
-        <BrandCard src={brand3} />
-      </Row>
+      {loading ? (
+        <div className="text-center">
+          <Button variant="primary" disabled>
+            <Spinner
+              as="span"
+              animation="grow"
+              size="sm"
+              role="status"
+              aria-hidden="true"
+            />
+            Loading...
+          </Button>
+        </div>
+      ) : (
+        <Row className="my-3">
+          {brands ? (
+            brands.map((brand) => {
+              return <BrandCard key={brand._id} src={brand.image} />;
+            })
+          ) : (
+            <p>There are no brands yet...!</p>
+          )}
+        </Row>
+      )}
     </Container>
   );
 };

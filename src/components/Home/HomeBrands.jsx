@@ -26,7 +26,7 @@ const HomeBrands = () => {
         <Row className="mt-3">
           {brands ? (
             brands.slice(0, 4).map((brand) => {
-              return <BrandCard src={brand.image} />;
+              return <BrandCard key={brand._id} src={brand.image} />;
             })
           ) : (
             <p>There are no brands yet...!</p>
