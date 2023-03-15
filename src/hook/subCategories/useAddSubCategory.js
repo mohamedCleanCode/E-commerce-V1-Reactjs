@@ -22,6 +22,10 @@ const useAddSubCategory = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    if (!navigator.onLine) {
+      notify("Check your internet", "warn");
+      return;
+    }
     if (name && catName !== "0") {
       const formData = {
         name,
