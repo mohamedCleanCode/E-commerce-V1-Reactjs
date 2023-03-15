@@ -1,6 +1,6 @@
 import baseURL from "../Api/baseURL";
 
-const usePostData = async (url, formData) => {
+const usePostDataWithImg = async (url, formData) => {
   const config = {
     headers: { "Content-Type": "multipart/form-data" },
   };
@@ -11,4 +11,13 @@ const usePostData = async (url, formData) => {
     console.log(error);
   }
 };
-export default usePostData;
+
+const usePostData = async (url, formData) => {
+  try {
+    const res = await baseURL.post(url, formData);
+    return res;
+  } catch (error) {
+    console.log(error);
+  }
+};
+export { usePostDataWithImg, usePostData };

@@ -1,5 +1,5 @@
 import useGetData from "../../hooks/useGetData";
-import usePostData from "../../hooks/usePostData";
+import { usePostDataWithImg } from "../../hooks/usePostData";
 import { GET_ALL_BRANDS, SET_BRAND } from "../types";
 
 export const getAllBrands = (limit, page) => async (dispatch) => {
@@ -18,7 +18,7 @@ export const getAllBrands = (limit, page) => async (dispatch) => {
 
 export const setBrand = (formData) => async (dispatch) => {
   try {
-    const res = await usePostData("/api/v1/brands", formData);
+    const res = await usePostDataWithImg("/api/v1/brands", formData);
     dispatch({
       type: SET_BRAND,
       payload: res,

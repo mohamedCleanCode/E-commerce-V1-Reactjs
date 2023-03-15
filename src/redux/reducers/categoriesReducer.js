@@ -1,4 +1,4 @@
-import { GET_ALL_CATEGORIES, SET_CATEGORY } from "../types";
+import { GET_ALL_CATEGORIES, SET_CATEGORY, SET_SUB_CATEGORY } from "../types";
 
 const intialState = {
   categories: [],
@@ -15,6 +15,11 @@ const categoriesReducer = (state = intialState, action) => {
         loading: false,
       };
     case SET_CATEGORY:
+      return {
+        ...state,
+        response: action.payload,
+      };
+    case SET_SUB_CATEGORY:
       return {
         ...state,
         response: action.payload,
