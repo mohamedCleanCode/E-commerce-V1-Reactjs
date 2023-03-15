@@ -1,9 +1,12 @@
 import Multiselect from "multiselect-react-dropdown";
-import React from "react";
+import React, { useEffect } from "react";
 import { Button, Col, Form } from "react-bootstrap";
 // import avater from "../../assets/images/avatar.png";
 import { useState } from "react";
 import MultiImageInput from "react-multiple-image-input";
+import { useDispatch, useSelector } from "react-redux";
+import { getAllBrands } from "../../redux/actions/brandsActions";
+import { getAllCategories } from "../../redux/actions/categoriesActions";
 
 const AdminAddProduct = () => {
   const [images, setImages] = useState({});
@@ -12,9 +15,13 @@ const AdminAddProduct = () => {
   const [priceBefore, setPriceBefore] = useState("");
   const [price, setPrice] = useState("");
   const [quantity, setQuantity] = useState("");
-  const [cats, setCats] = useState("");
+  const [catId, setCatId] = useState("");
+  const [brandId, setBrandId] = useState("");
   const [subCats, setSubCats] = useState("");
   const [selectedSubCats, setSelectedSubCats] = useState("");
+  const dispatch = useDispatch();
+  const { categories } = useSelector((state) => state.categories);
+  const { brands } = useSelector((state) => state.brands);
 
   const options = [
     { name: "Option 1", id: 1 },
@@ -23,6 +30,12 @@ const AdminAddProduct = () => {
   const selectedValue = () => {};
   const onSelect = () => {};
   const onRemove = () => {};
+
+  useEffect(() => {
+    dispatch(getAllCategories());
+    dispatch(getAllBrands());
+  }, []);
+  console.log(catId);
   return (
     <Col xs="12">
       <h1>Add A New Product</h1>
@@ -80,12 +93,20 @@ const AdminAddProduct = () => {
         value={quantity}
         onChange={(e) => setQuantity(e.target.value)}
       />
-      <Form.Select className="mb-3" aria-label="Default select example">
-        <option>Main Category</option>
-        <option value="cat-1">cat-1</option>
-        <option value="cat-1">cat-1</option>
-        <option value="cat-1">cat-1</option>
-        <option value="cat-1">cat-1</option>
+      <Form.Select
+        name="main-category"
+        className="mb-3"
+        aria-label="Default select example"
+        onChange={(e) => setCatId(e.target.value)}
+      >
+        <option value="0">Main Category</option>
+        {categories?.data.map((cat) => {
+          return (
+            <option key={cat._id} value={cat._id}>
+              {cat.name}
+            </option>
+          );
+        })}
       </Form.Select>
       <Multiselect
         placeholder="Subcategory"
@@ -95,12 +116,22 @@ const AdminAddProduct = () => {
         onRemove={onRemove} // Function will trigger on remove event
         displayValue="name" // Property name to display in the dropdown options
       />
-      <Form.Select className="my-3" aria-label="Default select example">
-        <option>Brand</option>
-        <option value="Brand-1">Brand-1</option>
-        <option value="Brand-1">Brand-1</option>
-        <option value="Brand-1">Brand-1</option>
-        <option value="Brand-1">Brand-1</option>
+      <Form.Select
+        name="main-brand"
+        className="my-3"
+        aria-label="Default select example"
+        onChange={(e) => setBrandId(e.target.value)}
+      >
+        <option value="0">Brand</option>
+        {brands.length >= 1
+          ? brands.map((brand) => {
+              return (
+                <option key={brand._id} value={brand._id}>
+                  {brand.name}
+                </option>
+              );
+            })
+          : null}
       </Form.Select>
       <Button variant="dark" type="submit">
         Save
