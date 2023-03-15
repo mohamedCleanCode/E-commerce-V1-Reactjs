@@ -20,15 +20,19 @@ const AdminAddProduct = () => {
       <Form.Group controlId="formBasicImg">
         <Form.Label>
           <div className="admin-add-image">
-            <img src={avater} alt="" />
+            <img src={avater} alt="" style={{ cursor: "pointer" }} />
           </div>
         </Form.Label>
         <Form.Control
-          type="text"
-          className="admin-add-brand-name"
-          placeholder="Product name"
+          type="file"
+          style={{ opacity: "0", width: "0", height: "0" }}
         />
       </Form.Group>
+      <Form.Control
+        type="text"
+        className="admin-add-brand-name"
+        placeholder="Product name"
+      />
       <textarea
         rows="3"
         cols="100"
