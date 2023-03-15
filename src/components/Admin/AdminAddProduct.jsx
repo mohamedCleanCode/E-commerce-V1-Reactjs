@@ -14,15 +14,21 @@ const AdminAddProduct = () => {
   return (
     <Col xs="12">
       <h1>Add A New Product</h1>
-      <p className="admin-add-image">
+      <div className="admin-add-image">
         <p>Image Brand</p>
-        <img src={avater} alt="" />
-      </p>
-      <Form.Control
-        type="text"
-        className="admin-add-brand-name"
-        placeholder="Product name"
-      />
+      </div>
+      <Form.Group controlId="formBasicImg">
+        <Form.Label>
+          <div className="admin-add-image">
+            <img src={avater} alt="" />
+          </div>
+        </Form.Label>
+        <Form.Control
+          type="text"
+          className="admin-add-brand-name"
+          placeholder="Product name"
+        />
+      </Form.Group>
       <textarea
         rows="3"
         cols="100"
@@ -30,12 +36,12 @@ const AdminAddProduct = () => {
         placeholder="Product description"
       />
       <Form.Control
-        type="text"
+        type="number"
         className="admin-add-brand-name"
         placeholder="Price before discount"
       />
       <Form.Control
-        type="text"
+        type="number"
         className="admin-add-brand-name"
         placeholder="Product price"
       />
