@@ -27,8 +27,12 @@ const AdminAddProduct = () => {
   const { subCategories } = useSelector((state) => state.subCategories);
 
   const selectedValue = () => {};
-  const onSelect = () => {};
-  const onRemove = () => {};
+  const onSelect = (selectedList) => {
+    setSelectedSubCats(selectedList);
+  };
+  const onRemove = (selectedList) => {
+    setSelectedSubCats(selectedList);
+  };
 
   const onChangeCat = async (e) => {
     if (e.target.value !== "0") {
