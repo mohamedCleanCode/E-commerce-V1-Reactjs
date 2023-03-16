@@ -7,8 +7,10 @@ import MultiImageInput from "react-multiple-image-input";
 import { useDispatch, useSelector } from "react-redux";
 import { getAllBrands } from "../../redux/actions/brandsActions";
 import { getAllCategories } from "../../redux/actions/categoriesActions";
+import { getSubCtegoriesOfCategory } from "../../redux/actions/subCategoriesActions";
 
 const AdminAddProduct = () => {
+  const [options, setOptions] = useState([]);
   const [images, setImages] = useState({});
   const [name, setName] = useState("");
   const [desc, setDesc] = useState("");
@@ -22,20 +24,27 @@ const AdminAddProduct = () => {
   const dispatch = useDispatch();
   const { categories } = useSelector((state) => state.categories);
   const { brands } = useSelector((state) => state.brands);
+  const { subCategories } = useSelector((state) => state.subCategories);
 
-  const options = [
-    { name: "Option 1", id: 1 },
-    { name: "Option 2", id: 2 },
-  ];
   const selectedValue = () => {};
   const onSelect = () => {};
   const onRemove = () => {};
 
+  const onChangeCat = async (e) => {
+    if (e.target.value !== "0") {
+      setCatId(e.target.value);
+      await dispatch(getSubCtegoriesOfCategory(e.target.value));
+    }
+  };
   useEffect(() => {
     dispatch(getAllCategories());
     dispatch(getAllBrands());
-  }, []);
-  console.log(catId);
+    if (catId !== "0") {
+      if (subCategories?.length) {
+        setOptions(subCategories);
+      }
+    }
+  }, [catId, subCategories]);
   return (
     <Col xs="12">
       <h1>Add A New Product</h1>
@@ -97,16 +106,17 @@ const AdminAddProduct = () => {
         name="main-category"
         className="mb-3"
         aria-label="Default select example"
-        onChange={(e) => setCatId(e.target.value)}
+        onChange={onChangeCat}
       >
         <option value="0">Main Category</option>
-        {categories?.data.map((cat) => {
-          return (
-            <option key={cat._id} value={cat._id}>
-              {cat.name}
-            </option>
-          );
-        })}
+        {categories?.data?.length >= 1 &&
+          categories.data.map((cat) => {
+            return (
+              <option key={cat._id} value={cat._id}>
+                {cat.name}
+              </option>
+            );
+          })}
       </Form.Select>
       <Multiselect
         placeholder="Subcategory"
