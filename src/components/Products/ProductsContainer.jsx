@@ -1,18 +1,36 @@
 import React from "react";
-import { Row } from "react-bootstrap";
+import { Button, Row, Spinner } from "react-bootstrap";
 import SubTitle from "../Utilities/SubTitle";
 import ProductCard from "./ProductCard";
 
-const ProductsContainer = ({ title, btnTitle, path }) => {
+const ProductsContainer = ({ title, btnTitle, path, products, loading }) => {
   return (
     <div className="home-products container mt-2">
       <SubTitle title={title} btnTitle={btnTitle} path={path} />
-      <Row className="mt-3">
-        <ProductCard />
-        <ProductCard />
-        <ProductCard />
-        <ProductCard />
-      </Row>
+      {loading ? (
+        <div className="text-center">
+          <Button variant="primary" disabled>
+            <Spinner
+              as="span"
+              animation="grow"
+              size="sm"
+              role="status"
+              aria-hidden="true"
+            />
+            Loading...
+          </Button>
+        </div>
+      ) : (
+        <Row className="mt-3">
+          {products?.length >= 1 ? (
+            products.slice(0, 4).map((product) => {
+              return <ProductCard key={product._id} product={product} />;
+            })
+          ) : (
+            <p>There are no categories yet...!</p>
+          )}
+        </Row>
+      )}
     </div>
   );
 };

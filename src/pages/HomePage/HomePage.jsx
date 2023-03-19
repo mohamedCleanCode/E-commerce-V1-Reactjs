@@ -3,19 +3,26 @@ import DiscountSection from "../../components/Home/DiscountSection";
 import HomeBrands from "../../components/Home/HomeBrands";
 import HomeCategories from "../../components/Home/HomeCategories";
 import Slider from "../../components/Home/Slider";
-import {
-  default as HomeProducts,
-  default as ProductsContainer,
-} from "../../components/Products/ProductsContainer";
+import { default as ProductsContainer } from "../../components/Products/ProductsContainer";
+import useHomePage from "../../hook/products/useHomePage";
 
 const HomePage = () => {
+  const [products] = useHomePage();
   return (
     <div className="home-page">
       <Slider />
       <HomeCategories />
-      <HomeProducts title="best saller" btnTitle="More" path="/products" />
+      <ProductsContainer
+        products={products?.products}
+        loading={products?.loading}
+        title="best saller"
+        btnTitle="More"
+        path="/products"
+      />
       <DiscountSection />
       <ProductsContainer
+        products={products?.products}
+        loading={products?.loading}
         title="latest fashion"
         btnTitle="More"
         path="/products"
