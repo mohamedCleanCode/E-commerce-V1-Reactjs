@@ -32,7 +32,6 @@ const AdminAddProduct = () => {
     brands,
     loading,
   ] = useAddProduct();
-
   return (
     <Col xs="12">
       <h1>Add A New Product</h1>
@@ -124,7 +123,7 @@ const AdminAddProduct = () => {
           value={brandId}
         >
           <option value="0">Brand</option>
-          {brands.length >= 1
+          {brands?.length >= 1
             ? brands.map((brand) => {
                 return (
                   <option key={brand._id} value={brand._id}>

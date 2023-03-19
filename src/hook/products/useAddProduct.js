@@ -116,7 +116,6 @@ const useAddProduct = () => {
   return [
     handleSubmit,
     images,
-    images,
     setImages,
     name,
     setName,
