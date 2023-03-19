@@ -10,6 +10,7 @@ const productsReducer = (state = intialState, action) => {
   switch (action.type) {
     case SET_PRODUCT:
       return {
+        ...state,
         response: action.payload,
         loading: false,
       };

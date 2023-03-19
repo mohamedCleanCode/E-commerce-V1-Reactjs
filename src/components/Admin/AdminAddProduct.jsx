@@ -1,16 +1,17 @@
 import Multiselect from "multiselect-react-dropdown";
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { Button, Col, Form } from "react-bootstrap";
-// import avater from "../../assets/images/avatar.png";
-import { useState } from "react";
 import MultiImageInput from "react-multiple-image-input";
 import { useDispatch, useSelector } from "react-redux";
+import { ToastContainer } from "react-toastify";
+import notify from "../../hook/useNotification";
 import { getAllBrands } from "../../redux/actions/brandsActions";
 import { getAllCategories } from "../../redux/actions/categoriesActions";
 import { setProduct } from "../../redux/actions/productsActions";
 import { getSubCtegoriesOfCategory } from "../../redux/actions/subCategoriesActions";
 
 const AdminAddProduct = () => {
+  const [loading, setLoading] = useState(false);
   const [options, setOptions] = useState([]);
   const [images, setImages] = useState({});
   const [name, setName] = useState("");
@@ -20,12 +21,45 @@ const AdminAddProduct = () => {
   const [quantity, setQuantity] = useState("");
   const [catId, setCatId] = useState("");
   const [brandId, setBrandId] = useState("");
-  const [subCats, setSubCats] = useState("");
   const [selectedSubCats, setSelectedSubCats] = useState("");
   const dispatch = useDispatch();
   const { categories } = useSelector((state) => state.categories);
   const { brands } = useSelector((state) => state.brands);
   const { subCategories } = useSelector((state) => state.subCategories);
+  const { response: res } = useSelector((state) => state.products);
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    if (
+      images.length <= 0 ||
+      name === "" ||
+      desc === "" ||
+      price === "" ||
+      quantity === "" ||
+      catId === "" ||
+      brandId === ""
+    ) {
+      notify("Warn", "warn");
+      return;
+    }
+    const imageCover = dataURLtoFile(images[0], Math.random() + ".png");
+    const imagesSent = Array.from(Object.values(images)).map((image) =>
+      dataURLtoFile(image, Math.random() + ".png")
+    );
+    const formData = new FormData();
+    formData.append("imageCover", imageCover);
+    imagesSent.map((image) => formData.append("images", image));
+    formData.append("title", name);
+    formData.append("description", desc);
+    formData.append("price", price);
+    formData.append("quantity", quantity);
+    formData.append("category", catId);
+    selectedSubCats.map((subCat) => formData.append("subcategory", subCat._id));
+    formData.append("brand", brandId);
+    setLoading(true);
+    await dispatch(setProduct(formData));
+    setLoading(true);
+  };
 
   const selectedValue = () => {};
   const onSelect = (selectedList) => {
@@ -56,18 +90,6 @@ const AdminAddProduct = () => {
     return new File([u8arr], filename, { type: mime });
   }
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    const formData = new FormData();
-    formData.append("title", name);
-    formData.append("description", desc);
-    formData.append("price", price);
-    formData.append("quantity", quantity);
-    const imageCover = dataURLtoFile(images[0], Math.random() + ".png");
-    formData.append("imageCover", imageCover);
-    formData.append("category", catId);
-    await dispatch(setProduct(formData));
-  };
   useEffect(() => {
     dispatch(getAllCategories());
     dispatch(getAllBrands());
@@ -76,7 +98,27 @@ const AdminAddProduct = () => {
         setOptions(subCategories);
       }
     }
-  }, [catId, subCategories]);
+    if (loading) {
+      setLoading(false);
+      setCatId("0");
+      setOptions([]);
+      setImages({});
+      setName("");
+      setDesc("");
+      setPriceBefore("");
+      setPrice("");
+      setQuantity("");
+      setBrandId("0");
+      setSelectedSubCats([]);
+      if (res?.status === 201) {
+        notify("Success", "success");
+      } else if (res?.status === 400) {
+        notify("Error", "error");
+      }
+    }
+  }, [catId, subCategories, loading, res]);
+  console.log(res);
+
   return (
     <Col xs="12">
       <h1>Add A New Product</h1>
@@ -140,6 +182,7 @@ const AdminAddProduct = () => {
           className="mb-3"
           aria-label="Default select example"
           onChange={onChangeCat}
+          value={catId}
         >
           <option value="0">Main Category</option>
           {categories?.data?.length >= 1 &&
@@ -164,6 +207,7 @@ const AdminAddProduct = () => {
           className="my-3"
           aria-label="Default select example"
           onChange={(e) => setBrandId(e.target.value)}
+          value={brandId}
         >
           <option value="0">Brand</option>
           {brands.length >= 1
@@ -176,10 +220,11 @@ const AdminAddProduct = () => {
               })
             : null}
         </Form.Select>
-        <Button variant="dark" type="submit">
+        <Button variant="dark" type="submit" disabled={loading}>
           Save
         </Button>
       </Form>
+      <ToastContainer />
     </Col>
   );
 };
