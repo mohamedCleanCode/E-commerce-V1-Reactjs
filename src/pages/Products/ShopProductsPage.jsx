@@ -12,7 +12,7 @@ const ShopProductsPage = () => {
   return (
     <Container>
       <CategriesHeader />
-      <SearchCountResult title="500" />
+      <SearchCountResult title={products?.response.results} />
       <Row>
         <Col xs="2" sm="2" md="2" lg="2">
           <SideFilter />
