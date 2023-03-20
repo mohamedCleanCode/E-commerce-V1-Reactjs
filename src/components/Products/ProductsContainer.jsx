@@ -23,11 +23,11 @@ const ProductsContainer = ({ title, btnTitle, path, products, loading }) => {
       ) : (
         <Row className="mt-3">
           {products?.length >= 1 ? (
-            products.slice(0, 4).map((product) => {
+            products.map((product) => {
               return <ProductCard key={product._id} product={product} />;
             })
           ) : (
-            <p>There are no categories yet...!</p>
+            <p>There are no products yet...!</p>
           )}
         </Row>
       )}

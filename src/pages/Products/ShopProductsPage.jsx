@@ -5,8 +5,10 @@ import ProductsContainer from "../../components/Products/ProductsContainer";
 import Pagination from "../../components/Utilities/Pagination";
 import SearchCountResult from "../../components/Utilities/SearchCountResult";
 import SideFilter from "../../components/Utilities/SideFilter";
+import useShopProductsPage from "../../hook/products/useShopProductsPage";
 
 const ShopProductsPage = () => {
+  const [products] = useShopProductsPage();
   return (
     <Container>
       <CategriesHeader />
@@ -16,7 +18,10 @@ const ShopProductsPage = () => {
           <SideFilter />
         </Col>
         <Col xs="10" sm="10" md="10" lg="10">
-          <ProductsContainer />
+          <ProductsContainer
+            products={products?.products}
+            loading={products?.loading}
+          />
         </Col>
       </Row>
       <Pagination />

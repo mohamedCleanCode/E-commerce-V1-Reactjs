@@ -13,7 +13,7 @@ const HomePage = () => {
       <Slider />
       <HomeCategories />
       <ProductsContainer
-        products={products?.products}
+        products={products?.products.slice(0, 4)}
         loading={products?.loading}
         title="best saller"
         btnTitle="More"
@@ -21,7 +21,7 @@ const HomePage = () => {
       />
       <DiscountSection />
       <ProductsContainer
-        products={products?.products}
+        products={products?.products.slice(0, 4)}
         loading={products?.loading}
         title="latest fashion"
         btnTitle="More"
