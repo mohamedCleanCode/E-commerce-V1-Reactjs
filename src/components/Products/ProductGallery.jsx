@@ -17,7 +17,7 @@ const images = [
 ];
 const ProductGallery = () => {
   const { id } = useParams();
-  const [images] = useProductDetails(id);
+  const [, images] = useProductDetails(id);
   return (
     <ImageGallery
       items={images ? images : []}

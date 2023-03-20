@@ -1,6 +1,10 @@
 import useGetData from "../../hooks/useGetData";
 import { usePostDataWithImg } from "../../hooks/usePostData";
-import { GET_ALL_CATEGORIES, SET_CATEGORY } from "../types";
+import {
+  GET_ALL_CATEGORIES,
+  GET_SPESIFIC_CATEGORY,
+  SET_CATEGORY,
+} from "../types";
 
 export const getAllCategories = (limit, page) => async (dispatch) => {
   try {
@@ -20,6 +24,17 @@ export const setCategory = (formData) => async (dispatch) => {
     const res = await usePostDataWithImg(`/api/v1/categories`, formData);
     dispatch({
       type: SET_CATEGORY,
+      payload: res,
+    });
+  } catch (error) {
+    console.log(error);
+  }
+};
+export const getSpesificCategory = (id) => async (dispatch) => {
+  try {
+    const res = await useGetData(`/api/v1/categories/${id}`);
+    dispatch({
+      type: GET_SPESIFIC_CATEGORY,
       payload: res,
     });
   } catch (error) {

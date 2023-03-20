@@ -1,6 +1,11 @@
 import React from "react";
+import { useParams } from "react-router-dom";
+import useProductDetails from "../../hook/products/useProductDetails";
 
 const ProductInfo = () => {
+  const { id } = useParams();
+  const [product] = useProductDetails(id);
+  console.log(product);
   return (
     <div className="product-info mt-3">
       <p className="product-info-cat">Electrons</p>

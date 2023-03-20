@@ -13,7 +13,7 @@ const useProductDetails = (id) => {
   useEffect(() => {
     dispatch(getSpecificProduct(id));
   }, []);
-  return [images];
+  return [product, images];
 };
 
 export default useProductDetails;
