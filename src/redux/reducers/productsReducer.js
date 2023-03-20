@@ -1,9 +1,10 @@
-import { GET_ALL_PRODUCTS, SET_PRODUCT } from "../types";
+import { GET_ALL_PRODUCTS, GET_SPECIFIC_PRODUCT, SET_PRODUCT } from "../types";
 
 const intialState = {
   products: [],
   loading: true,
   response: {},
+  product: {},
 };
 
 const productsReducer = (state = intialState, action) => {
@@ -17,6 +18,13 @@ const productsReducer = (state = intialState, action) => {
     case GET_ALL_PRODUCTS:
       return {
         products: action.payload.data,
+        response: action.payload,
+        loading: false,
+      };
+    case GET_SPECIFIC_PRODUCT:
+      return {
+        ...state,
+        product: action.payload.data,
         response: action.payload,
         loading: false,
       };
