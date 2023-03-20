@@ -34,7 +34,6 @@ const categoriesReducer = (state = intialState, action) => {
       };
     case GET_SPESIFIC_CATEGORY:
       return {
-        ...state,
         category: action.payload.data,
         response: action.payload,
         loading: false,

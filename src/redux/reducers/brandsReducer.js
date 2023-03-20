@@ -1,9 +1,10 @@
-import { GET_ALL_BRANDS, SET_BRAND } from "../types";
+import { GET_ALL_BRANDS, GET_SPESIFIC_BRAND, SET_BRAND } from "../types";
 
 const intialState = {
   brands: [],
   loading: true,
   response: {},
+  brand: {},
 };
 
 const brandsReducer = (state = intialState, action) => {
@@ -19,6 +20,13 @@ const brandsReducer = (state = intialState, action) => {
       return {
         ...state,
         loading: false,
+        response: action.payload,
+      };
+    case GET_SPESIFIC_BRAND:
+      return {
+        ...state,
+        loading: false,
+        brand: action.payload.data,
         response: action.payload,
       };
     default:
