@@ -7,8 +7,6 @@ import useProductsManagment from "../../hook/admin/useProductsManagment";
 
 const AdminProductsManagmentPage = () => {
   const [products, loading, res, onPress] = useProductsManagment();
-  console.log(products);
-  console.log(res);
   return (
     <Container className="my-3" style={{ minHeight: "72vh" }}>
       <Row>

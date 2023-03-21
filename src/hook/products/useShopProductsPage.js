@@ -4,11 +4,18 @@ import { getAllProducts } from "../../redux/actions/productsActions";
 
 const useShopProductsPage = () => {
   const dispatch = useDispatch();
-  const products = useSelector((state) => state.products);
+  const {
+    products,
+    loading,
+    response: res,
+  } = useSelector((state) => state.products);
+  const onPress = (page) => {
+    dispatch(getAllProducts(8, page));
+  };
   useEffect(() => {
-    dispatch(getAllProducts());
+    dispatch(getAllProducts(8));
   }, []);
-  return [products];
+  return [products, loading, res, onPress];
 };
 
 export default useShopProductsPage;

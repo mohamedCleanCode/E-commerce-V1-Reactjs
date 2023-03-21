@@ -10,10 +10,10 @@ const useProductsManagment = () => {
     response: res,
   } = useSelector((state) => state.products);
   const onPress = (page) => {
-    dispatch(getAllProducts(10, page));
+    dispatch(getAllProducts(8, page));
   };
   useEffect(() => {
-    dispatch(getAllProducts(10));
+    dispatch(getAllProducts(8));
   }, []);
   return [products, loading, res, onPress];
 };

@@ -8,23 +8,24 @@ import SideFilter from "../../components/Utilities/SideFilter";
 import useShopProductsPage from "../../hook/products/useShopProductsPage";
 
 const ShopProductsPage = () => {
-  const [products] = useShopProductsPage();
+  const [products, loading, res, onPress] = useShopProductsPage();
+  console.log(res);
   return (
     <Container>
       <CategriesHeader />
-      <SearchCountResult title={products?.response.results} />
+      <SearchCountResult title={res?.results} />
       <Row>
         <Col xs="2" sm="2" md="2" lg="2">
           <SideFilter />
         </Col>
         <Col xs="10" sm="10" md="10" lg="10">
-          <ProductsContainer
-            products={products?.products}
-            loading={products?.loading}
-          />
+          <ProductsContainer products={products} loading={loading} />
         </Col>
       </Row>
-      <Pagination />
+      <Pagination
+        pageCount={res?.paginationResult?.numberOfPages}
+        onPress={onPress}
+      />
     </Container>
   );
 };
