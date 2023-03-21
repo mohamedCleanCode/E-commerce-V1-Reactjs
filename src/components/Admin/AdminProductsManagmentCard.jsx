@@ -1,36 +1,34 @@
-import React, { useState } from "react";
+import React from "react";
 import { Button, Card, Col, Modal } from "react-bootstrap";
 import { Link } from "react-router-dom";
+import useProductsManagmentCard from "../../hook/admin/useProductsManagmentCard";
 
 const AdminProductsManagmentCard = ({ product }) => {
-  const [show, setShow] = useState(false);
-  const handleClose = () => {};
-  const handleDelete = () => {};
+  const [show, handleClose, handleShow, handleDelete] =
+    useProductsManagmentCard(product);
+
   return (
     <Col xs="10" sm="10" md="5" lg="3" className="mb-3 m-auto">
       <Modal show={show} onHide={handleClose}>
-        <Modal.Header closeButton>
-          <Modal.Title>Modal heading</Modal.Title>
-        </Modal.Header>
-        <Modal.Body>Woohoo, you're reading this text in a modal!</Modal.Body>
+        <Modal.Body>Are you sure!</Modal.Body>
         <Modal.Footer>
           <Button variant="secondary" onClick={handleClose}>
             Close
           </Button>
-          <Button variant="danger" onClick={handleClose}>
+          <Button variant="danger" onClick={handleDelete}>
             Delete
           </Button>
         </Modal.Footer>
       </Modal>
-      <Link
-        to={`/products/${product?._id}`}
-        style={{ color: "#444", textDecoration: "none" }}
-      >
-        <Card className="position-relative" style={{ width: "100%" }}>
-          <div className="ddmin-products-managment-card-icons position-absolute">
-            <p>Edit</p>
-            <p>Remove</p>
-          </div>
+      <Card className="position-relative" style={{ width: "100%" }}>
+        <div className="ddmin-products-managment-card-icons position-absolute">
+          <p>Edit</p>
+          <p onClick={handleShow}>Remove</p>
+        </div>
+        <Link
+          to={`/products/${product?._id}`}
+          style={{ color: "#444", textDecoration: "none" }}
+        >
           <Card.Img
             variant="top"
             src={product?.imageCover}
@@ -46,8 +44,8 @@ const AdminProductsManagmentCard = ({ product }) => {
               </div>
             </div>
           </Card.Body>
-        </Card>
-      </Link>
+        </Link>
+      </Card>
     </Col>
   );
 };
