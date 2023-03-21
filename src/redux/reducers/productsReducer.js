@@ -1,4 +1,5 @@
 import {
+  DELETE_PRODUCT,
   GET_ALL_PRODUCTS,
   GET_SPECIFIC_PRODUCT,
   GET_SPECIFIC_PRODUCTS_WITH_CATEGORY,
@@ -37,6 +38,11 @@ const productsReducer = (state = intialState, action) => {
       return {
         ...state,
         products: action.payload.data,
+        response: action.payload,
+        loading: false,
+      };
+    case DELETE_PRODUCT:
+      return {
         response: action.payload,
         loading: false,
       };
