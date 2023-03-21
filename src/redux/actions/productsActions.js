@@ -18,9 +18,11 @@ export const setProduct = (formData) => async (dispatch) => {
     console.log(error);
   }
 };
-export const getAllProducts = () => async (dispatch) => {
+export const getAllProducts = (limit, page) => async (dispatch) => {
   try {
-    const res = await useGetData("/api/v1/products");
+    const res = await useGetData(
+      `/api/v1/products${limit ? `?limit=${limit}&page=${page}` : ""}`
+    );
     dispatch({
       type: GET_ALL_PRODUCTS,
       payload: res,
