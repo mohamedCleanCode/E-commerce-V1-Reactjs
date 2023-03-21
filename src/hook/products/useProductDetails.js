@@ -7,7 +7,7 @@ import { getSpecificProduct } from "../../redux/actions/productsActions";
 const useProductDetails = (id) => {
   const dispatch = useDispatch();
   const { product } = useSelector((state) => state.products);
-  const { category } = useSelector((state) => state.categories);
+  const { category, loading } = useSelector((state) => state.categories);
   const { brand } = useSelector((state) => state.brands);
   let images = product?.images
     ? product.images.map((image) => {
@@ -18,14 +18,16 @@ const useProductDetails = (id) => {
     : null;
   useEffect(() => {
     dispatch(getSpecificProduct(id));
-    dispatch(
-      getSpesificCategory(product?.category?.length && product.category)
-    );
-    dispatch(getSpesificBrand(product?.brand?.length && product.brand));
   }, []);
-  console.log(product?.category);
-  console.log(product?.brand);
-  return [product, images, category, brand];
+
+  useEffect(() => {
+    if (product) {
+      dispatch(getSpesificCategory(product.category));
+      dispatch(getSpesificBrand(product.brand));
+    }
+  }, [product]);
+
+  return [product, images, category, brand, loading];
 };
 
 export default useProductDetails;

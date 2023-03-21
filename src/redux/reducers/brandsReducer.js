@@ -24,10 +24,9 @@ const brandsReducer = (state = intialState, action) => {
       };
     case GET_SPESIFIC_BRAND:
       return {
-        ...state,
-        loading: false,
         brand: action.payload.data,
         response: action.payload,
+        loading: false,
       };
     default:
       return state;
