@@ -1,10 +1,27 @@
-import React from "react";
-import { Card, Col } from "react-bootstrap";
+import React, { useState } from "react";
+import { Button, Card, Col, Modal } from "react-bootstrap";
 import { Link } from "react-router-dom";
 
 const AdminProductsManagmentCard = ({ product }) => {
+  const [show, setShow] = useState(false);
+  const handleClose = () => {};
+  const handleDelete = () => {};
   return (
     <Col xs="10" sm="10" md="5" lg="3" className="mb-3 m-auto">
+      <Modal show={show} onHide={handleClose}>
+        <Modal.Header closeButton>
+          <Modal.Title>Modal heading</Modal.Title>
+        </Modal.Header>
+        <Modal.Body>Woohoo, you're reading this text in a modal!</Modal.Body>
+        <Modal.Footer>
+          <Button variant="secondary" onClick={handleClose}>
+            Close
+          </Button>
+          <Button variant="danger" onClick={handleClose}>
+            Delete
+          </Button>
+        </Modal.Footer>
+      </Modal>
       <Link
         to={`/products/${product?._id}`}
         style={{ color: "#444", textDecoration: "none" }}
