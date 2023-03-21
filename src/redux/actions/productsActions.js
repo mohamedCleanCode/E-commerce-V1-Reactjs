@@ -1,6 +1,11 @@
 import useGetData from "../../hooks/useGetData";
 import { usePostDataWithImg } from "../../hooks/usePostData";
-import { GET_ALL_PRODUCTS, GET_SPECIFIC_PRODUCT, SET_PRODUCT } from "../types";
+import {
+  GET_ALL_PRODUCTS,
+  GET_SPECIFIC_PRODUCT,
+  GET_SPECIFIC_PRODUCTS_WITH_CATEGORY,
+  SET_PRODUCT,
+} from "../types";
 
 export const setProduct = (formData) => async (dispatch) => {
   try {
@@ -29,6 +34,17 @@ export const getSpecificProduct = (id) => async (dispatch) => {
     const res = await useGetData(`/api/v1/products/${id}`);
     dispatch({
       type: GET_SPECIFIC_PRODUCT,
+      payload: res,
+    });
+  } catch (error) {
+    console.log(error);
+  }
+};
+export const getSpecificProductsWithCategory = (id) => async (dispatch) => {
+  try {
+    const res = await useGetData(`/api/v1/products/?category=${id}`);
+    dispatch({
+      type: GET_SPECIFIC_PRODUCTS_WITH_CATEGORY,
       payload: res,
     });
   } catch (error) {

@@ -2,11 +2,14 @@ import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getSpesificBrand } from "../../redux/actions/brandsActions";
 import { getSpesificCategory } from "../../redux/actions/categoriesActions";
-import { getSpecificProduct } from "../../redux/actions/productsActions";
+import {
+  getSpecificProduct,
+  getSpecificProductsWithCategory,
+} from "../../redux/actions/productsActions";
 
 const useProductDetails = (id) => {
   const dispatch = useDispatch();
-  const { product } = useSelector((state) => state.products);
+  const { product, products } = useSelector((state) => state.products);
   const { category, loading } = useSelector((state) => state.categories);
   const { brand } = useSelector((state) => state.brands);
   let images = product?.images
@@ -24,10 +27,11 @@ const useProductDetails = (id) => {
     if (product) {
       dispatch(getSpesificCategory(product.category));
       dispatch(getSpesificBrand(product.brand));
+      dispatch(getSpecificProductsWithCategory(product.category));
     }
   }, [product]);
 
-  return [product, images, category, brand, loading];
+  return [product, images, category, brand, loading, products];
 };
 
 export default useProductDetails;
