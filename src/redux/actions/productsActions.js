@@ -1,8 +1,10 @@
 import useDeleteData from "../../hooks/useDeleteData";
 import useGetData from "../../hooks/useGetData";
 import { usePostDataWithImg } from "../../hooks/usePostData";
+import { usePutDataWithImg } from "../../hooks/usePutData";
 import {
   DELETE_PRODUCT,
+  EDIT_PRODUCT,
   GET_ALL_PRODUCTS,
   GET_SPECIFIC_PRODUCT,
   GET_SPECIFIC_PRODUCTS_WITH_CATEGORY,
@@ -60,6 +62,17 @@ export const deleteProduct = (id) => async (dispatch) => {
     const res = await useDeleteData(`/api/v1/products/${id}`);
     dispatch({
       type: DELETE_PRODUCT,
+      payload: res,
+    });
+  } catch (error) {
+    console.log(error);
+  }
+};
+export const esitProduct = (id) => async (dispatch) => {
+  try {
+    const res = await usePutDataWithImg(`/api/v1/products/${id}`);
+    dispatch({
+      type: EDIT_PRODUCT,
       payload: res,
     });
   } catch (error) {

@@ -1,5 +1,6 @@
 import {
   DELETE_PRODUCT,
+  EDIT_PRODUCT,
   GET_ALL_PRODUCTS,
   GET_SPECIFIC_PRODUCT,
   GET_SPECIFIC_PRODUCTS_WITH_CATEGORY,
@@ -42,6 +43,11 @@ const productsReducer = (state = intialState, action) => {
         loading: false,
       };
     case DELETE_PRODUCT:
+      return {
+        response: action.payload,
+        loading: false,
+      };
+    case EDIT_PRODUCT:
       return {
         response: action.payload,
         loading: false,
