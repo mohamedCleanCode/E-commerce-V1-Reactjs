@@ -36,7 +36,7 @@ const AdminEditProduct = () => {
   ] = useEditProduct(id);
   return (
     <Col xs="12">
-      <h1>Add A New Product</h1>
+      <h1>Edit Product</h1>
       <div className="admin-add-image">
         <p>Image Brand</p>
       </div>

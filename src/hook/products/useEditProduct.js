@@ -3,10 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import notify from "../../hook/useNotification";
 import { getAllBrands } from "../../redux/actions/brandsActions";
 import { getAllCategories } from "../../redux/actions/categoriesActions";
-import {
-  getSpecificProduct,
-  setProduct,
-} from "../../redux/actions/productsActions";
+import { getSpecificProduct } from "../../redux/actions/productsActions";
 import { getSubCtegoriesOfCategory } from "../../redux/actions/subCategoriesActions";
 
 const useEditProduct = (id) => {
@@ -57,6 +54,19 @@ const useEditProduct = (id) => {
     return new File([u8arr], filename, { type: mime });
   }
 
+  const getBase64FromUrl = async (url) => {
+    const data = await fetch(url);
+    const blob = await data.blob();
+    return new Promise((resolve) => {
+      const reader = new FileReader();
+      reader.readAsDataURL(blob);
+      reader.onloadend = () => {
+        const base64data = reader.result;
+        resolve(base64data);
+      };
+    });
+  };
+
   useEffect(() => {
     dispatch(getAllCategories());
     dispatch(getAllBrands());
@@ -65,28 +75,12 @@ const useEditProduct = (id) => {
         setOptions(subCategories);
       }
     }
-    if (loading) {
-      setLoading(false);
-      setCatId("0");
-      setOptions([]);
-      setImages({});
-      setName("");
-      setDesc("");
-      setPriceBefore("");
-      setPrice("");
-      setQuantity("");
-      setBrandId("0");
-      setSelectedSubCats([]);
-      if (res?.status === 201) {
-        notify("Success", "success");
-      } else if (res?.status === 400) {
-        notify("Error", "error");
-      }
-    }
-  }, [catId, subCategories, loading, res]);
+  }, [catId, subCategories]);
+
   useEffect(() => {
     dispatch(getSpecificProduct(id));
   }, []);
+
   useEffect(() => {
     if (product) {
       dispatch(getSubCtegoriesOfCategory(product?.category));
@@ -105,6 +99,8 @@ const useEditProduct = (id) => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    let imageCover;
+    let imagesSent;
     if (
       images.length <= 0 ||
       name === "" ||
@@ -117,10 +113,20 @@ const useEditProduct = (id) => {
       notify("Warn", "warn");
       return;
     }
-    const imageCover = dataURLtoFile(images[0], Math.random() + ".png");
-    const imagesSent = Array.from(Object.values(images)).map((image) =>
-      dataURLtoFile(image, Math.random() + ".png")
-    );
+    console.log(images[0].lenght);
+    if (images[0].lenght <= 500) {
+      console.log(images[0].lenght);
+      getBase64FromUrl(
+        "https://lh3.googleusercontent.com/i7cTyGnCwLIJhT1t2YpLW-zHt8ZKalgQiqfrYnZQl975-ygD_0mOXaYZMzekfKW_ydHRutDbNzeqpWoLkFR4Yx2Z2bgNj2XskKJrfw8"
+      ).then(console.log);
+      return;
+    }
+    // else {
+    //   imageCover = dataURLtoFile(images[0], Math.random() + ".png");
+    //   imagesSent = Array.from(Object.values(images)).map((image) =>
+    //     dataURLtoFile(image, Math.random() + ".png")
+    //   );
+    // }
     const formData = new FormData();
     formData.append("imageCover", imageCover);
     imagesSent.map((image) => formData.append("images", image));
@@ -132,9 +138,31 @@ const useEditProduct = (id) => {
     selectedSubCats.map((subCat) => formData.append("subcategory", subCat._id));
     formData.append("brand", brandId);
     setLoading(true);
-    await dispatch(setProduct(formData));
+    // await dispatch(editProduct(id, formData));
     setLoading(true);
   };
+
+  useEffect(() => {
+    if (loading) {
+      setLoading(false);
+      setCatId("0");
+      setOptions([]);
+      setImages({});
+      setName("");
+      setDesc("");
+      setPriceBefore("");
+      setPrice("");
+      setQuantity("");
+      setBrandId("0");
+      setSelectedSubCats([]);
+      if (res?.status === 201) {
+        notify("Success", "success");
+      } else if (res?.status === 400) {
+        notify("Error", "error");
+      }
+    }
+  }, [loading, res]);
+
   return [
     handleSubmit,
     images,

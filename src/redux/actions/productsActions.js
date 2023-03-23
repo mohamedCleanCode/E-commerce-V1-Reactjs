@@ -68,9 +68,9 @@ export const deleteProduct = (id) => async (dispatch) => {
     console.log(error);
   }
 };
-export const esitProduct = (id) => async (dispatch) => {
+export const editProduct = (id, formData) => async (dispatch) => {
   try {
-    const res = await usePutDataWithImg(`/api/v1/products/${id}`);
+    const res = await usePutDataWithImg(`/api/v1/products/${id}`, formData);
     dispatch({
       type: EDIT_PRODUCT,
       payload: res,
