@@ -22,7 +22,12 @@ const AdminProductsManagmentCard = ({ product }) => {
       </Modal>
       <Card className="position-relative" style={{ width: "100%" }}>
         <div className="ddmin-products-managment-card-icons position-absolute">
-          <p>Edit</p>
+          <Link
+            to={`/admin/edit-prdouct/${product?._id}`}
+            style={{ color: "#444", textDecoration: "none" }}
+          >
+            Edit
+          </Link>
           <p onClick={handleShow}>Remove</p>
         </div>
         <Link

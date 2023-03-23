@@ -5,6 +5,7 @@ import AdminAddBrandPage from "./pages/Admin/AdminAddBrandPage";
 import AdminAddCategoryPage from "./pages/Admin/AdminAddCategoryPage";
 import AdminAddProductPage from "./pages/Admin/AdminAddProductPage";
 import AdminAddSubCategoryPage from "./pages/Admin/AdminAddSubCategoryPage";
+import AdminEditProductPage from "./pages/Admin/AdminEditProductPage";
 import AdminOrderDetailsPage from "./pages/Admin/AdminOrderDetailsPage";
 import AdminOrdersManagmentPage from "./pages/Admin/AdminOrdersManagmentPage";
 import AdminProductsManagmentPage from "./pages/Admin/AdminProductsManagmentPage";
@@ -55,6 +56,10 @@ function App() {
           element={<AdminAddSubCategoryPage />}
         />
         <Route path="/admin/add-product" element={<AdminAddProductPage />} />
+        <Route
+          path="/admin/edit-prdouct/:id"
+          element={<AdminEditProductPage />}
+        />
 
         <Route
           path="/user/orders-managment"
