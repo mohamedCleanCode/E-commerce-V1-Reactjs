@@ -9,7 +9,6 @@ import useShopProductsPage from "../../hook/products/useShopProductsPage";
 
 const ShopProductsPage = () => {
   const [products, loading, res, onPress] = useShopProductsPage();
-  console.log(res);
   return (
     <Container>
       <CategriesHeader />

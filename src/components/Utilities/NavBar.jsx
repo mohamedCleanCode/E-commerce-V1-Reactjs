@@ -8,6 +8,7 @@ import useNavBar from "../../hook/search/useNavBar";
 
 const NavBar = () => {
   const [searchWord, onSearchInputChange] = useNavBar();
+  let word = localStorage.getItem("searchWord");
   return (
     <Navbar
       bg="dark"
@@ -30,7 +31,7 @@ const NavBar = () => {
             className="w-100"
             type="search"
             placeholder="Search..."
-            value={searchWord}
+            value={word}
             onChange={onSearchInputChange}
           />
           <Nav className="me-auto">
