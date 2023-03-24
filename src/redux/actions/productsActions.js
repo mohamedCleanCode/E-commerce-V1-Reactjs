@@ -79,3 +79,15 @@ export const editProduct = (id, formData) => async (dispatch) => {
     console.log(error);
   }
 };
+export const searchProductsWithQueryString =
+  (queryString) => async (dispatch) => {
+    try {
+      const res = await useGetData(`/api/v1/products?${queryString}`);
+      dispatch({
+        type: GET_ALL_PRODUCTS,
+        payload: res,
+      });
+    } catch (error) {
+      console.log(error);
+    }
+  };
