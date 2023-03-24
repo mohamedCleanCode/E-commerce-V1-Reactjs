@@ -3,13 +3,16 @@ import { useDispatch, useSelector } from "react-redux";
 import notify from "../../hook/useNotification";
 import { getAllBrands } from "../../redux/actions/brandsActions";
 import { getAllCategories } from "../../redux/actions/categoriesActions";
-import { getSpecificProduct } from "../../redux/actions/productsActions";
+import {
+  editProduct,
+  getSpecificProduct,
+} from "../../redux/actions/productsActions";
 import { getSubCtegoriesOfCategory } from "../../redux/actions/subCategoriesActions";
 
 const useEditProduct = (id) => {
   const [loading, setLoading] = useState(false);
   const [options, setOptions] = useState([]);
-  const [images, setImages] = useState({});
+  const [images, setImages] = useState([]);
   const [name, setName] = useState("");
   const [desc, setDesc] = useState("");
   const [priceBefore, setPriceBefore] = useState("");
@@ -54,18 +57,13 @@ const useEditProduct = (id) => {
     return new File([u8arr], filename, { type: mime });
   }
 
-  const getBase64FromUrl = async (url) => {
-    const data = await fetch(url);
-    const blob = await data.blob();
-    return new Promise((resolve) => {
-      const reader = new FileReader();
-      reader.readAsDataURL(blob);
-      reader.onloadend = () => {
-        const base64data = reader.result;
-        resolve(base64data);
-      };
+  async function getFileFromUrl(url, name, defaultType = "image/jpeg") {
+    const response = await fetch(url);
+    const data = await response.blob();
+    return new File([data], name, {
+      type: data.type || defaultType,
     });
-  };
+  }
 
   useEffect(() => {
     dispatch(getAllCategories());
@@ -99,8 +97,6 @@ const useEditProduct = (id) => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    let imageCover;
-    let imagesSent;
     if (
       images.length <= 0 ||
       name === "" ||
@@ -113,20 +109,24 @@ const useEditProduct = (id) => {
       notify("Warn", "warn");
       return;
     }
-    console.log(images[0].lenght);
-    if (images[0].lenght <= 500) {
-      console.log(images[0].lenght);
-      getBase64FromUrl(
-        "https://lh3.googleusercontent.com/i7cTyGnCwLIJhT1t2YpLW-zHt8ZKalgQiqfrYnZQl975-ygD_0mOXaYZMzekfKW_ydHRutDbNzeqpWoLkFR4Yx2Z2bgNj2XskKJrfw8"
-      ).then(console.log);
-      return;
+    let imageCover;
+    if (images[0].length <= 500) {
+      await getFileFromUrl(images[0], Math.random() + ".jpg").then(
+        (val) => (imageCover = val)
+      );
+    } else {
+      imageCover = dataURLtoFile(images[0], Math.random() + ".png");
     }
-    // else {
-    //   imageCover = dataURLtoFile(images[0], Math.random() + ".png");
-    //   imagesSent = Array.from(Object.values(images)).map((image) =>
-    //     dataURLtoFile(image, Math.random() + ".png")
-    //   );
-    // }
+    let imagesSent = [];
+    Array.from(Object.values(images)).forEach(async (image, i) => {
+      if (image.length <= 500) {
+        await getFileFromUrl(image, Math.random() + ".jpg").then((val) =>
+          imagesSent.push(val)
+        );
+      } else {
+        imagesSent.push(dataURLtoFile(image, Math.random() + ".png"));
+      }
+    });
     const formData = new FormData();
     formData.append("imageCover", imageCover);
     imagesSent.map((image) => formData.append("images", image));
@@ -138,7 +138,7 @@ const useEditProduct = (id) => {
     selectedSubCats.map((subCat) => formData.append("subcategory", subCat._id));
     formData.append("brand", brandId);
     setLoading(true);
-    // await dispatch(editProduct(id, formData));
+    await dispatch(editProduct(id, formData));
     setLoading(true);
   };
 
@@ -155,13 +155,15 @@ const useEditProduct = (id) => {
       setQuantity("");
       setBrandId("0");
       setSelectedSubCats([]);
-      if (res?.status === 201) {
+      if (res?.status === 200) {
         notify("Success", "success");
       } else if (res?.status === 400) {
         notify("Error", "error");
       }
     }
   }, [loading, res]);
+
+  console.log(res);
 
   return [
     handleSubmit,
