@@ -15,7 +15,6 @@ const subCategoriesReducer = (state = intialState, action) => {
       };
     case GET_SUB_CATEGORIES_OF_CATEGORY:
       return {
-        ...state,
         subCategories: action.payload.data,
         response: action.payload,
       };

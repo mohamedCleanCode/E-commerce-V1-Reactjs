@@ -12,7 +12,7 @@ import { getSubCtegoriesOfCategory } from "../../redux/actions/subCategoriesActi
 const useEditProduct = (id) => {
   const [loading, setLoading] = useState(false);
   const [options, setOptions] = useState([]);
-  const [images, setImages] = useState([]);
+  const [images, setImages] = useState({});
   const [name, setName] = useState("");
   const [desc, setDesc] = useState("");
   const [priceBefore, setPriceBefore] = useState("");
@@ -66,22 +66,11 @@ const useEditProduct = (id) => {
   }
 
   useEffect(() => {
-    dispatch(getAllCategories());
-    dispatch(getAllBrands());
-    if (catId !== "0") {
-      if (subCategories?.length) {
-        setOptions(subCategories);
-      }
-    }
-  }, [catId, subCategories]);
-
-  useEffect(() => {
     dispatch(getSpecificProduct(id));
   }, []);
 
   useEffect(() => {
     if (product) {
-      dispatch(getSubCtegoriesOfCategory(product?.category));
       setImages(product?.images);
       setName(product?.title);
       setDesc(product?.description);
@@ -91,9 +80,20 @@ const useEditProduct = (id) => {
       setCatId(product?.category);
       setCatId(product?.category);
       setBrandId(product?.brand);
+      dispatch(getSubCtegoriesOfCategory(product?.category));
       setOptions(subCategories);
     }
   }, [product]);
+
+  useEffect(() => {
+    dispatch(getAllCategories());
+    dispatch(getAllBrands());
+    if (catId !== "0") {
+      if (subCategories?.length) {
+        setOptions(subCategories);
+      }
+    }
+  }, [catId, subCategories]);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -162,8 +162,6 @@ const useEditProduct = (id) => {
       }
     }
   }, [loading, res]);
-
-  console.log(res);
 
   return [
     handleSubmit,
