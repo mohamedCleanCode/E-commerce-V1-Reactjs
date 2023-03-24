@@ -4,8 +4,10 @@ import { Link } from "react-router-dom";
 import CartIcon from "../../assets/images/cart.png";
 import LoginIcon from "../../assets/images/login.png";
 import Logo from "../../assets/images/logo.png";
+import useNavBar from "../../hook/search/useNavBar";
 
 const NavBar = () => {
+  const [searchWord, onSearchInputChange] = useNavBar();
   return (
     <Navbar
       bg="dark"
@@ -28,6 +30,8 @@ const NavBar = () => {
             className="w-100"
             type="search"
             placeholder="Search..."
+            value={searchWord}
+            onChange={onSearchInputChange}
           />
           <Nav className="me-auto">
             <Link
