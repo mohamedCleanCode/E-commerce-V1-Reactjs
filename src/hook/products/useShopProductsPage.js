@@ -11,27 +11,53 @@ const useShopProductsPage = () => {
     response: res,
   } = useSelector((state) => state.products);
 
+  useEffect(() => {
+    getProducts();
+  }, []);
+
   const onPress = (page) => {
     let word = localStorage.getItem("searchWord");
+    sortProducts();
     dispatch(
       searchProductsWithQueryString(
-        `limit=${limit}&page=${page}&keyword=${word ? word : ""}`
+        `sort=${sort}&page=${page}&keyword=${word ? word : ""}&limit=${limit}`
       )
     );
   };
 
   const getProducts = async () => {
     let word = localStorage.getItem("searchWord");
+    sortProducts();
     await dispatch(
       searchProductsWithQueryString(
-        `limit=${limit}&keyword=${word ? word : ""}`
+        `sort=${sort}&keyword=${word ? word : ""}&limit=${limit}`
       )
     );
   };
 
-  useEffect(() => {
-    getProducts();
-  }, []);
+  let sortType = "";
+  let sort = "";
+  const sortProducts = () => {
+    if (localStorage.getItem("sortType")) {
+      sortType = localStorage.getItem("sortType");
+      switch (sortType) {
+        case "best saller":
+          sort = "-sold";
+          break;
+        case "best rated":
+          sort = "-ratingsQuantity";
+          break;
+        case "Price from lowest to highest":
+          sort = "+price";
+          break;
+        case "rice from highest to lowest":
+          sort = "-price";
+          break;
+        default:
+          sort = "";
+      }
+    }
+  };
   return [products, loading, res, onPress, getProducts];
 };
 

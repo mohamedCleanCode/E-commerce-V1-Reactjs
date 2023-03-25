@@ -8,11 +8,11 @@ import SideFilter from "../../components/Utilities/SideFilter";
 import useShopProductsPage from "../../hook/products/useShopProductsPage";
 
 const ShopProductsPage = () => {
-  const [products, loading, res, onPress] = useShopProductsPage();
+  const [products, loading, res, onPress, getProducts] = useShopProductsPage();
   return (
     <Container>
       <CategriesHeader />
-      <SearchCountResult title={res?.results} />
+      <SearchCountResult title={res?.results} getProducts={getProducts} />
       <Row>
         <Col xs="2" sm="2" md="2" lg="2">
           <SideFilter />

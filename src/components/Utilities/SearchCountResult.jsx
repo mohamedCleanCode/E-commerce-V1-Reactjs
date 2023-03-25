@@ -2,8 +2,12 @@ import React from "react";
 import UnopDropdown from "unop-react-dropdown";
 import sort from "../../assets/images/sort.png";
 
-const SearchCountResult = ({ title }) => {
+const SearchCountResult = ({ title, getProducts }) => {
   const handler = () => {};
+  const clickMe = (key) => {
+    localStorage.setItem("sortType", key);
+    getProducts();
+  };
   return (
     <div className="search-count-result my-2 d-flex justify-content-between align-items-center">
       <div className="sub-title">{title} Results...</div>
@@ -22,10 +26,15 @@ const SearchCountResult = ({ title }) => {
           hover
         >
           <div className="card-filter">
-            <div>best saller</div>
-            <div>best rated</div>
-            <div>Price from lowest to highest</div>
-            <div>Price from highest to lowest</div>
+            <div onClick={() => clickMe("")}>original</div>
+            <div onClick={() => clickMe("best saller")}>best saller</div>
+            <div onClick={() => clickMe("best rated")}>best rated</div>
+            <div onClick={() => clickMe("Price from lowest to highest")}>
+              Price from lowest to highest
+            </div>
+            <div onClick={() => clickMe("Price from highest to lowest")}>
+              Price from highest to lowest
+            </div>
           </div>
         </UnopDropdown>
       </div>
