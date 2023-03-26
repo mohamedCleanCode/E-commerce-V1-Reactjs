@@ -16,23 +16,41 @@ const useShopProductsPage = () => {
   }, []);
 
   const onPress = (page) => {
-    let word = localStorage.getItem("searchWord");
+    getStorage();
     sortProducts();
     dispatch(
       searchProductsWithQueryString(
-        `sort=${sort}&page=${page}&keyword=${word ? word : ""}&limit=${limit}`
+        `page=${page}&keyword=${word}&sort=${sort}&limit=${limit}${queryBrands}${queryCategories}`
       )
     );
   };
 
   const getProducts = async () => {
-    let word = localStorage.getItem("searchWord");
+    getStorage();
     sortProducts();
+    console.log(word);
+    console.log(queryBrands);
+    console.log(queryCategories);
     await dispatch(
       searchProductsWithQueryString(
-        `sort=${sort}&keyword=${word ? word : ""}&limit=${limit}`
+        `keyword=${word}&sort=${sort}&limit=${limit}${queryBrands}${queryCategories}`
       )
     );
+  };
+
+  let word = "",
+    queryCategories = "",
+    queryBrands = "";
+  const getStorage = () => {
+    if (localStorage.getItem("searchWord")) {
+      word = localStorage.getItem("searchWord");
+    }
+    if (localStorage.getItem("queryCategories")) {
+      queryCategories = localStorage.getItem("queryCategories");
+    }
+    if (localStorage.getItem("queryBrands")) {
+      queryBrands = localStorage.getItem("queryBrands");
+    }
   };
 
   let sortType = "";
@@ -50,7 +68,7 @@ const useShopProductsPage = () => {
         case "Price from lowest to highest":
           sort = "+price";
           break;
-        case "rice from highest to lowest":
+        case "Price from highest to lowest":
           sort = "-price";
           break;
         default:
