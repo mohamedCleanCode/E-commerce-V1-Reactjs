@@ -65,7 +65,34 @@ const useSideFilter = () => {
       getProducts();
     }, 1000);
   }, [brandsId]);
-  return [categories, brands, clickInputCats, clickInputBrands];
+
+  const [priceFrom, setPriceFrom] = useState(0);
+  const onChangePriceFrom = (e) => {
+    let value = e.target.value;
+    localStorage.setItem("priceFrom", "price[gte]=" + value);
+    setPriceFrom(value);
+  };
+
+  const [priceTo, setPriceTo] = useState(0);
+  const onChangePriceTo = (e) => {
+    let value = e.target.value;
+    localStorage.setItem("priceTo", "price[lte]=" + value);
+    setPriceTo(value);
+  };
+
+  useEffect(() => {
+    setTimeout(() => {
+      getProducts();
+    }, 1000);
+  }, [priceFrom, priceTo]);
+  return [
+    categories,
+    brands,
+    clickInputCats,
+    clickInputBrands,
+    onChangePriceFrom,
+    onChangePriceTo,
+  ];
 };
 
 export default useSideFilter;

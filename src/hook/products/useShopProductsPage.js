@@ -20,7 +20,7 @@ const useShopProductsPage = () => {
     sortProducts();
     dispatch(
       searchProductsWithQueryString(
-        `page=${page}&keyword=${word}&sort=${sort}&limit=${limit}${queryBrands}${queryCategories}`
+        `${priceFrom}&${priceTo}&page=${page}&keyword=${word}&sort=${sort}&limit=${limit}${queryBrands}${queryCategories}`
       )
     );
   };
@@ -28,19 +28,18 @@ const useShopProductsPage = () => {
   const getProducts = async () => {
     getStorage();
     sortProducts();
-    console.log(word);
-    console.log(queryBrands);
-    console.log(queryCategories);
     await dispatch(
       searchProductsWithQueryString(
-        `keyword=${word}&sort=${sort}&limit=${limit}${queryBrands}${queryCategories}`
+        `${priceFrom}&${priceTo}&keyword=${word}&sort=${sort}&limit=${limit}${queryBrands}${queryCategories}`
       )
     );
   };
 
   let word = "",
     queryCategories = "",
-    queryBrands = "";
+    queryBrands = "",
+    priceFrom = "",
+    priceTo = "";
   const getStorage = () => {
     if (localStorage.getItem("searchWord")) {
       word = localStorage.getItem("searchWord");
@@ -50,6 +49,12 @@ const useShopProductsPage = () => {
     }
     if (localStorage.getItem("queryBrands")) {
       queryBrands = localStorage.getItem("queryBrands");
+    }
+    if (localStorage.getItem("priceFrom")) {
+      priceFrom = localStorage.getItem("priceFrom");
+    }
+    if (localStorage.getItem("priceTo")) {
+      priceTo = localStorage.getItem("priceTo");
     }
   };
 

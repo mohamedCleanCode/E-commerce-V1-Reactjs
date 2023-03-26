@@ -2,8 +2,14 @@ import React from "react";
 import useSideFilter from "../../hook/search/useSideFilter";
 
 const SideFilter = () => {
-  const [categories, brands, clickInputCats, clickInputBrands] =
-    useSideFilter();
+  const [
+    categories,
+    brands,
+    clickInputCats,
+    clickInputBrands,
+    onChangePriceFrom,
+    onChangePriceTo,
+  ] = useSideFilter();
   return (
     <div className="side-filter">
       <ul>
@@ -95,6 +101,7 @@ const SideFilter = () => {
             type="number"
             id=""
             style={{ width: "70px", height: "25px", marginRight: "10px" }}
+            onChange={onChangePriceFrom}
           />
           <label
             style={{ fontSize: "12px" }}
@@ -109,6 +116,7 @@ const SideFilter = () => {
             type="number"
             id=""
             style={{ width: "70px", height: "25px", marginRight: "10px" }}
+            onChange={onChangePriceTo}
           />
           <label
             style={{ fontSize: "12px" }}
