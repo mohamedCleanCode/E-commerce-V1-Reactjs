@@ -1,4 +1,5 @@
 import { combineReducers } from "redux";
+import authReducer from "./authReducer";
 import brandsReducer from "./brandsReducer";
 import categoriesReducer from "./categoriesReducer";
 import productsReducer from "./productsReducer";
@@ -9,5 +10,6 @@ const rootReducer = combineReducers({
   brands: brandsReducer,
   subCategories: subCategoriesReducer,
   products: productsReducer,
+  auth: authReducer,
 });
 export default rootReducer;
