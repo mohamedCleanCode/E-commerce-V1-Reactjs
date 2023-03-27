@@ -1,11 +1,11 @@
 import { usePostData } from "../../hooks/usePostData";
-import { SEND_SIGNUP_DATA } from "../types";
+import { CREATE_NEW_USER } from "../types";
 
-export const sendSignupData = (formData) => async (dispatch) => {
+export const createNewUser = (formData) => async (dispatch) => {
   try {
     const res = await usePostData("/api/v1/auth/signup", formData);
     dispatch({
-      type: SEND_SIGNUP_DATA,
+      type: CREATE_NEW_USER,
       payload: res,
     });
   } catch (error) {
