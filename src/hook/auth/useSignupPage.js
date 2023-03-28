@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
 import notify from "../../hook/useNotification";
 import { createNewUser } from "../../redux/actions/authActions";
 
@@ -13,6 +14,8 @@ const useSignupPage = () => {
 
   const dispatch = useDispatch();
   const auth = useSelector((state) => state.auth);
+
+  const navigate = useNavigate();
 
   const onChangeName = (e) => {
     let value = e.target.value;
@@ -73,7 +76,9 @@ const useSignupPage = () => {
         setPhone("");
         setPassword("");
         setPasswordConfirm("");
-        setTimeout(() => {}, 2000);
+        setTimeout(() => {
+          navigate("/login");
+        }, 3000);
       }
       if (auth.errors?.data) {
         if (auth.errors.data.errors[0].msg === "E-mail already in use") {
