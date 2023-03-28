@@ -62,20 +62,35 @@ const useSignupPage = () => {
     setLoading(true);
   };
 
-  useEffect(() => {
-    if (loading) {
-      setLoading(false);
-      if (auth) {
-        if (auth.user?.token) {
-          localStorage.setItem("token", auth.user.token);
-          notify("Success", "success");
+  const responseValidation = (auth) => {
+    if (auth) {
+      if (auth.user?.token) {
+        localStorage.setItem("token", auth.user.token);
+        notify("Success", "success");
+        setLoading(false);
+        setName("");
+        setEmail("");
+        setPhone("");
+        setPassword("");
+        setPasswordConfirm("");
+        setTimeout(() => {}, 2000);
+      }
+      if (auth.errors?.data) {
+        if (auth.errors.data.errors[0].msg === "E-mail already in use") {
+          notify(auth.errors.data.errors[0].msg, "error");
         }
-        if (auth.errors?.data) {
-          if (auth.errors.data.errors[0].msg === "E-mail already in use") {
-            notify(auth.errors.data.errors[0].msg, "error");
-          }
+        if (
+          auth.errors.data.errors[0].msg === "accept only egypt phone numbers"
+        ) {
+          notify(auth.errors.data.errors[0].msg, "error");
         }
       }
+    }
+  };
+
+  useEffect(() => {
+    if (loading) {
+      responseValidation(auth);
     }
   }, [loading, auth]);
 
