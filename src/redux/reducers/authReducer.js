@@ -1,4 +1,4 @@
-import { CREATE_NEW_USER, ERROR } from "../types";
+import { CREATE_NEW_USER, ERROR, LOGIN_USER } from "../types";
 
 const intialState = {
   user: {},
@@ -10,6 +10,12 @@ const intialState = {
 const authReducer = (state = intialState, action) => {
   switch (action.type) {
     case CREATE_NEW_USER:
+      return {
+        user: action.payload.data,
+        response: action.payload,
+        loading: false,
+      };
+    case LOGIN_USER:
       return {
         user: action.payload.data,
         response: action.payload,
