@@ -14,3 +14,4 @@ export const GET_SPECIFIC_PRODUCTS_WITH_CATEGORY =
 export const DELETE_PRODUCT = "DELETE_PRODUCT";
 export const EDIT_PRODUCT = "EDIT_PRODUCT";
 export const CREATE_NEW_USER = "CREATE_NEW_USER";
+export const ERROR = "ERROR";

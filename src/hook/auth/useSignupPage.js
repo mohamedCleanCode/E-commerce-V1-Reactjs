@@ -1,5 +1,7 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import notify from "../../hook/useNotification";
+import { createNewUser } from "../../redux/actions/authActions";
 
 const useSignupPage = () => {
   const [name, setName] = useState("");
@@ -8,6 +10,9 @@ const useSignupPage = () => {
   const [password, setPassword] = useState("");
   const [passwordConfirm, setPasswordConfirm] = useState("");
   const [loading, setLoading] = useState(false);
+
+  const dispatch = useDispatch();
+  const auth = useSelector((state) => state.auth);
 
   const onChangeName = (e) => {
     let value = e.target.value;
@@ -41,10 +46,38 @@ const useSignupPage = () => {
     }
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     handleValidation();
+    setLoading(true);
+    await dispatch(
+      createNewUser({
+        name,
+        email,
+        password,
+        passwordConfirm,
+        phone,
+      })
+    );
+    setLoading(true);
   };
+
+  useEffect(() => {
+    if (loading) {
+      setLoading(false);
+      if (auth) {
+        if (auth.user?.token) {
+          localStorage.setItem("token", auth.user.token);
+          notify("Success", "success");
+        }
+        if (auth.errors?.data) {
+          if (auth.errors.data.errors[0].msg === "E-mail already in use") {
+            notify(auth.errors.data.errors[0].msg, "error");
+          }
+        }
+      }
+    }
+  }, [loading, auth]);
 
   return [
     name,

@@ -13,11 +13,7 @@ const usePostDataWithImg = async (url, formData) => {
 };
 
 const usePostData = async (url, formData) => {
-  try {
-    const res = await baseURL.post(url, formData);
-    return res;
-  } catch (error) {
-    console.log(error);
-  }
+  const res = await baseURL.post(url, formData);
+  return res;
 };
 export { usePostDataWithImg, usePostData };

@@ -1,5 +1,5 @@
 import { usePostData } from "../../hooks/usePostData";
-import { CREATE_NEW_USER } from "../types";
+import { CREATE_NEW_USER, ERROR } from "../types";
 
 export const createNewUser = (formData) => async (dispatch) => {
   try {
@@ -10,5 +10,9 @@ export const createNewUser = (formData) => async (dispatch) => {
     });
   } catch (error) {
     console.log(error);
+    dispatch({
+      type: ERROR,
+      payload: error.response,
+    });
   }
 };

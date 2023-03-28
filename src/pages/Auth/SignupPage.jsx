@@ -1,6 +1,7 @@
 import React from "react";
 import { Button, Container, Form } from "react-bootstrap";
 import { Link } from "react-router-dom";
+import { ToastContainer } from "react-toastify";
 import useSignupPage from "../../hook/auth/useSignupPage";
 
 const SignupPage = () => {
@@ -86,6 +87,7 @@ const SignupPage = () => {
           </p>
         </div>
       </Container>
+      <ToastContainer />
     </div>
   );
 };
