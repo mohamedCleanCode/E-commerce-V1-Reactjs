@@ -14,9 +14,13 @@ const NavBar = () => {
     e.preventDefault();
     localStorage.removeItem("user");
   };
+  // const dispatch = useDispatch();
+  // const auth = useSelector((state) => state.auth);
   useEffect(() => {
+    // dispatch(getLoggedUser());
     setUser(JSON.parse(localStorage.getItem("user")));
-  });
+  }, []);
+  // console.log(auth);
   return (
     <Navbar
       bg="dark"
