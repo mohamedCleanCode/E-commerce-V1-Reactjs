@@ -9,6 +9,7 @@ import AdminEditProductPage from "./pages/Admin/AdminEditProductPage";
 import AdminOrderDetailsPage from "./pages/Admin/AdminOrderDetailsPage";
 import AdminOrdersManagmentPage from "./pages/Admin/AdminOrdersManagmentPage";
 import AdminProductsManagmentPage from "./pages/Admin/AdminProductsManagmentPage";
+import ForgotPasswordPage from "./pages/Auth/ForgotPasswordPage";
 import LoginPage from "./pages/Auth/LoginPage";
 import SignupPage from "./pages/Auth/SignupPage";
 import BrandsPage from "./pages/Brand/BrandsPage";
@@ -76,6 +77,7 @@ function App() {
         <Route path="/user/add-address" element={<UserAddAddressPage />} />
         <Route path="/user/edit-address" element={<UserEditAddressPage />} />
         <Route path="/user/profile" element={<UserProfilePage />} />
+        <Route path="/user/forgot-password" element={<ForgotPasswordPage />} />
       </Routes>
       <Footer />
     </div>

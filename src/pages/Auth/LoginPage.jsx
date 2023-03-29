@@ -50,6 +50,9 @@ const LoginPage = () => {
         </Form>
         <div className="info w-50 m-auto text-center">
           <p>
+            <Link to="/user/forgot-password">Forgot Password?</Link>
+          </p>
+          <p>
             Have'nt an account? <Link to="/signup">Sign Up</Link>
           </p>
         </div>

@@ -13,6 +13,7 @@ const NavBar = () => {
   const logOut = (e) => {
     e.preventDefault();
     localStorage.removeItem("user");
+    setUser("");
   };
   // const dispatch = useDispatch();
   // const auth = useSelector((state) => state.auth);
