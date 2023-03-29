@@ -1,5 +1,5 @@
 import useDeleteData from "../../hooks/useDeleteData";
-import useGetData from "../../hooks/useGetData";
+import { useGetData } from "../../hooks/useGetData";
 import { usePostDataWithImg } from "../../hooks/usePostData";
 import { usePutDataWithImg } from "../../hooks/usePutData";
 import {

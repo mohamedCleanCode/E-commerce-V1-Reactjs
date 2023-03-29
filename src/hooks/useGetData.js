@@ -9,4 +9,18 @@ const useGetData = async (url) => {
     console.log(error);
   }
 };
-export default useGetData;
+const useGetDataWithToken = async (url) => {
+  const config = {
+    headers: {
+      Authorization: `Bearer ${localStorage.getItem("token")}`,
+    },
+  };
+  try {
+    const res = await baseURL.get(url, config);
+    const data = await res.data;
+    return data;
+  } catch (error) {
+    console.log(error);
+  }
+};
+export { useGetData, useGetDataWithToken };

@@ -16,3 +16,4 @@ export const EDIT_PRODUCT = "EDIT_PRODUCT";
 export const CREATE_NEW_USER = "CREATE_NEW_USER";
 export const ERROR = "ERROR";
 export const LOGIN_USER = "LOGIN_USER";
+export const GET_LOGGED_USER = "GET_LOGGED_USER";

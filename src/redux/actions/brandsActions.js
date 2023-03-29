@@ -1,4 +1,4 @@
-import useGetData from "../../hooks/useGetData";
+import { useGetData } from "../../hooks/useGetData";
 import { usePostDataWithImg } from "../../hooks/usePostData";
 import { GET_ALL_BRANDS, GET_SPESIFIC_BRAND, SET_BRAND } from "../types";
 

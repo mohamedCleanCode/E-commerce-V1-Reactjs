@@ -1,4 +1,4 @@
-import useGetData from "../../hooks/useGetData";
+import { useGetData } from "../../hooks/useGetData";
 import { usePostData } from "../../hooks/usePostData";
 import { GET_SUB_CATEGORIES_OF_CATEGORY, SET_SUB_CATEGORY } from "../types";
 
