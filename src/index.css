@@ -334,3 +334,18 @@ ul {
 .user-order-status p {
   color: silver;
 }
+.dropdown button {
+  background-color: inherit !important;
+  border: none !important;
+  height: 100%;
+}
+.dropdown-menu {
+  background-color: #212529 !important;
+}
+.dropdown-item {
+  color: #fff !important;
+  cursor: pointer !important;
+}
+.dropdown-item:hover {
+  color: #212529 !important;
+}

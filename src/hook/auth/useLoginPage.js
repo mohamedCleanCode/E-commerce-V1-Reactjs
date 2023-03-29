@@ -40,16 +40,22 @@ const useLoginPage = () => {
       setLoading(false);
       if (auth.user?.token) {
         localStorage.setItem("token", auth.user.token);
+        localStorage.setItem("user", JSON.stringify(auth.user.data));
         notify("Success", "success");
         setLoading(false);
         setEmail("");
         setPassword("");
         setTimeout(() => {
-          navigate("/");
+          window.location.href = "/";
         }, 3000);
+      } else {
+        localStorage.removeItem("token");
+        localStorage.removeItem("user");
       }
       if (auth.errors?.data) {
         if (auth.errors.data.message === "Incorrect email or password") {
+          localStorage.removeItem("token");
+          localStorage.removeItem("user");
           notify(auth.errors.data.message, "error");
         }
       }
