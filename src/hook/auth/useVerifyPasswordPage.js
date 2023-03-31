@@ -2,23 +2,23 @@ import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import notify from "../../hook/useNotification";
-import { forgotPassword } from "../../redux/actions/authActions";
+import { verifyPassword } from "../../redux/actions/authActions";
 
-const useForgotPasswordPage = () => {
+const useVerifyPasswordPage = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const auth = useSelector((state) => state.auth);
-  const [email, setEmail] = useState("");
+  const [code, setCode] = useState("");
   const [loading, setLoading] = useState(false);
-  const onChangeEmail = (e) => {
+  const onChangeCode = (e) => {
     let value = e.target.value;
-    setEmail(value);
+    setCode(value);
   };
   const handleSubmit = async (e) => {
     e.preventDefault();
     await dispatch(
-      forgotPassword({
-        email,
+      verifyPassword({
+        resetCode: code,
       })
     );
     setLoading(true);
@@ -28,9 +28,9 @@ const useForgotPasswordPage = () => {
       setLoading(false);
       if (auth) {
         if (auth.response?.data?.status === "Success") {
-          notify(auth.response.data?.message, "success");
+          notify("Success", "success");
           setTimeout(() => {
-            navigate("/user/verify-password");
+            navigate("/user/reset-password");
           }, 2000);
         } else if (auth.errors?.data?.status === "fail") {
           console.log(auth.errors?.data?.status);
@@ -39,7 +39,7 @@ const useForgotPasswordPage = () => {
       }
     }
   }, [loading]);
-  return [email, loading, onChangeEmail, handleSubmit];
+  return [code, loading, onChangeCode, handleSubmit];
 };
 
-export default useForgotPasswordPage;
+export default useVerifyPasswordPage;

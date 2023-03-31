@@ -18,3 +18,4 @@ export const ERROR = "ERROR";
 export const LOGIN_USER = "LOGIN_USER";
 export const GET_LOGGED_USER = "GET_LOGGED_USER";
 export const FORGOT_PASSWORD = "FORGOT_PASSWORD";
+export const VERIFY_PASSWORD = "VERIFY_PASSWORD";

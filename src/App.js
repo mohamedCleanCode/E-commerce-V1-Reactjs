@@ -12,6 +12,7 @@ import AdminProductsManagmentPage from "./pages/Admin/AdminProductsManagmentPage
 import ForgotPasswordPage from "./pages/Auth/ForgotPasswordPage";
 import LoginPage from "./pages/Auth/LoginPage";
 import SignupPage from "./pages/Auth/SignupPage";
+import VerifyPasswordPage from "./pages/Auth/VerifyPasswordPage";
 import BrandsPage from "./pages/Brand/BrandsPage";
 import CartPage from "./pages/Cart/CartPage";
 import CategriesPage from "./pages/Categries/CategriesPage";
@@ -78,7 +79,7 @@ function App() {
         <Route path="/user/edit-address" element={<UserEditAddressPage />} />
         <Route path="/user/profile" element={<UserProfilePage />} />
         <Route path="/user/forgot-password" element={<ForgotPasswordPage />} />
-        <Route path="/user/reset-password" element={<RsetPasswordPage />} />
+        <Route path="/user/verify-password" element={<VerifyPasswordPage />} />
       </Routes>
       <Footer />
     </div>
