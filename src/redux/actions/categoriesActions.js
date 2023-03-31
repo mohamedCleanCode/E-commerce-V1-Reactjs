@@ -1,6 +1,7 @@
 import { useGetData } from "../../hooks/useGetData";
 import { usePostDataWithImg } from "../../hooks/usePostData";
 import {
+  ERROR,
   GET_ALL_CATEGORIES,
   GET_SPESIFIC_CATEGORY,
   SET_CATEGORY,
@@ -16,7 +17,10 @@ export const getAllCategories = (limit, page) => async (dispatch) => {
       payload: data,
     });
   } catch (error) {
-    console.log(error);
+    dispatch({
+      type: ERROR,
+      payload: error.response,
+    });
   }
 };
 export const setCategory = (formData) => async (dispatch) => {
@@ -27,7 +31,10 @@ export const setCategory = (formData) => async (dispatch) => {
       payload: res,
     });
   } catch (error) {
-    console.log(error);
+    dispatch({
+      type: ERROR,
+      payload: error.response,
+    });
   }
 };
 export const getSpesificCategory = (id) => async (dispatch) => {
@@ -38,6 +45,9 @@ export const getSpesificCategory = (id) => async (dispatch) => {
       payload: res,
     });
   } catch (error) {
-    console.log(error);
+    dispatch({
+      type: ERROR,
+      payload: error.response,
+    });
   }
 };

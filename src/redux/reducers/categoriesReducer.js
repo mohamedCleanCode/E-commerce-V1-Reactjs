@@ -1,4 +1,5 @@
 import {
+  ERROR,
   GET_ALL_CATEGORIES,
   GET_SPESIFIC_CATEGORY,
   SET_CATEGORY,
@@ -10,6 +11,7 @@ const intialState = {
   loading: true,
   response: {},
   category: {},
+  errors: {},
 };
 
 const categoriesReducer = (state = intialState, action) => {
@@ -36,6 +38,11 @@ const categoriesReducer = (state = intialState, action) => {
       return {
         category: action.payload.data,
         response: action.payload,
+        loading: false,
+      };
+    case ERROR:
+      return {
+        errors: action.payload,
         loading: false,
       };
     default:

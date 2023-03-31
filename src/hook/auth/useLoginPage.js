@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useNavigate } from "react-router-dom";
 import notify from "../../hook/useNotification";
 import { loginUser } from "../../redux/actions/authActions";
 
@@ -11,8 +10,6 @@ const useLoginPage = () => {
 
   const dispatch = useDispatch();
   const auth = useSelector((state) => state.auth);
-
-  const navigate = useNavigate();
 
   const onChangeEmail = (e) => {
     let value = e.target.value;
@@ -41,13 +38,15 @@ const useLoginPage = () => {
       if (auth.user?.token) {
         localStorage.setItem("token", auth.user.token);
         localStorage.setItem("user", JSON.stringify(auth.user.data));
+        console.log(auth.user.token);
+        console.log(auth.user.data);
         notify("Success", "success");
         setLoading(false);
         setEmail("");
         setPassword("");
         setTimeout(() => {
           window.location.href = "/";
-        }, 3000);
+        }, 2000);
       } else {
         localStorage.removeItem("token");
         localStorage.removeItem("user");

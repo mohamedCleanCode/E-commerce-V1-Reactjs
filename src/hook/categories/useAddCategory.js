@@ -29,8 +29,8 @@ const useAddCategory = () => {
         const formDate = new FormData();
         formDate.append("name", name);
         formDate.append("image", imgPath);
-        setLoading(true);
         await dispatch(setCategory(formDate));
+        setLoading(true);
       } else {
         notify("Warn", "warn");
       }

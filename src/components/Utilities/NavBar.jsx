@@ -54,9 +54,18 @@ const NavBar = () => {
                   {user.name}
                 </Dropdown.Toggle>
                 <Dropdown.Menu>
-                  <Link to="/user/profile" className="dropdown-item">
-                    Profile
-                  </Link>
+                  {user.role === "user" ? (
+                    <Link to="/user/profile" className="dropdown-item">
+                      Profile
+                    </Link>
+                  ) : (
+                    <Link
+                      to="/admin/orders-managment"
+                      className="dropdown-item"
+                    >
+                      Dashboard
+                    </Link>
+                  )}
                   <div className="dropdown-item" onClick={logOut}>
                     Log out
                   </div>
