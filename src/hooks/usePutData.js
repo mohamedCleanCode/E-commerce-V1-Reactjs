@@ -12,10 +12,6 @@ export const usePutDataWithImg = async (url, formData) => {
   }
 };
 export const usePutData = async (url, formData) => {
-  try {
-    const res = await baseURL.put(url, formData);
-    return res;
-  } catch (error) {
-    console.log(error);
-  }
+  const res = await baseURL.put(url, formData);
+  return res;
 };

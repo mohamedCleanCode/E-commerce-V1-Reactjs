@@ -11,6 +11,7 @@ import AdminOrdersManagmentPage from "./pages/Admin/AdminOrdersManagmentPage";
 import AdminProductsManagmentPage from "./pages/Admin/AdminProductsManagmentPage";
 import ForgotPasswordPage from "./pages/Auth/ForgotPasswordPage";
 import LoginPage from "./pages/Auth/LoginPage";
+import ResetPasswordPage from "./pages/Auth/ResetPasswordPage";
 import SignupPage from "./pages/Auth/SignupPage";
 import VerifyPasswordPage from "./pages/Auth/VerifyPasswordPage";
 import BrandsPage from "./pages/Brand/BrandsPage";
@@ -80,6 +81,7 @@ function App() {
         <Route path="/user/profile" element={<UserProfilePage />} />
         <Route path="/user/forgot-password" element={<ForgotPasswordPage />} />
         <Route path="/user/verify-password" element={<VerifyPasswordPage />} />
+        <Route path="/user/reset-password" element={<ResetPasswordPage />} />
       </Routes>
       <Footer />
     </div>

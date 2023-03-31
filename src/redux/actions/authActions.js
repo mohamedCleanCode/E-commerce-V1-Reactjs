@@ -1,11 +1,13 @@
 import { useGetDataWithToken } from "../../hooks/useGetData";
 import { usePostData } from "../../hooks/usePostData";
+import { usePutData } from "../../hooks/usePutData";
 import {
   CREATE_NEW_USER,
   ERROR,
   FORGOT_PASSWORD,
   GET_LOGGED_USER,
   LOGIN_USER,
+  RESET_PASSWORD,
   VERIFY_PASSWORD,
 } from "../types";
 
@@ -74,6 +76,21 @@ export const verifyPassword = (formData) => async (dispatch) => {
     const res = await usePostData("/api/v1/auth/verifyResetCode", formData);
     dispatch({
       type: VERIFY_PASSWORD,
+      payload: res,
+    });
+  } catch (error) {
+    console.log(error);
+    dispatch({
+      type: ERROR,
+      payload: error.response,
+    });
+  }
+};
+export const resetPassword = (formData) => async (dispatch) => {
+  try {
+    const res = await usePutData("/api/v1/auth/resetPassword", formData);
+    dispatch({
+      type: RESET_PASSWORD,
       payload: res,
     });
   } catch (error) {

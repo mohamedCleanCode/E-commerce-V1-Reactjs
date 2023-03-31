@@ -4,6 +4,7 @@ import {
   FORGOT_PASSWORD,
   GET_LOGGED_USER,
   LOGIN_USER,
+  RESET_PASSWORD,
   VERIFY_PASSWORD,
 } from "../types";
 
@@ -40,6 +41,7 @@ const authReducer = (state = intialState, action) => {
       };
     case FORGOT_PASSWORD:
     case VERIFY_PASSWORD:
+    case RESET_PASSWORD:
       return {
         response: action.payload,
         loading: false,
