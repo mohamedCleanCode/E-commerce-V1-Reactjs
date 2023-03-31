@@ -9,12 +9,16 @@ import useProductDetails from "../../hook/products/useProductDetails";
 
 const ProductDetailsPage = () => {
   const { id } = useParams();
-  const [, , , , , products] = useProductDetails(id);
+  const [product, , , , , products] = useProductDetails(id);
+  console.log(product);
   return (
     <Container>
       <CategriesHeader />
       <ProductDetails />
-      <RatingsContainer />
+      <RatingsContainer
+        ratingsAverage={product?.ratingsAverage || 0}
+        ratingsQuantity={product?.ratingsQuantity}
+      />
       <ProductsContainer products={products?.slice(0, 4)} />
     </Container>
   );

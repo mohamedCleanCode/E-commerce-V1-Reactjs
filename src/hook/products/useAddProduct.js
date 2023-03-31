@@ -50,7 +50,11 @@ const useAddProduct = () => {
     formData.append("price", price);
     formData.append("quantity", quantity);
     formData.append("category", catId);
-    selectedSubCats.map((subCat) => formData.append("subcategory", subCat._id));
+    if (selectedSubCats) {
+      selectedSubCats.map((subCat) =>
+        formData.append("subcategory", subCat._id)
+      );
+    }
     formData.append("brand", brandId);
     setLoading(true);
     await dispatch(setProduct(formData));
