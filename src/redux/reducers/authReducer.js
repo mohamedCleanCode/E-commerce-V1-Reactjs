@@ -1,4 +1,10 @@
-import { CREATE_NEW_USER, ERROR, GET_LOGGED_USER, LOGIN_USER } from "../types";
+import {
+  CREATE_NEW_USER,
+  ERROR,
+  FORGOT_PASSWORD,
+  GET_LOGGED_USER,
+  LOGIN_USER,
+} from "../types";
 
 const intialState = {
   user: {},
@@ -12,19 +18,27 @@ const authReducer = (state = intialState, action) => {
   switch (action.type) {
     case CREATE_NEW_USER:
       return {
+        ...state,
         user: action.payload.data,
         response: action.payload,
         loading: false,
       };
     case LOGIN_USER:
       return {
+        ...state,
         user: action.payload.data,
         response: action.payload,
         loading: false,
       };
     case GET_LOGGED_USER:
       return {
+        ...state,
         currentUser: action.payload.data,
+        response: action.payload,
+        loading: false,
+      };
+    case FORGOT_PASSWORD:
+      return {
         response: action.payload,
         loading: false,
       };

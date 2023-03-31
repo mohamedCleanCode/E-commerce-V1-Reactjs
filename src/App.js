@@ -78,6 +78,7 @@ function App() {
         <Route path="/user/edit-address" element={<UserEditAddressPage />} />
         <Route path="/user/profile" element={<UserProfilePage />} />
         <Route path="/user/forgot-password" element={<ForgotPasswordPage />} />
+        <Route path="/user/reset-password" element={<RsetPasswordPage />} />
       </Routes>
       <Footer />
     </div>
