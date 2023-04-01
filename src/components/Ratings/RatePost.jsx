@@ -1,16 +1,21 @@
 import React from "react";
 import { Col, Row } from "react-bootstrap";
 import ReactStars from "react-rating-stars-component";
+import useRatePost from "../../hook/ratings/useRatePost";
 
 const RatePost = () => {
+  const [user, post, rate, onChangePost, onChangeRate, handleSubmit] =
+    useRatePost();
+
   const ratingChanged = (newRating) => {
-    console.log(newRating);
+    onChangeRate(newRating);
   };
+
   return (
     <div className="rate-post">
       <Row className="align-items-center">
         <Col xs="3">
-          <p className="rate-post-name">Mohamed Mostafa</p>
+          <p className="rate-post-name">{user?.name}</p>
         </Col>
         <Col>
           <ReactStars
@@ -31,12 +36,14 @@ const RatePost = () => {
             className="p-1 w-100 rounded"
             rows="2"
             placeholder="Write your comment..!"
+            value={post}
+            onChange={onChangePost}
           />
         </Col>
       </Row>
       <Row>
         <Col>
-          <button className="btn bg-dark text-white">Add a post</button>
+          <button onClick={handleSubmit} className="btn bg-dark text-white">Add a post</button>
         </Col>
       </Row>
     </div>
