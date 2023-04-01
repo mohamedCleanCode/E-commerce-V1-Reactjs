@@ -1,11 +1,14 @@
 import React from "react";
 import { Col, Row } from "react-bootstrap";
 import ReactStars from "react-rating-stars-component";
+import { useParams } from "react-router-dom";
+import { ToastContainer } from "react-toastify";
 import useRatePost from "../../hook/ratings/useRatePost";
 
 const RatePost = () => {
+  const { id } = useParams();
   const [user, post, rate, onChangePost, onChangeRate, handleSubmit] =
-    useRatePost();
+    useRatePost(id);
 
   const ratingChanged = (newRating) => {
     onChangeRate(newRating);
@@ -43,9 +46,12 @@ const RatePost = () => {
       </Row>
       <Row>
         <Col>
-          <button onClick={handleSubmit} className="btn bg-dark text-white">Add a post</button>
+          <button onClick={handleSubmit} className="btn bg-dark text-white">
+            Add a post
+          </button>
         </Col>
       </Row>
+      <ToastContainer />
     </div>
   );
 };

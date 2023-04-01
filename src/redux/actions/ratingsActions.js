@@ -1,9 +1,12 @@
 import { usePostData } from "../../hooks/usePostData";
 import { SET_RATE_POST } from "../types";
 
-export const setRatePost = (productId) => async (dispatch) => {
+export const setRatePost = (productId, formData) => async (dispatch) => {
   try {
-    const res = await usePostData(`/api/v1/products/${productId}/reviews`);
+    const res = await usePostData(
+      `/api/v1/products/${productId}/reviews`,
+      formData
+    );
     dispatch({
       type: SET_RATE_POST,
       payload: res,
