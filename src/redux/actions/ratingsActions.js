@@ -20,9 +20,13 @@ export const setRatePost = (productId, formData) => async (dispatch) => {
   }
 };
 
-export const getAllReviews = (productId) => async (dispatch) => {
+export const getAllReviews = (productId, limit, page) => async (dispatch) => {
   try {
-    const res = await useGetData(`/api/v1/products/${productId}/reviews`);
+    const res = await useGetData(
+      `/api/v1/products/${productId}/reviews${
+        limit ? `?limit=${limit}&page=${page}` : ""
+      }`
+    );
     dispatch({
       type: GET_ALL_REVIEWS,
       payload: res,

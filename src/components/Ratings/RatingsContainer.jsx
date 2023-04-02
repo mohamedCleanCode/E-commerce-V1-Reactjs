@@ -8,7 +8,7 @@ import RatePost from "./RatePost";
 
 const RatingsContainer = ({ ratingsAverage, ratingsQuantity }) => {
   const { id } = useParams();
-  const [loading, reviews] = useRatingsContainer(id);
+  const [loading, reviews, onPress] = useRatingsContainer(id);
   console.log(loading);
   console.log(reviews);
 
@@ -48,7 +48,10 @@ const RatingsContainer = ({ ratingsAverage, ratingsQuantity }) => {
           ) : (
             <p>There are not reviews yet...!</p>
           )}
-          <Pagination />
+          <Pagination
+            pageCount={reviews?.paginationResult?.numberOfPages}
+            onPress={onPress}
+          />
         </Row>
       </div>
     </>
