@@ -10,7 +10,6 @@ import useProductDetails from "../../hook/products/useProductDetails";
 const ProductDetailsPage = () => {
   const { id } = useParams();
   const [product, , , , , products] = useProductDetails(id);
-  console.log(product);
   return (
     <Container>
       <CategriesHeader />

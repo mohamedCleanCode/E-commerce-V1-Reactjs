@@ -38,17 +38,20 @@ const useRatePost = (id) => {
           notify("Success", "success");
           setPost("");
           setRate(0.5);
+        } else if (ratings.response?.data?.status === "fail") {
+          notify(ratings.response?.data?.message, "error");
         } else if (
           ratings.response?.data?.errors[0]?.msg ===
           "You already added review on this product"
         ) {
-          notify(ratings.response?.data?.errors[0]?.msg, "error");
+          notify(ratings.response?.data?.errors[0]?.msg, "warn");
         } else {
           notify("Something went wrong", "error");
         }
       }
     }
   }, [loading, ratings]);
+
   return [user, post, rate, onChangePost, onChangeRate, handleSubmit];
 };
 
