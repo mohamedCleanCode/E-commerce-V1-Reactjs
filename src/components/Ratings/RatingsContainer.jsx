@@ -8,9 +8,8 @@ import RatePost from "./RatePost";
 
 const RatingsContainer = ({ ratingsAverage, ratingsQuantity }) => {
   const { id } = useParams();
-  const [loading, reviews, onPress] = useRatingsContainer(id);
-  console.log(loading);
-  console.log(reviews);
+  const [loading, reviews, onPress, userId, handleDeleteReview] =
+    useRatingsContainer(id);
 
   return (
     <>
@@ -43,7 +42,14 @@ const RatingsContainer = ({ ratingsAverage, ratingsQuantity }) => {
             </div>
           ) : reviews?.data?.length >= 1 ? (
             reviews.data.map((review) => {
-              return <RateComment key={review._id} review={review} />;
+              return (
+                <RateComment
+                  key={review._id}
+                  review={review}
+                  userId={userId}
+                  handleDeleteReview={handleDeleteReview}
+                />
+              );
             })
           ) : (
             <p>There are not reviews yet...!</p>

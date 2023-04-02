@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import notify from "../../hook/useNotification";
-import { setRatePost } from "../../redux/actions/ratingsActions";
+import { getAllReviews, setRatePost } from "../../redux/actions/ratingsActions";
 
 const useRatePost = (id) => {
   const dispatch = useDispatch();
@@ -10,6 +10,7 @@ const useRatePost = (id) => {
   const [post, setPost] = useState("");
   const [rate, setRate] = useState(0);
   const [loading, setLoading] = useState(false);
+  const limit = 10;
 
   const onChangePost = (e) => {
     let value = e.target.value;
@@ -38,13 +39,9 @@ const useRatePost = (id) => {
           notify("Success", "success");
           setPost("");
           setRate(0.5);
+          dispatch(getAllReviews(id, limit));
         } else if (ratings.response?.data?.status === "fail") {
           notify(ratings.response?.data?.message, "error");
-        } else if (
-          ratings.response?.data?.errors[0]?.msg ===
-          "You already added review on this product"
-        ) {
-          notify(ratings.response?.data?.errors[0]?.msg, "warn");
         } else {
           notify("Something went wrong", "error");
         }

@@ -1,4 +1,4 @@
-import { ERROR, GET_ALL_REVIEWS, SET_RATE_POST } from "../types";
+import { DELETE_REVIEW, ERROR, GET_ALL_REVIEWS, SET_RATE_POST } from "../types";
 
 const intialState = {
   reviews: {},
@@ -17,6 +17,11 @@ const ratingsReducer = (state = intialState, action) => {
     case GET_ALL_REVIEWS:
       return {
         reviews: action.payload,
+        response: action.payload,
+        loading: false,
+      };
+    case DELETE_REVIEW:
+      return {
         response: action.payload,
         loading: false,
       };
