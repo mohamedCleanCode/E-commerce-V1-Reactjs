@@ -1,6 +1,9 @@
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { setProductToWishList } from "../../redux/actions/wishlistActions";
+import {
+  removeProductToWishList,
+  setProductToWishList,
+} from "../../redux/actions/wishlistActions";
 
 const useProductCard = (product) => {
   const dispatch = useDispatch();
@@ -19,7 +22,7 @@ const useProductCard = (product) => {
     }
     if (color === "red") {
       setColor("#eee");
-      console.log(color);
+      await dispatch(removeProductToWishList(product?._id));
     }
   };
 
