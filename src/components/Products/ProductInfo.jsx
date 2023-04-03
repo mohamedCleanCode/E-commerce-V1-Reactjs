@@ -25,15 +25,10 @@ const ProductInfo = () => {
         <>
           <p className="product-info-cat">{category?.name}</p>
           <p className="product-info-title">{product?.title}</p>
-          <p className="product-info-rat">4.5</p>
+          <p className="product-info-rat">{product?.ratingsAverage || 0}</p>
           <p className="product-info-brand">
             Brand: <span className="brand-name">{brand?.name}</span>
           </p>
-          <div className="product-info-colors">
-            <span className="product-info-colors-color"></span>
-            <span className="product-info-colors-color"></span>
-            <span className="product-info-colors-color"></span>
-          </div>
           <p className="product-info-Specifications">Specifications:</p>
           <p className="product-info-Specifications-text">
             {product?.description}

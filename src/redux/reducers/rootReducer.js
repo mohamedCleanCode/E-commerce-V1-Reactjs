@@ -5,6 +5,7 @@ import categoriesReducer from "./categoriesReducer";
 import productsReducer from "./productsReducer";
 import ratingsReducer from "./ratingsReducer";
 import subCategoriesReducer from "./subCategoriesReducer";
+import wishlistReducer from "./wishlistReducer";
 
 const rootReducer = combineReducers({
   categories: categoriesReducer,
@@ -13,5 +14,6 @@ const rootReducer = combineReducers({
   products: productsReducer,
   auth: authReducer,
   ratings: ratingsReducer,
+  wishlist: wishlistReducer,
 });
 export default rootReducer;
