@@ -34,7 +34,6 @@ const useRatePost = (id) => {
   useEffect(() => {
     if (loading) {
       if (ratings) {
-        console.log(ratings);
         if (ratings.response?.status === 201) {
           notify("Success", "success");
           setPost("");

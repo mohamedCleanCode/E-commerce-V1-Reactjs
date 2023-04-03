@@ -7,7 +7,7 @@ import useRatePost from "../../hook/ratings/useRatePost";
 
 const RatePost = () => {
   const { id } = useParams();
-  const [user, post, rate, onChangePost, onChangeRate, handleSubmit] =
+  const [user, post, , onChangePost, onChangeRate, handleSubmit] =
     useRatePost(id);
 
   const ratingChanged = (newRating) => {

@@ -23,3 +23,4 @@ export const RESET_PASSWORD = "RESET_PASSWORD";
 export const SET_RATE_POST = "SET_RATE_POST";
 export const GET_ALL_REVIEWS = "GET_ALL_REVIEWS";
 export const DELETE_REVIEW = "DELETE_REVIEW";
+export const UPDATE_REVIEW = "UPDATE_REVIEW";

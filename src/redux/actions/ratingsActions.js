@@ -1,7 +1,14 @@
 import useDeleteData from "../../hooks/useDeleteData";
 import { useGetData } from "../../hooks/useGetData";
 import { usePostData } from "../../hooks/usePostData";
-import { DELETE_REVIEW, ERROR, GET_ALL_REVIEWS, SET_RATE_POST } from "../types";
+import { usePutData } from "../../hooks/usePutData";
+import {
+  DELETE_REVIEW,
+  ERROR,
+  GET_ALL_REVIEWS,
+  SET_RATE_POST,
+  UPDATE_REVIEW,
+} from "../types";
 
 export const setRatePost = (productId, formData) => async (dispatch) => {
   try {
@@ -45,6 +52,21 @@ export const deleteReview = (reviewId) => async (dispatch) => {
     const res = await useDeleteData(`/api/v1/reviews/${reviewId}`);
     dispatch({
       type: DELETE_REVIEW,
+      payload: res,
+    });
+  } catch (error) {
+    dispatch({
+      type: ERROR,
+      payload: error.response,
+    });
+  }
+};
+
+export const updataReview = (reviewId, formData) => async (dispatch) => {
+  try {
+    const res = await usePutData(`/api/v1/reviews/${reviewId}`, formData);
+    dispatch({
+      type: UPDATE_REVIEW,
       payload: res,
     });
   } catch (error) {
