@@ -9,11 +9,14 @@ const useProductCard = (product) => {
   const dispatch = useDispatch();
   const wishlist = useSelector((state) => state.wishlist);
 
-  const [color, setColor] = useState("#eee");
+  const [color, setColor] = useState(
+    localStorage.getItem(product?._id) || "#eee"
+  );
 
   const handleFavorite = async () => {
     if (color === "#eee") {
-      setColor("red");
+      localStorage.setItem(product?._id, "red");
+      setColor(localStorage.getItem(product?._id));
       await dispatch(
         setProductToWishList({
           productId: product?._id,
@@ -21,7 +24,8 @@ const useProductCard = (product) => {
       );
     }
     if (color === "red") {
-      setColor("#eee");
+      localStorage.setItem(product?._id, "#eee");
+      setColor(localStorage.getItem(product?._id));
       await dispatch(removeProductToWishList(product?._id));
     }
   };
