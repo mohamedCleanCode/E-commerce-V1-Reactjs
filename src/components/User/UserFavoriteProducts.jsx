@@ -1,20 +1,28 @@
 import React from "react";
 import { Row } from "react-bootstrap";
+import useUserFavoriteProducts from "../../hook/wishlist/useUserFavoriteProducts";
 import ProductCard from "../Products/ProductCard";
-import Pagination from "../Utilities/Pagination";
 
 const UserFavoriteProducts = () => {
+  const [wishlist, loading] = useUserFavoriteProducts();
+  console.log(wishlist, loading);
+
   return (
     <div>
       <h1>Your Favorite Products</h1>
       <Row>
-        <ProductCard />
-        <ProductCard />
-        <ProductCard />
-        <ProductCard />
-        <ProductCard />
+        {wishlist ? (
+          wishlist.data?.length >= 1 ? (
+            wishlist.data.map((product) => {
+              return <ProductCard product={product} />;
+            })
+          ) : (
+            <p>there are not items yet...!</p>
+          )
+        ) : (
+          <p>loading....</p>
+        )}
       </Row>
-      <Pagination />
     </div>
   );
 };

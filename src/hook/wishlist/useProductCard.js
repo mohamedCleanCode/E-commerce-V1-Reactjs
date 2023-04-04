@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import {
   removeProductToWishList,
   setProductToWishList,
@@ -7,7 +7,6 @@ import {
 
 const useProductCard = (product) => {
   const dispatch = useDispatch();
-  const wishlist = useSelector((state) => state.wishlist);
 
   const [color, setColor] = useState(
     localStorage.getItem(product?._id) || "#eee"
@@ -29,8 +28,6 @@ const useProductCard = (product) => {
       await dispatch(removeProductToWishList(product?._id));
     }
   };
-
-  console.log(wishlist);
 
   return [color, handleFavorite];
 };
