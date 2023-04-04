@@ -12,7 +12,8 @@ const NavBar = () => {
   const [user, setUser] = useState("");
   const logOut = (e) => {
     e.preventDefault();
-    localStorage.removeItem("user");
+    localStorage.clear();
+    window.location.reload();
     setUser("");
   };
   // const dispatch = useDispatch();

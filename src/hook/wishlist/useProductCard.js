@@ -18,7 +18,7 @@ const useProductCard = (product) => {
       setColor(localStorage.getItem(product?._id));
       await dispatch(
         setProductToWishList({
-          productId: product?._id,
+          productId: product._id,
         })
       );
     }
