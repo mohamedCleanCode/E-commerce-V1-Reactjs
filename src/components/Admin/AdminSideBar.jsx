@@ -37,6 +37,11 @@ const AdminSideBar = () => {
           Add Product
         </Link>
       </li>
+      <li className="admin-side-bar-item">
+        <Link to="/admin/add-coupon" className="admin-side-bar-item-link">
+          Add Coupon
+        </Link>
+      </li>
     </ul>
   );
 };

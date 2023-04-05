@@ -3,6 +3,7 @@ import Footer from "./components/Utilities/Footer";
 import NavBar from "./components/Utilities/NavBar";
 import AdminAddBrandPage from "./pages/Admin/AdminAddBrandPage";
 import AdminAddCategoryPage from "./pages/Admin/AdminAddCategoryPage";
+import AdminAddCouponPage from "./pages/Admin/AdminAddCouponPage";
 import AdminAddProductPage from "./pages/Admin/AdminAddProductPage";
 import AdminAddSubCategoryPage from "./pages/Admin/AdminAddSubCategoryPage";
 import AdminEditProductPage from "./pages/Admin/AdminEditProductPage";
@@ -59,6 +60,7 @@ function App() {
           element={<AdminAddSubCategoryPage />}
         />
         <Route path="/admin/add-product" element={<AdminAddProductPage />} />
+        <Route path="/admin/add-coupon" element={<AdminAddCouponPage />} />
         <Route
           path="/admin/edit-prdouct/:id"
           element={<AdminEditProductPage />}
