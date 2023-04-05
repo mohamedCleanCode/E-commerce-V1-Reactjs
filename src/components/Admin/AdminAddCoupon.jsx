@@ -1,7 +1,8 @@
 import React from "react";
-import { Button, Col, Form } from "react-bootstrap";
+import { Button, Col, Form, Row } from "react-bootstrap";
 import { ToastContainer } from "react-toastify";
 import useAdminAddCoupon from "../../hook/coupon/useAdminAddCoupon";
+import AdminCouponCard from "./AdminCouponCard";
 
 const AdminAddCoupon = () => {
   const [
@@ -13,6 +14,7 @@ const AdminAddCoupon = () => {
     onChangeDiscount,
     handleSubmit,
     loading,
+    coupon,
   ] = useAdminAddCoupon();
 
   return (
@@ -30,11 +32,17 @@ const AdminAddCoupon = () => {
         </Form.Group>
         <Form.Group controlId="formBasicDate">
           <Form.Control
-            type="date"
+            type="text"
             className="admin-add-brand-name"
             placeholder="Date expire"
             value={expire}
             onChange={onChangeExpire}
+            onFocus={(e) => {
+              e.target.type = "date";
+            }}
+            onBlur={(e) => {
+              e.target.type = "text";
+            }}
           />
         </Form.Group>
         <Form.Group controlId="formBasicDiscount">
@@ -46,10 +54,24 @@ const AdminAddCoupon = () => {
             onChange={onChangeDiscount}
           />
         </Form.Group>
-        <Button variant="dark" type="submit" disabled={loading} >
+        <Button variant="dark" type="submit" disabled={loading}>
           Save
         </Button>
       </Form>
+
+      <Row>
+        {coupon?.coupons ? (
+          coupon.coupons?.data?.length >= 1 ? (
+            coupon.coupons.data.map((coupon) => {
+              return <AdminCouponCard coupon={coupon} />;
+            })
+          ) : (
+            <p>no coupon</p>
+          )
+        ) : (
+          <p>there are not any coupons</p>
+        )}
+      </Row>
       <ToastContainer />
     </Col>
   );

@@ -1,6 +1,7 @@
-import { CREATE_COUPON, ERROR } from "../types";
+import { CREATE_COUPON, ERROR, GET_ALL_COUPONS } from "../types";
 
 const intialState = {
+  coupons: {},
   loading: true,
   response: {},
   errors: {},
@@ -10,6 +11,12 @@ const couponReducer = (state = intialState, action) => {
   switch (action.type) {
     case CREATE_COUPON:
       return {
+        response: action.payload,
+        loading: false,
+      };
+    case GET_ALL_COUPONS:
+      return {
+        coupons: action.payload,
         response: action.payload,
         loading: false,
       };

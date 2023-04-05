@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import notify from "../../hook/useNotification";
-import { createCoupon } from "../../redux/actions/couponActions";
+import { createCoupon, getAllCoupons } from "../../redux/actions/couponActions";
 
 const useAdminAddCoupon = () => {
   const dispatch = useDispatch();
@@ -46,6 +46,7 @@ const useAdminAddCoupon = () => {
           setExpire("");
           setDiscount("");
           setLoading(false);
+          dispatch(getAllCoupons());
           return;
         }
         if (coupon.errors?.data?.status === "fail") {
@@ -57,6 +58,11 @@ const useAdminAddCoupon = () => {
     }
   }, [loading, coupon]);
 
+  useEffect(() => {
+    const fetchData = async () => await dispatch(getAllCoupons());
+    fetchData();
+  }, []);
+
   return [
     name,
     expire,
@@ -66,6 +72,7 @@ const useAdminAddCoupon = () => {
     onChangeDiscount,
     handleSubmit,
     loading,
+    coupon,
   ];
 };
 
