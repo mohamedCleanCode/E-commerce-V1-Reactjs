@@ -12,6 +12,7 @@ const AdminAddCoupon = () => {
     onChangeExpire,
     onChangeDiscount,
     handleSubmit,
+    loading,
   ] = useAdminAddCoupon();
 
   return (
@@ -45,7 +46,7 @@ const AdminAddCoupon = () => {
             onChange={onChangeDiscount}
           />
         </Form.Group>
-        <Button variant="dark" type="submit">
+        <Button variant="dark" type="submit" disabled={loading} >
           Save
         </Button>
       </Form>
