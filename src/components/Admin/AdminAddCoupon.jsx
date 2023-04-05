@@ -63,7 +63,7 @@ const AdminAddCoupon = () => {
         {coupon?.coupons ? (
           coupon.coupons?.data?.length >= 1 ? (
             coupon.coupons.data.map((coupon) => {
-              return <AdminCouponCard coupon={coupon} />;
+              return <AdminCouponCard key={coupon?._id} coupon={coupon} />;
             })
           ) : (
             <p>no coupon</p>

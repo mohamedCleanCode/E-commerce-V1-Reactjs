@@ -1,7 +1,11 @@
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import notify from "../../hook/useNotification";
-import { createCoupon, getAllCoupons } from "../../redux/actions/couponActions";
+import {
+  createCoupon,
+  getAllCoupons,
+  removeCoupon,
+} from "../../redux/actions/couponActions";
 
 const useAdminAddCoupon = () => {
   const dispatch = useDispatch();
@@ -37,6 +41,14 @@ const useAdminAddCoupon = () => {
     );
     setLoading(true);
   };
+
+  const deleteCoupon = async (id) => {
+    setLoading(true);
+    await dispatch(removeCoupon(id));
+    await dispatch(getAllCoupons());
+    setLoading(true);
+  };
+
   useEffect(() => {
     if (loading) {
       if (coupon) {
@@ -53,6 +65,9 @@ const useAdminAddCoupon = () => {
           setName("");
           setLoading(false);
           return notify(coupon.errors?.data?.message, "warn");
+        }
+        if (coupon.response?.status === 204) {
+          console.log(coupon.response);
         }
       }
     }
@@ -73,6 +88,7 @@ const useAdminAddCoupon = () => {
     handleSubmit,
     loading,
     coupon,
+    deleteCoupon,
   ];
 };
 
