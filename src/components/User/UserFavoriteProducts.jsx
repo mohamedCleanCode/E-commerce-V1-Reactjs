@@ -5,7 +5,6 @@ import ProductCard from "../Products/ProductCard";
 
 const UserFavoriteProducts = () => {
   const [wishlist, loading] = useUserFavoriteProducts();
-  console.log(wishlist, loading);
 
   return (
     <div>
