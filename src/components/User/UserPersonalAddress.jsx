@@ -2,7 +2,7 @@ import React from "react";
 import { Col, Row } from "react-bootstrap";
 import { Link } from "react-router-dom";
 
-const UserPersonalAddress = () => {
+const UserPersonalAddress = ({ address }) => {
   return (
     <Col xs="12" className="mb-2">
       <div className="user-personl-address bg-white p-3 rounded">
@@ -11,7 +11,7 @@ const UserPersonalAddress = () => {
             xs="12"
             className="d-flex justify-content-between align-items-center"
           >
-            <h4 className="mb-0">Home</h4>
+            <h4 className="mb-0">{address?.alias}</h4>
             <div className="user-personl-address-actions d-flex">
               <Link
                 to="/user/edit-address"
@@ -29,15 +29,22 @@ const UserPersonalAddress = () => {
         <Row className="mb-2">
           <Col xs="12">
             <div className="user-personl-address-full-address">
-              Egypt, Cairo, Nasr City
+              {address?.details}
             </div>
           </Col>
         </Row>
         <Row>
           <Col xs="12">
             <div className="user-personl-address-phone text-dark fs-5">
-              Phone Number:{" "}
-              <span className="text-black-50 fs-6">01023456799</span>
+              Phone Number:
+              <span className="text-black-50 fs-6">{address?.phone}</span>
+            </div>
+          </Col>
+        </Row>
+        <Row>
+          <Col xs="12">
+            <div className="user-personl-address-phone text-dark fs-5">
+              City: {address?.city}
             </div>
           </Col>
         </Row>
