@@ -1,7 +1,9 @@
 import React from "react";
 import { Button, FloatingLabel, Form } from "react-bootstrap";
+import useUserAddAddress from "../../hook/address/useUserAddAddress";
 
 const UserAddAddress = () => {
+  const [] = useUserAddAddress();
   return (
     <div>
       <h1>Add A New Address</h1>

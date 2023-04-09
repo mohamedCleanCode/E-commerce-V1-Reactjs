@@ -1,4 +1,5 @@
 import { combineReducers } from "redux";
+import addressReducer from "./addressReducer";
 import authReducer from "./authReducer";
 import brandsReducer from "./brandsReducer";
 import categoriesReducer from "./categoriesReducer";
@@ -17,5 +18,6 @@ const rootReducer = combineReducers({
   ratings: ratingsReducer,
   wishlist: wishlistReducer,
   coupon: couponReducer,
+  address: addressReducer,
 });
 export default rootReducer;
