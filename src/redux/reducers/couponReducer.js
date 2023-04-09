@@ -1,4 +1,10 @@
-import { CREATE_COUPON, ERROR, GET_ALL_COUPONS, REMOVE_COUPON } from "../types";
+import {
+  CREATE_COUPON,
+  EDIT_COUPON,
+  ERROR,
+  GET_ALL_COUPONS,
+  REMOVE_COUPON,
+} from "../types";
 
 const intialState = {
   coupons: {},
@@ -21,6 +27,11 @@ const couponReducer = (state = intialState, action) => {
         loading: false,
       };
     case REMOVE_COUPON:
+      return {
+        response: action.payload,
+        loading: false,
+      };
+    case EDIT_COUPON:
       return {
         response: action.payload,
         loading: false,

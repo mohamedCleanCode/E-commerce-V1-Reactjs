@@ -30,3 +30,4 @@ export const GET_ALL_WISHLIST = "GET_ALL_WISHLIST";
 export const CREATE_COUPON = "CREATE_COUPON";
 export const GET_ALL_COUPONS = "GET_ALL_COUPONS";
 export const REMOVE_COUPON = "REMOVE_COUPON";
+export const EDIT_COUPON = "EDIT_COUPON";

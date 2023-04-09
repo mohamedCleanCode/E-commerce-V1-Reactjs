@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import notify from "../../hook/useNotification";
 import {
   createCoupon,
+  editCoupon,
   getAllCoupons,
   removeCoupon,
 } from "../../redux/actions/couponActions";
@@ -49,6 +50,27 @@ const useAdminAddCoupon = () => {
     setLoading(true);
   };
 
+  const [show, setShow] = useState(false);
+  const handleClose = () => setShow(false);
+  const handleShow = (name, expire, discount) => {
+    setName(name);
+    setExpire(expire);
+    setDiscount(discount);
+    setShow(true);
+  };
+  const handleEditCoupon = async (id) => {
+    await dispatch(
+      editCoupon(id, {
+        name,
+        expire,
+        discount,
+      })
+    );
+    setLoading(true);
+    handleClose();
+    await dispatch(getAllCoupons());
+  };
+
   useEffect(() => {
     if (loading) {
       if (coupon) {
@@ -89,6 +111,10 @@ const useAdminAddCoupon = () => {
     loading,
     coupon,
     deleteCoupon,
+    handleEditCoupon,
+    show,
+    handleClose,
+    handleShow,
   ];
 };
 
