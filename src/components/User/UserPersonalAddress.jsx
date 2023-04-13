@@ -29,7 +29,7 @@ const UserPersonalAddress = ({ address }) => {
             <h4 className="mb-0">{address?.alias}</h4>
             <div className="user-personl-address-actions d-flex">
               <Link
-                to="/user/edit-address"
+                to={`/user/edit-address/${address?._id}`}
                 className="btn"
                 style={{ fontSize: "14px" }}
               >

@@ -2,15 +2,13 @@ import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import notify from "../../hook/useNotification";
 import {
-  createNewAddress,
-  deleteAddress,
-  getAllAddresses,
+  getSpecificAddress,
   updateAddress,
 } from "../../redux/actions/addressActions";
 
-const useUserAddAddress = () => {
+const useUserEditAddress = (id) => {
   const dispatch = useDispatch();
-  const address = useSelector((state) => state.address);
+  const { address, response } = useSelector((state) => state.address);
   const [loading, setLoading] = useState(false);
   const [alias, setAlias] = useState("");
   const [details, setDetails] = useState("");
@@ -45,7 +43,7 @@ const useUserAddAddress = () => {
       return notify("Please Fill The Fieldes", "warn");
     }
     await dispatch(
-      createNewAddress({
+      updateAddress(id, {
         alias,
         details,
         phone,
@@ -56,31 +54,33 @@ const useUserAddAddress = () => {
     setLoading(true);
   };
 
-  const removeAddress = async (id) => {
-    await dispatch(deleteAddress(id));
-    await dispatch(getAllAddresses());
-  };
-
-  const editAddress = async (id) => {
-    await dispatch(updateAddress(id));
-    await dispatch(getAllAddresses());
-  };
+  useEffect(() => {
+    if (address?.data) {
+      setAlias(address.data.alias);
+      setDetails(address.data.details);
+      setPhone(address.data.phone);
+      setCity(address.data.city);
+      setPostalCode(address.data.postalCode);
+    }
+  }, [address]);
 
   useEffect(() => {
     if (loading) {
-      if (address) {
-        if (address.response?.status === 200) {
-          notify("Created", "success");
-          setAlias("");
-          setDetails("");
-          setPhone("");
-          setCity("");
-          setPostalCode("");
+      if (response) {
+        if (response?.status === 200) {
+          notify("Updated", "success");
           return;
         }
       }
     }
-  }, [loading, address]);
+  }, [loading, response]);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      await dispatch(getSpecificAddress(id));
+    };
+    fetchData();
+  }, []);
 
   return [
     alias,
@@ -94,9 +94,7 @@ const useUserAddAddress = () => {
     onChangeCity,
     onChangePostalCode,
     handleSubmit,
-    removeAddress,
-    editAddress,
   ];
 };
 
-export default useUserAddAddress;
+export default useUserEditAddress;
