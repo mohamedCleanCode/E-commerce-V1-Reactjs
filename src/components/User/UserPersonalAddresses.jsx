@@ -4,8 +4,6 @@ import { Link } from "react-router-dom";
 import UserPersonalAddress from "./UserPersonalAddress";
 
 const UserPersonalAddresses = ({ addresses, loading }) => {
-  console.log(addresses);
-  console.log(loading);
   return (
     <div>
       <h1>Notebook Addresses</h1>

@@ -1,4 +1,8 @@
-import { CREATE_NEW_ADDRESS, GET_ALL_ADDRESSES } from "../types";
+import {
+  CREATE_NEW_ADDRESS,
+  DELETE_ADDRESS,
+  GET_ALL_ADDRESSES,
+} from "../types";
 
 const intialState = {
   addresses: {},
@@ -17,6 +21,11 @@ const addressReducer = (state = intialState, action) => {
     case GET_ALL_ADDRESSES:
       return {
         addresses: action.payload,
+        response: action.payload,
+        loading: false,
+      };
+    case DELETE_ADDRESS:
+      return {
         response: action.payload,
         loading: false,
       };

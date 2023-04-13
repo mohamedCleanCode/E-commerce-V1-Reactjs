@@ -1,7 +1,11 @@
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import notify from "../../hook/useNotification";
-import { createNewAddress } from "../../redux/actions/addressActions";
+import {
+  createNewAddress,
+  deleteAddress,
+  getAllAddresses,
+} from "../../redux/actions/addressActions";
 
 const useUserAddAddress = () => {
   const dispatch = useDispatch();
@@ -51,6 +55,11 @@ const useUserAddAddress = () => {
     setLoading(true);
   };
 
+  const removeAddress = async (id) => {
+    await dispatch(deleteAddress(id));
+    await dispatch(getAllAddresses());
+  };
+
   useEffect(() => {
     if (loading) {
       if (address) {
@@ -79,6 +88,7 @@ const useUserAddAddress = () => {
     onChangeCity,
     onChangePostalCode,
     handleSubmit,
+    removeAddress,
   ];
 };
 
