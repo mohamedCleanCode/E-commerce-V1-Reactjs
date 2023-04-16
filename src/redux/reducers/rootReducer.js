@@ -5,6 +5,7 @@ import brandsReducer from "./brandsReducer";
 import categoriesReducer from "./categoriesReducer";
 import couponReducer from "./couponReducer";
 import productsReducer from "./productsReducer";
+import profileReducer from "./profileReducer";
 import ratingsReducer from "./ratingsReducer";
 import subCategoriesReducer from "./subCategoriesReducer";
 import wishlistReducer from "./wishlistReducer";
@@ -19,5 +20,6 @@ const rootReducer = combineReducers({
   wishlist: wishlistReducer,
   coupon: couponReducer,
   address: addressReducer,
+  profile: profileReducer,
 });
 export default rootReducer;

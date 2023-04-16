@@ -55,6 +55,13 @@ const useUserEditAddress = (id) => {
   };
 
   useEffect(() => {
+    const fetchData = async () => {
+      await dispatch(getSpecificAddress(id));
+    };
+    fetchData();
+  }, []);
+
+  useEffect(() => {
     if (address?.data) {
       setAlias(address.data.alias);
       setDetails(address.data.details);
@@ -74,13 +81,6 @@ const useUserEditAddress = (id) => {
       }
     }
   }, [loading, response]);
-
-  useEffect(() => {
-    const fetchData = async () => {
-      await dispatch(getSpecificAddress(id));
-    };
-    fetchData();
-  }, []);
 
   return [
     alias,
