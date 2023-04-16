@@ -1,5 +1,5 @@
 import React from "react";
-import { Button, Col, Form, Row } from "react-bootstrap";
+import { Button, Col, Form, Modal, Row } from "react-bootstrap";
 import { ToastContainer } from "react-toastify";
 import useUserProfile from "../../hook/profile/useUserProfile";
 
@@ -13,9 +13,59 @@ const UserProfile = () => {
     onChangePassword,
     onChangePasswordConfirm,
     handleSubmit,
+    show,
+    handleClose,
+    handleShow,
+    handleEdit,
+    name,
+    onChangeName,
+    email,
+    onChangeEmail,
+    phone,
+    onChangePhone,
   ] = useUserProfile();
   return (
     <div>
+      <Modal show={show} onHide={handleClose}>
+        <Modal.Body>
+          <p>Update user profile</p>
+          <Form.Group className="mb-3" controlId="formBasictext">
+            <Form.Control
+              required
+              value={name}
+              type="text"
+              placeholder="Enter username"
+              onChange={onChangeName}
+            />
+          </Form.Group>
+          <Form.Group className="mb-3" controlId="formBasicEmail">
+            <Form.Control
+              required
+              value={email}
+              type="email"
+              placeholder="Enter email"
+              onChange={onChangeEmail}
+            />
+          </Form.Group>
+          <Form.Group className="mb-3" controlId="formBasicphone">
+            <Form.Control
+              required
+              value={phone}
+              type="number"
+              placeholder="Enter phone"
+              onChange={onChangePhone}
+            />
+          </Form.Group>
+        </Modal.Body>
+        <Modal.Footer>
+          <Button variant="secondary" onClick={handleClose}>
+            Close
+          </Button>
+          <Button variant="danger" onClick={handleEdit}>
+            Edit
+          </Button>
+        </Modal.Footer>
+      </Modal>
       <h1>Profile</h1>
       <Row>
         <Col xs="12">
@@ -25,8 +75,8 @@ const UserProfile = () => {
                 Name:
                 <span className="text-black-50 fs-6">{user?.name}</span>
               </div>
-              <button type="submit" className="btn">
-                Edit <i className="fa-solid fa-gear"></i>
+              <button onClick={handleShow} type="submit" className="btn">
+                Update <i className="fa-solid fa-gear"></i>
               </button>
             </div>
             <div className="mb-3 text-dark fs-4 fw-bold">
