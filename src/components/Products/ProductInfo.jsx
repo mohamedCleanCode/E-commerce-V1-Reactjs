@@ -1,11 +1,13 @@
 import React from "react";
 import { Button, Spinner } from "react-bootstrap";
 import { useParams } from "react-router-dom";
+import useProductInfo from "../../hook/cart/useProductInfo";
 import useProductDetails from "../../hook/products/useProductDetails";
 
 const ProductInfo = () => {
   const { id } = useParams();
   const [product, , category, brand, loading] = useProductDetails(id);
+  const [addProductToCart] = useProductInfo(id);
   return (
     <div className="product-info mt-3">
       {loading ? (
@@ -35,7 +37,10 @@ const ProductInfo = () => {
           </p>
           <div className="product-info-controls">
             <p className="product-info-controls-price">${product?.price}</p>
-            <button className="btn text-white bg-dark rounded">
+            <button
+              className="btn text-white bg-dark rounded"
+              onClick={() => addProductToCart(id)}
+            >
               Add To Cart
             </button>
           </div>

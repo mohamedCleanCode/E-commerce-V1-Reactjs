@@ -2,6 +2,7 @@ import { combineReducers } from "redux";
 import addressReducer from "./addressReducer";
 import authReducer from "./authReducer";
 import brandsReducer from "./brandsReducer";
+import cartReducer from "./cartReducer";
 import categoriesReducer from "./categoriesReducer";
 import couponReducer from "./couponReducer";
 import productsReducer from "./productsReducer";
@@ -21,5 +22,6 @@ const rootReducer = combineReducers({
   coupon: couponReducer,
   address: addressReducer,
   profile: profileReducer,
+  cart: cartReducer,
 });
 export default rootReducer;
