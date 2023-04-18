@@ -93,7 +93,7 @@ const NavBar = () => {
             )}
             <Link
               to="/cart"
-              className=" text-light nav-link"
+              className=" text-light nav-link position-relative"
               style={{ width: "100px" }}
             >
               Cart
@@ -106,6 +106,9 @@ const NavBar = () => {
                   marginLeft: "10px",
                 }}
               />
+              <span class="position-absolute top-0 start-75 translate-middle badge rounded-pill bg-danger">
+                0
+              </span>
             </Link>
           </Nav>
         </Navbar.Collapse>
