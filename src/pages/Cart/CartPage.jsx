@@ -6,7 +6,7 @@ import useCartPage from "../../hook/cart/useCartPage";
 
 const CartPage = () => {
   const [cart] = useCartPage();
-  console.log(cart.items.products);
+  console.log(cart.totalCartPrice);
   return (
     <Container style={{ minHeight: "72vh" }}>
       <h1 className="my-2">Your Cart</h1>
@@ -19,7 +19,7 @@ const CartPage = () => {
             : null}
         </Col>
         <Col xs="12" sm="4" lg="3">
-          <CartCheckOut />
+          <CartCheckOut totalCartPrice={cart?.totalCartPrice} />
         </Col>
       </Row>
     </Container>

@@ -2,11 +2,10 @@ import React from "react";
 import { Col, Row } from "react-bootstrap";
 
 const ProductCart = ({ product }) => {
-  console.log(product);
   return (
     <Row className="product-cart">
       <Col xs="12" sm="12" md="4" lg="3">
-        <img src={product?.product?.imageCover} alt="mobile" />
+        <img src={product?.product?.imageCover} alt={product?.product?.title} />
       </Col>
       <Col xs="12" sm="12" md="8" lg="9">
         <div className="product-cart-info">
