@@ -1,4 +1,4 @@
-import { ADD_TO_CART, ERROR, GET_CART } from "../types";
+import { ADD_TO_CART, DELETE_CART, ERROR, GET_CART } from "../types";
 
 const intialState = {
   totalCartPrice: 0,
@@ -21,6 +21,11 @@ const cartReducer = (state = intialState, action) => {
         totalCartPrice: action.payload.data.totalCartPrice,
         items: action.payload.data,
         numsOfCartItems: action.payload.numOfCartItems,
+        response: action.payload,
+        loading: false,
+      };
+    case DELETE_CART:
+      return {
         response: action.payload,
         loading: false,
       };
