@@ -1,6 +1,10 @@
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { deleteCart, getCart } from "../../redux/actions/cartActions";
+import {
+  deleteCart,
+  deleteItemFromCart,
+  getCart,
+} from "../../redux/actions/cartActions";
 
 const useCartPage = () => {
   const dispatch = useDispatch();
@@ -13,6 +17,10 @@ const useCartPage = () => {
     setLoading(true);
   };
 
+  const removeItem = async (itemId) => {
+    await dispatch(deleteItemFromCart(itemId));
+  };
+
   useEffect(() => {
     dispatch(getCart());
   }, []);
@@ -23,7 +31,7 @@ const useCartPage = () => {
       }
     }
   }, [loading]);
-  return [cart, clearCart];
+  return [cart, clearCart, removeItem];
 };
 
 export default useCartPage;

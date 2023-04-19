@@ -11,7 +11,7 @@ const CartPage = () => {
       <h1 className="my-2">Your Cart</h1>
       <Row>
         <Col xs="12" sm="8" lg="9">
-          {cart?.items?.products ? (
+          {cart?.items?.products?.length >= 1 ? (
             cart?.items?.products.map((product) => {
               return <ProductCart key={product?._id} product={product} />;
             })
