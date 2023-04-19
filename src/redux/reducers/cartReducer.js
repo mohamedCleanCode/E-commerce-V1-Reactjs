@@ -1,6 +1,7 @@
 import { ADD_TO_CART, ERROR, GET_CART } from "../types";
 
 const intialState = {
+  items: [],
   numsOfCartItems: 0,
   response: {},
   loading: true,
@@ -16,6 +17,7 @@ const cartReducer = (state = intialState, action) => {
       };
     case GET_CART:
       return {
+        items: action.payload.data,
         numsOfCartItems: action.payload.numOfCartItems,
         response: action.payload,
         loading: false,
