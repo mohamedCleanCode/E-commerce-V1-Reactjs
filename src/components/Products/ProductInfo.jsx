@@ -7,7 +7,8 @@ import useProductDetails from "../../hook/products/useProductDetails";
 const ProductInfo = () => {
   const { id } = useParams();
   const [product, , category, brand, loading] = useProductDetails(id);
-  const [addProductToCart] = useProductInfo(id);
+  const [addProductToCart, numsOfCart] = useProductInfo(id);
+  console.log(numsOfCart);
   return (
     <div className="product-info mt-3">
       {loading ? (

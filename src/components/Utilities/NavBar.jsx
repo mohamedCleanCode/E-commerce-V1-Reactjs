@@ -1,10 +1,12 @@
 import React, { useEffect, useState } from "react";
 import { Container, Dropdown, Form, Nav, Navbar } from "react-bootstrap";
+import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import CartIcon from "../../assets/images/cart.png";
 import LoginIcon from "../../assets/images/login.png";
 import Logo from "../../assets/images/logo.png";
 import useNavBar from "../../hook/search/useNavBar";
+import { getCart } from "../../redux/actions/cartActions";
 
 const NavBar = () => {
   const [searchWord, onSearchInputChange] = useNavBar();
@@ -17,13 +19,18 @@ const NavBar = () => {
     window.location.reload();
     setUser("");
   };
-  // const dispatch = useDispatch();
+  const dispatch = useDispatch();
   // const auth = useSelector((state) => state.auth);
   useEffect(() => {
     // dispatch(getLoggedUser());
     setUser(JSON.parse(localStorage.getItem("user")));
   }, []);
-  // console.log(auth);
+
+  const cart = useSelector((state) => state.cart);
+
+  useEffect(() => {
+    dispatch(getCart());
+  }, []);
   return (
     <Navbar
       bg="dark"
@@ -107,7 +114,7 @@ const NavBar = () => {
                 }}
               />
               <span class="position-absolute top-0 start-75 translate-middle badge rounded-pill bg-danger">
-                0
+                {cart?.numsOfCartItems}
               </span>
             </Link>
           </Nav>
