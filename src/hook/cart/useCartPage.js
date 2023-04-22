@@ -4,9 +4,10 @@ import {
   deleteCart,
   deleteItemFromCart,
   getCart,
+  updateItemQuantity,
 } from "../../redux/actions/cartActions";
 
-const useCartPage = () => {
+const useCartPage = (item) => {
   const dispatch = useDispatch();
   const cart = useSelector((state) => state.cart);
 
@@ -21,6 +22,21 @@ const useCartPage = () => {
     await dispatch(deleteItemFromCart(itemId));
   };
 
+  const [itemCount, setItemCount] = useState(item?.count);
+
+  const onChangeCount = (e) => {
+    let value = e.target.value;
+    setItemCount(+value);
+  };
+
+  const updateItemCount = async (itemId, itemCount) => {
+    await dispatch(
+      updateItemQuantity(itemId, {
+        count: itemCount,
+      })
+    );
+  };
+
   useEffect(() => {
     dispatch(getCart());
   }, []);
@@ -31,7 +47,14 @@ const useCartPage = () => {
       }
     }
   }, [loading]);
-  return [cart, clearCart, removeItem];
+
+  useEffect(() => {
+    if (itemCount !== item?.count) {
+      updateItemCount(item?._id, itemCount);
+      dispatch(getCart());
+    }
+  }, [itemCount]);
+  return [cart, clearCart, removeItem, itemCount, onChangeCount];
 };
 
 export default useCartPage;

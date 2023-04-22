@@ -1,12 +1,14 @@
 import useDeleteData from "../../hooks/useDeleteData";
 import { useGetDataWithToken } from "../../hooks/useGetData";
 import { usePostData } from "../../hooks/usePostData";
+import { usePutData } from "../../hooks/usePutData";
 import {
   ADD_TO_CART,
   DELETE_CART,
   DELETE_ITEM_FROM_CART,
   ERROR,
   GET_CART,
+  UPDATE_ITEM_QUANTITY,
 } from "../types";
 
 export const addToCart = (formData) => async (dispatch) => {
@@ -62,6 +64,22 @@ export const deleteItemFromCart = (itemId) => async (dispatch) => {
     const res = await useDeleteData(`/api/v1/cart/${itemId}`);
     dispatch({
       type: DELETE_ITEM_FROM_CART,
+      payload: res,
+    });
+  } catch (error) {
+    console.log(error);
+    dispatch({
+      type: ERROR,
+      payload: error.response,
+    });
+  }
+};
+
+export const updateItemQuantity = (itemId, formData) => async (dispatch) => {
+  try {
+    const res = await usePutData(`/api/v1/cart/${itemId}`, formData);
+    dispatch({
+      type: UPDATE_ITEM_QUANTITY,
       payload: res,
     });
   } catch (error) {

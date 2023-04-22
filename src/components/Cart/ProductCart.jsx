@@ -3,7 +3,8 @@ import { Col, Row } from "react-bootstrap";
 import useCartPage from "../../hook/cart/useCartPage";
 
 const ProductCart = ({ product }) => {
-  const [cart, clearCart, removeItem] = useCartPage();
+  const [cart, clearCart, removeItem, itemCount, onChangeCount] =
+    useCartPage(product);
 
   return (
     <Row className="product-cart">
@@ -37,7 +38,8 @@ const ProductCart = ({ product }) => {
           <input
             type="number"
             className="product-cart-info-quantity"
-            value={product?.count}
+            value={itemCount}
+            onChange={onChangeCount}
           />
           <p className="product-cart-info-price">${product?.price}</p>
         </div>

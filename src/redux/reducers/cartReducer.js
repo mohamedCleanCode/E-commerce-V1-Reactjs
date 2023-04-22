@@ -4,6 +4,7 @@ import {
   DELETE_ITEM_FROM_CART,
   ERROR,
   GET_CART,
+  UPDATE_ITEM_QUANTITY,
 } from "../types";
 
 const intialState = {
@@ -36,6 +37,14 @@ const cartReducer = (state = intialState, action) => {
         loading: false,
       };
     case DELETE_ITEM_FROM_CART:
+      return {
+        totalCartPrice: action.payload.data.totalCartPrice,
+        items: action.payload.data,
+        numsOfCartItems: action.payload.numOfCartItems,
+        response: action.payload,
+        loading: false,
+      };
+    case UPDATE_ITEM_QUANTITY:
       return {
         totalCartPrice: action.payload.data.totalCartPrice,
         items: action.payload.data,
