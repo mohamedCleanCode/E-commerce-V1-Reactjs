@@ -4,6 +4,7 @@ import { usePostData } from "../../hooks/usePostData";
 import { usePutData } from "../../hooks/usePutData";
 import {
   ADD_TO_CART,
+  APPLY_CUOPON,
   DELETE_CART,
   DELETE_ITEM_FROM_CART,
   ERROR,
@@ -80,6 +81,22 @@ export const updateItemQuantity = (itemId, formData) => async (dispatch) => {
     const res = await usePutData(`/api/v1/cart/${itemId}`, formData);
     dispatch({
       type: UPDATE_ITEM_QUANTITY,
+      payload: res,
+    });
+  } catch (error) {
+    console.log(error);
+    dispatch({
+      type: ERROR,
+      payload: error.response,
+    });
+  }
+};
+
+export const applyCuopon = (formData) => async (dispatch) => {
+  try {
+    const res = await usePutData(`/api/v1/cart/applyCoupon`, formData);
+    dispatch({
+      type: APPLY_CUOPON,
       payload: res,
     });
   } catch (error) {

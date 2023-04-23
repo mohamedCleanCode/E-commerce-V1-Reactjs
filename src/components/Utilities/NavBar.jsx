@@ -114,7 +114,7 @@ const NavBar = () => {
                 }}
               />
               <span class="position-absolute top-0 start-75 translate-middle badge rounded-pill bg-danger">
-                {cart?.numsOfCartItems}
+                {cart?.numOfCartItems}
               </span>
             </Link>
           </Nav>

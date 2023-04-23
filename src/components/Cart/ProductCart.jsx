@@ -1,11 +1,7 @@
 import React from "react";
 import { Col, Row } from "react-bootstrap";
-import useCartPage from "../../hook/cart/useCartPage";
 
 const ProductCart = ({ product }) => {
-  const [cart, clearCart, removeItem, itemCount, onChangeCount] =
-    useCartPage(product);
-
   return (
     <Row className="product-cart">
       <Col xs="12" sm="12" md="4" lg="3">
@@ -18,7 +14,7 @@ const ProductCart = ({ product }) => {
               {product?.product?.category?.name}
             </p>
             <button
-              onClick={() => removeItem(product?._id)}
+              //   onClick={() => removeItem(product?._id)}
               className="product-cart-info-remove-from-cart btn text-dark"
             >
               Remove <i className="fa-solid fa-trash"></i>
@@ -38,8 +34,8 @@ const ProductCart = ({ product }) => {
           <input
             type="number"
             className="product-cart-info-quantity"
-            value={itemCount}
-            onChange={onChangeCount}
+            // value={itemCount}
+            // onChange={onChangeCount}
           />
           <p className="product-cart-info-price">${product?.price}</p>
         </div>
