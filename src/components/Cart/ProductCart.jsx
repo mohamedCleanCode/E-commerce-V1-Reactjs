@@ -1,7 +1,9 @@
 import React from "react";
 import { Col, Row } from "react-bootstrap";
+import useUpdateQuantity from "../../hook/cart/useUpdateQuantity";
 
 const ProductCart = ({ product, removeItemFromCart }) => {
+  const [cart, itemCount, onChangeCount] = useUpdateQuantity(product);
   return (
     <Row className="product-cart">
       <Col xs="12" sm="12" md="4" lg="3">
@@ -34,8 +36,8 @@ const ProductCart = ({ product, removeItemFromCart }) => {
           <input
             type="number"
             className="product-cart-info-quantity"
-            // value={itemCount}
-            // onChange={onChangeCount}
+            value={itemCount}
+            onChange={onChangeCount}
           />
           <p className="product-cart-info-price">${product?.price}</p>
         </div>

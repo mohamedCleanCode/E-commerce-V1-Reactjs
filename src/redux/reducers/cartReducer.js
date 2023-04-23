@@ -55,9 +55,11 @@ const cartReducer = (state = intialState, action) => {
       };
     case UPDATE_ITEM_QUANTITY:
       return {
-        totalCartPrice: action.payload.data.totalCartPrice,
-        items: action.payload.data,
-        numsOfCartItems: action.payload.numOfCartItems,
+        numOfCartItems: action.payload.data.numOfCartItems,
+        totalCartPrice: action.payload.data.data.totalCartPrice,
+        coupon: action.payload.data.data.coupon,
+        totalAfterDiscount: action.payload.data.data.totalAfterDiscount,
+        items: action.payload.data.data.products,
         response: action.payload,
         loading: false,
       };
