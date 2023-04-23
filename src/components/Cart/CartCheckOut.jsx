@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-const CartCheckOut = ({ totalCartPrice }) => {
+const CartCheckOut = ({ clearCart, totalCartPrice }) => {
   return (
     <div className="cart-check-out">
       <div className="cart-check-out-coupon">
@@ -23,7 +23,7 @@ const CartCheckOut = ({ totalCartPrice }) => {
         Checkout
       </Link>
       <button
-        //   onClick={clearCart}
+        onClick={() => clearCart()}
         className="btn bg-dark text-white w-100 mt-2"
       >
         Clear Cart

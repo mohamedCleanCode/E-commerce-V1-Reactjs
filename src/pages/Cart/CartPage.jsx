@@ -5,7 +5,7 @@ import ProductCart from "../../components/Cart/ProductCart";
 import useGetCart from "../../hook/cart/useGetCart";
 
 const CartPage = () => {
-  const [cart, removeItemFromCart] = useGetCart();
+  const [cart, removeItemFromCart, clearCart] = useGetCart();
 
   return (
     <Container style={{ minHeight: "72vh" }}>
@@ -27,7 +27,10 @@ const CartPage = () => {
           )}
         </Col>
         <Col xs="12" sm="4" lg="3">
-          <CartCheckOut totalCartPrice={cart?.totalCartPrice} />
+          <CartCheckOut
+            clearCart={clearCart}
+            totalCartPrice={cart?.totalCartPrice}
+          />
         </Col>
       </Row>
     </Container>

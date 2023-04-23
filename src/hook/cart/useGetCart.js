@@ -1,6 +1,10 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { deleteItemFromCart, getCart } from "../../redux/actions/cartActions";
+import {
+  deleteCart,
+  deleteItemFromCart,
+  getCart,
+} from "../../redux/actions/cartActions";
 
 const useGetCart = () => {
   const dispatch = useDispatch();
@@ -10,6 +14,10 @@ const useGetCart = () => {
     await dispatch(deleteItemFromCart(itemId));
   };
 
+  const clearCart = async () => {
+    await dispatch(deleteCart());
+  };
+
   useEffect(() => {
     const fetchData = async () => {
       await dispatch(getCart());
@@ -17,7 +25,7 @@ const useGetCart = () => {
     fetchData();
   }, []);
 
-  return [cart, removeItemFromCart];
+  return [cart, removeItemFromCart, clearCart];
 };
 
 export default useGetCart;
