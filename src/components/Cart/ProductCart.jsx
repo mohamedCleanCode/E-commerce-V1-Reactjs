@@ -1,7 +1,7 @@
 import React from "react";
 import { Col, Row } from "react-bootstrap";
 
-const ProductCart = ({ product }) => {
+const ProductCart = ({ product, removeItemFromCart }) => {
   return (
     <Row className="product-cart">
       <Col xs="12" sm="12" md="4" lg="3">
@@ -14,7 +14,7 @@ const ProductCart = ({ product }) => {
               {product?.product?.category?.name}
             </p>
             <button
-              //   onClick={() => removeItem(product?._id)}
+              onClick={() => removeItemFromCart(product?._id)}
               className="product-cart-info-remove-from-cart btn text-dark"
             >
               Remove <i className="fa-solid fa-trash"></i>

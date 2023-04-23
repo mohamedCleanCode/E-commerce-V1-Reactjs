@@ -38,16 +38,18 @@ const cartReducer = (state = intialState, action) => {
         response: action.payload,
         loading: false,
       };
-    case DELETE_CART:
+    case DELETE_ITEM_FROM_CART:
       return {
+        numOfCartItems: action.payload.data.numOfCartItems,
+        totalCartPrice: action.payload.data.data.totalCartPrice,
+        coupon: action.payload.data.data.coupon,
+        totalAfterDiscount: action.payload.data.data.totalAfterDiscount,
+        items: action.payload.data.data.products,
         response: action.payload,
         loading: false,
       };
-    case DELETE_ITEM_FROM_CART:
+    case DELETE_CART:
       return {
-        totalCartPrice: action.payload.data.totalCartPrice,
-        items: action.payload.data,
-        numsOfCartItems: action.payload.numOfCartItems,
         response: action.payload,
         loading: false,
       };
