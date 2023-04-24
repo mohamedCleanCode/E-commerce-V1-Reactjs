@@ -45,7 +45,7 @@ const useLoginPage = () => {
         setEmail("");
         setPassword("");
         setTimeout(() => {
-          window.location.href = "/";
+          window.location.replace("/");
         }, 2000);
       } else {
         localStorage.removeItem("token");
