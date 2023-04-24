@@ -1,6 +1,8 @@
 import { Route, Routes } from "react-router-dom";
 import Footer from "./components/Utilities/Footer";
 import NavBar from "./components/Utilities/NavBar";
+import ProtectedRoute from "./components/Utilities/ProtectedRoute";
+import useProtectedRoute from "./hook/auth/useProtectedRoute";
 import AdminAddBrandPage from "./pages/Admin/AdminAddBrandPage";
 import AdminAddCategoryPage from "./pages/Admin/AdminAddCategoryPage";
 import AdminAddCouponPage from "./pages/Admin/AdminAddCouponPage";
@@ -30,6 +32,11 @@ import UserPersonalAddressesPage from "./pages/User/UserPersonalAddressesPage";
 import UserProfilePage from "./pages/User/UserProfilePage";
 
 function App() {
+  const [isUser, isAdmin, userData] = useProtectedRoute();
+  console.log(userData);
+  console.log(isAdmin);
+  console.log(isUser);
+
   return (
     <div className="App">
       <NavBar />
@@ -44,49 +51,66 @@ function App() {
         <Route path="/cart" element={<CartPage />} />
         <Route path="/order/payment-method" element={<PaymentMethod />} />
 
-        <Route
-          path="/admin/orders-managment"
-          element={<AdminOrdersManagmentPage />}
-        />
-        <Route
-          path="/admin/products-managment"
-          element={<AdminProductsManagmentPage />}
-        />
-        <Route path="/admin/order/25" element={<AdminOrderDetailsPage />} />
-        <Route path="/admin/add-brnad" element={<AdminAddBrandPage />} />
-        <Route path="/admin/add-category" element={<AdminAddCategoryPage />} />
-        <Route
-          path="/admin/add-subcategory"
-          element={<AdminAddSubCategoryPage />}
-        />
-        <Route path="/admin/add-product" element={<AdminAddProductPage />} />
-        <Route path="/admin/add-coupon" element={<AdminAddCouponPage />} />
-        <Route
-          path="/admin/edit-prdouct/:id"
-          element={<AdminEditProductPage />}
-        />
+        {/*Start Admin Protected Routes*/}
+        <Route element={<ProtectedRoute auth={isAdmin} />}>
+          <Route
+            path="/admin/orders-managment"
+            element={<AdminOrdersManagmentPage />}
+          />
+          <Route
+            path="/admin/products-managment"
+            element={<AdminProductsManagmentPage />}
+          />
+          <Route path="/admin/order/25" element={<AdminOrderDetailsPage />} />
+          <Route path="/admin/add-brnad" element={<AdminAddBrandPage />} />
+          <Route
+            path="/admin/add-category"
+            element={<AdminAddCategoryPage />}
+          />
+          <Route
+            path="/admin/add-subcategory"
+            element={<AdminAddSubCategoryPage />}
+          />
+          <Route path="/admin/add-product" element={<AdminAddProductPage />} />
+          <Route path="/admin/add-coupon" element={<AdminAddCouponPage />} />
+          <Route
+            path="/admin/edit-prdouct/:id"
+            element={<AdminEditProductPage />}
+          />
+        </Route>
+        {/*End Admin Protected Routes*/}
 
-        <Route
-          path="/user/orders-managment"
-          element={<UserOrdersManagmentPage />}
-        />
-        <Route
-          path="/user/favorite-products"
-          element={<UserFavoriteProductsPage />}
-        />
-        <Route
-          path="/user/personal-addresses"
-          element={<UserPersonalAddressesPage />}
-        />
-        <Route path="/user/add-address" element={<UserAddAddressPage />} />
-        <Route
-          path="/user/edit-address/:id"
-          element={<UserEditAddressPage />}
-        />
-        <Route path="/user/profile" element={<UserProfilePage />} />
-        <Route path="/user/forgot-password" element={<ForgotPasswordPage />} />
-        <Route path="/user/verify-password" element={<VerifyPasswordPage />} />
-        <Route path="/user/reset-password" element={<ResetPasswordPage />} />
+        {/*Start User Protected Routes*/}
+        <Route element={<ProtectedRoute auth={isUser} />}>
+          <Route
+            path="/user/orders-managment"
+            element={<UserOrdersManagmentPage />}
+          />
+          <Route
+            path="/user/favorite-products"
+            element={<UserFavoriteProductsPage />}
+          />
+          <Route
+            path="/user/personal-addresses"
+            element={<UserPersonalAddressesPage />}
+          />
+          <Route path="/user/add-address" element={<UserAddAddressPage />} />
+          <Route
+            path="/user/edit-address/:id"
+            element={<UserEditAddressPage />}
+          />
+          <Route path="/user/profile" element={<UserProfilePage />} />
+          <Route
+            path="/user/forgot-password"
+            element={<ForgotPasswordPage />}
+          />
+          <Route
+            path="/user/verify-password"
+            element={<VerifyPasswordPage />}
+          />
+          <Route path="/user/reset-password" element={<ResetPasswordPage />} />
+        </Route>
+        {/*End User Protected Routes*/}
       </Routes>
       <Footer />
     </div>
