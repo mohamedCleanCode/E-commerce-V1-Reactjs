@@ -5,7 +5,14 @@ import ProductCart from "../../components/Cart/ProductCart";
 import useGetCart from "../../hook/cart/useGetCart";
 
 const CartPage = () => {
-  const [cart, removeItemFromCart, clearCart] = useGetCart();
+  const [
+    cart,
+    removeItemFromCart,
+    clearCart,
+    couponName,
+    onChangeCouponName,
+    applyCuoponHandle,
+  ] = useGetCart();
 
   return (
     <Container style={{ minHeight: "72vh" }}>
@@ -30,6 +37,10 @@ const CartPage = () => {
           <CartCheckOut
             clearCart={clearCart}
             totalCartPrice={cart?.totalCartPrice}
+            applyCuoponHandle={applyCuoponHandle}
+            totalAfterDiscount={cart?.totalAfterDiscount}
+            couponName={couponName}
+            onChangeCouponName={onChangeCouponName}
           />
         </Col>
       </Row>

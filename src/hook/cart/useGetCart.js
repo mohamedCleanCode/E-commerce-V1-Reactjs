@@ -1,6 +1,7 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import {
+  applyCuopon,
   deleteCart,
   deleteItemFromCart,
   getCart,
@@ -18,6 +19,21 @@ const useGetCart = () => {
     await dispatch(deleteCart());
   };
 
+  const [couponName, setCouponName] = useState();
+
+  const onChangeCouponName = (e) => {
+    let value = e.target.value;
+    setCouponName(value);
+  };
+
+  const applyCuoponHandle = async () => {
+    await dispatch(
+      applyCuopon({
+        couponName,
+      })
+    );
+  };
+
   useEffect(() => {
     const fetchData = async () => {
       await dispatch(getCart());
@@ -25,7 +41,22 @@ const useGetCart = () => {
     fetchData();
   }, []);
 
-  return [cart, removeItemFromCart, clearCart];
+  useEffect(() => {
+    if (cart) {
+      if (cart.coupon) {
+        setCouponName(cart.coupon);
+      }
+    }
+  }, [cart]);
+
+  return [
+    cart,
+    removeItemFromCart,
+    clearCart,
+    couponName,
+    onChangeCouponName,
+    applyCuoponHandle,
+  ];
 };
 
 export default useGetCart;
