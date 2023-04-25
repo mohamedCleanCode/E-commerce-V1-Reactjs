@@ -46,17 +46,20 @@ export const getSpecificProduct = (id) => async (dispatch) => {
     console.log(error);
   }
 };
-export const getSpecificProductsWithCategory = (id) => async (dispatch) => {
-  try {
-    const res = await useGetData(`/api/v1/products/?category=${id}`);
-    dispatch({
-      type: GET_SPECIFIC_PRODUCTS_WITH_CATEGORY,
-      payload: res,
-    });
-  } catch (error) {
-    console.log(error);
-  }
-};
+export const getSpecificProductsWithCategory =
+  (id, limit, page) => async (dispatch) => {
+    try {
+      const res = await useGetData(
+        `/api/v1/products/?page=${page}&limit=${limit}&category=${id}`
+      );
+      dispatch({
+        type: GET_SPECIFIC_PRODUCTS_WITH_CATEGORY,
+        payload: res,
+      });
+    } catch (error) {
+      console.log(error);
+    }
+  };
 export const deleteProduct = (id) => async (dispatch) => {
   try {
     const res = await useDeleteData(`/api/v1/products/${id}`);

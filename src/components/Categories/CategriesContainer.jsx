@@ -33,6 +33,7 @@ const CategriesContainer = ({ data, loading }) => {
                   backgroundColor={
                     colors[Math.floor(Math.random() * colors.length - 1)]
                   }
+                  catID={cat._id}
                 />
               );
             })

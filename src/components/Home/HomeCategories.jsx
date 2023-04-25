@@ -32,6 +32,7 @@ const HomeCategories = () => {
                   src={cat.image}
                   title={cat.name}
                   backgroundColor={colors[i]}
+                  catID={cat._id}
                 />
               );
             })

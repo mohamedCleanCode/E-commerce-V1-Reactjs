@@ -1,7 +1,8 @@
 import React from "react";
 import { Col } from "react-bootstrap";
+import { Link } from "react-router-dom";
 
-const CategoriesCard = ({ src, title, backgroundColor }) => {
+const CategoriesCard = ({ src, title, backgroundColor, catID }) => {
   return (
     <Col xs="6" sm="6" md="4" lg="3" className="mb-3">
       <div className="category-card">
@@ -11,11 +12,13 @@ const CategoriesCard = ({ src, title, backgroundColor }) => {
             backgroundColor: backgroundColor ? backgroundColor : "#ddd",
           }}
         >
-          <img
-            src={src}
-            alt={title}
-            style={{ width: "100px", height: "100px", objectFit: "contain" }}
-          />
+          <Link to={`/products/category/${catID}`}>
+            <img
+              src={src}
+              alt={title}
+              style={{ width: "100px", height: "100px", objectFit: "contain" }}
+            />
+          </Link>
         </div>
       </div>
       <p

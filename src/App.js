@@ -30,6 +30,7 @@ import UserFavoriteProductsPage from "./pages/User/UserFavoriteProductsPage";
 import UserOrdersManagmentPage from "./pages/User/UserOrdersManagmentPage";
 import UserPersonalAddressesPage from "./pages/User/UserPersonalAddressesPage";
 import UserProfilePage from "./pages/User/UserProfilePage";
+import ProductsByCategoryPage from "./pages/Products/ProductsByCategoryPage";
 
 function App() {
   const [isUser, isAdmin, userData] = useProtectedRoute();
@@ -50,6 +51,10 @@ function App() {
         <Route path="/products/:id" element={<ProductDetailsPage />} />
         <Route path="/cart" element={<CartPage />} />
         <Route path="/order/payment-method" element={<PaymentMethod />} />
+        <Route
+          path="/products/category/:id"
+          element={<ProductsByCategoryPage />}
+        />
 
         {/*Start Admin Protected Routes*/}
         <Route element={<ProtectedRoute auth={isAdmin} />}>
