@@ -23,6 +23,7 @@ import CategriesPage from "./pages/Categries/CategriesPage";
 import PaymentMethod from "./pages/Checkout/PaymentMethod";
 import HomePage from "./pages/HomePage/HomePage";
 import ProductDetailsPage from "./pages/Products/ProductDetailsPage";
+import ProductsByCategoryPage from "./pages/Products/ProductsByCategoryPage";
 import ShopProductsPage from "./pages/Products/ShopProductsPage";
 import UserAddAddressPage from "./pages/User/UserAddAddressPage";
 import UserEditAddressPage from "./pages/User/UserEditAddressPage";
@@ -30,7 +31,6 @@ import UserFavoriteProductsPage from "./pages/User/UserFavoriteProductsPage";
 import UserOrdersManagmentPage from "./pages/User/UserOrdersManagmentPage";
 import UserPersonalAddressesPage from "./pages/User/UserPersonalAddressesPage";
 import UserProfilePage from "./pages/User/UserProfilePage";
-import ProductsByCategoryPage from "./pages/Products/ProductsByCategoryPage";
 
 function App() {
   const [isUser, isAdmin, userData] = useProtectedRoute();
@@ -49,8 +49,6 @@ function App() {
         <Route path="/brands" element={<BrandsPage />} />
         <Route path="/products" element={<ShopProductsPage />} />
         <Route path="/products/:id" element={<ProductDetailsPage />} />
-        <Route path="/cart" element={<CartPage />} />
-        <Route path="/order/payment-method" element={<PaymentMethod />} />
         <Route
           path="/products/category/:id"
           element={<ProductsByCategoryPage />}
@@ -87,6 +85,8 @@ function App() {
 
         {/*Start User Protected Routes*/}
         <Route element={<ProtectedRoute auth={isUser} />}>
+          <Route path="/cart" element={<CartPage />} />
+          <Route path="/order/payment-method" element={<PaymentMethod />} />
           <Route
             path="/user/orders-managment"
             element={<UserOrdersManagmentPage />}

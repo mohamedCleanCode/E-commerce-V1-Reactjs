@@ -41,6 +41,7 @@ const CartPage = () => {
             totalAfterDiscount={cart?.totalAfterDiscount}
             couponName={couponName}
             onChangeCouponName={onChangeCouponName}
+            cart={cart}
           />
         </Col>
       </Row>

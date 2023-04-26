@@ -1,5 +1,5 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 const CartCheckOut = ({
   clearCart,
@@ -8,8 +8,15 @@ const CartCheckOut = ({
   totalAfterDiscount,
   couponName,
   onChangeCouponName,
+  cart
 }) => {
-  console.log(couponName);
+  const navigate = useNavigate()
+  const handleCheckout = () => {
+    if (cart?.items?.length >=1) {
+      return navigate("/order/payment-method");
+    }
+    return;
+  }
   return (
     <div className="cart-check-out">
       <div className="cart-check-out-coupon">
@@ -33,9 +40,7 @@ const CartCheckOut = ({
           totalCartPrice
         )}
       </div>
-      <Link to="/order/payment-method" className="btn bg-dark text-white w-100">
-        Checkout
-      </Link>
+      <button onClick={handleCheckout} className="btn bg-dark text-white w-100">Checkout</button>
       <button
         onClick={() => clearCart()}
         className="btn bg-dark text-white w-100 mt-2"
