@@ -1,8 +1,18 @@
-import React from "react";
+import React, { useState } from "react";
 import { Col, Form, Row } from "react-bootstrap";
 import { Link } from "react-router-dom";
+import useUserPersonalAddressesPage from "../../hook/address/useUserPersonalAddressesPage";
 
 const ChoosePaymentMethod = () => {
+  const [addresses, loading] = useUserPersonalAddressesPage();
+
+  const [choosenAddress, setChoosenAddress] = useState();
+  
+  const onChangeAddress = (e) => {
+    let value = e.target.value;
+    setChoosenAddress(value);
+    console.log(value);
+  }
   return (
     <div className="choose-payment-method">
       <h1 className="my-2">Choose Payment Method</h1>
@@ -22,6 +32,26 @@ const ChoosePaymentMethod = () => {
               id="radio-2"
               label="Payment by Cash"
             />
+            <Form.Select
+              name="address"
+              className="my-3 w-50"
+              aria-label="Default select example"
+              onChange={onChangeAddress}
+              value={choosenAddress}
+            >
+              <option value="0">Choose Address</option>
+              {addresses?.data?.length >= 1 ? (
+                addresses.data.map((address) => {
+                  return (
+                    <option key={address?._id} value={address?._id}>
+                      {address?.alias}
+                    </option>
+                  );
+                })
+              ) : (
+                <option value="0">Choose Address</option>
+              )}
+            </Form.Select>
           </Form>
         </Col>
       </Row>
