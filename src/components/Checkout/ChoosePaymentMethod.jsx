@@ -1,18 +1,12 @@
-import React, { useState } from "react";
+import React from "react";
 import { Col, Form, Row } from "react-bootstrap";
-import { Link } from "react-router-dom";
 import useUserPersonalAddressesPage from "../../hook/address/useUserPersonalAddressesPage";
+import usePayCash from "../../hook/checkout/usePayCash";
 
 const ChoosePaymentMethod = () => {
   const [addresses, loading] = useUserPersonalAddressesPage();
+  const [choosenAddress, onChangeAddress, handleSubmit] = usePayCash();
 
-  const [choosenAddress, setChoosenAddress] = useState();
-  
-  const onChangeAddress = (e) => {
-    let value = e.target.value;
-    setChoosenAddress(value);
-    console.log(value);
-  }
   return (
     <div className="choose-payment-method">
       <h1 className="my-2">Choose Payment Method</h1>
@@ -58,12 +52,12 @@ const ChoosePaymentMethod = () => {
       <Row>
         <Col sm="12">
           <div className="cart-check-out-total bg-white">$335000</div>
-          <Link
-            to="/order/payment-method"
+          <button
             className="btn bg-dark text-white w-100"
+            onClick={handleSubmit}
           >
             Checkout
-          </Link>
+          </button>
         </Col>
       </Row>
     </div>
