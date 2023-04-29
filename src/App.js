@@ -34,9 +34,6 @@ import UserProfilePage from "./pages/User/UserProfilePage";
 
 function App() {
   const [isUser, isAdmin, userData] = useProtectedRoute();
-  console.log(userData);
-  console.log(isAdmin);
-  console.log(isUser);
 
   return (
     <div className="App">

@@ -1,11 +1,12 @@
 import React from "react";
 import { Col, Form, Row } from "react-bootstrap";
+import { ToastContainer } from "react-toastify";
 import useUserPersonalAddressesPage from "../../hook/address/useUserPersonalAddressesPage";
 import usePayCash from "../../hook/checkout/usePayCash";
 
 const ChoosePaymentMethod = () => {
   const [addresses, loading] = useUserPersonalAddressesPage();
-  const [choosenAddress, onChangeAddress, handleSubmit] = usePayCash();
+  const [choosenAddress, onChangeAddress, createOrderCash] = usePayCash();
 
   return (
     <div className="choose-payment-method">
@@ -30,21 +31,18 @@ const ChoosePaymentMethod = () => {
               name="address"
               className="my-3 w-50"
               aria-label="Default select example"
-              onChange={onChangeAddress}
               value={choosenAddress}
+              onChange={onChangeAddress}
             >
               <option value="0">Choose Address</option>
-              {addresses?.data?.length >= 1 ? (
+              {addresses?.data?.length >= 1 &&
                 addresses.data.map((address) => {
                   return (
                     <option key={address?._id} value={address?._id}>
                       {address?.alias}
                     </option>
                   );
-                })
-              ) : (
-                <option value="0">Choose Address</option>
-              )}
+                })}
             </Form.Select>
           </Form>
         </Col>
@@ -54,12 +52,13 @@ const ChoosePaymentMethod = () => {
           <div className="cart-check-out-total bg-white">$335000</div>
           <button
             className="btn bg-dark text-white w-100"
-            onClick={handleSubmit}
+            onClick={createOrderCash}
           >
             Checkout
           </button>
         </Col>
       </Row>
+      <ToastContainer />
     </div>
   );
 };

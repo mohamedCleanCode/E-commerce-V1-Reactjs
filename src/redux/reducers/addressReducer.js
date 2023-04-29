@@ -39,6 +39,7 @@ const addressReducer = (state = intialState, action) => {
       };
     case GET_SPECIFIC_ADDRESS:
       return {
+        ...state,
         address: action.payload,
         response: action.payload,
         loading: false,

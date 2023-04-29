@@ -4,6 +4,7 @@ import authReducer from "./authReducer";
 import brandsReducer from "./brandsReducer";
 import cartReducer from "./cartReducer";
 import categoriesReducer from "./categoriesReducer";
+import checkoutReducer from "./checkoutReducer";
 import couponReducer from "./couponReducer";
 import productsReducer from "./productsReducer";
 import profileReducer from "./profileReducer";
@@ -23,5 +24,6 @@ const rootReducer = combineReducers({
   address: addressReducer,
   profile: profileReducer,
   cart: cartReducer,
+  checkout: checkoutReducer,
 });
 export default rootReducer;
