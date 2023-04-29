@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import notify from "../../hook/useNotification";
 import { getSpecificAddress } from "../../redux/actions/addressActions";
-import createCashOrder from "../../redux/actions/checkoutActions";
+import { createCashOrder } from "../../redux/actions/checkoutActions";
 
 const usePayCash = () => {
   const [choosenAddress, setChoosenAddress] = useState();
@@ -48,6 +48,9 @@ const usePayCash = () => {
     if (loading) {
       if (checkout?.response?.status === 201) {
         notify("Success", "success");
+        setTimeout(() => {
+          navigate("/user/orders-managment");
+        }, 1500);
       } else {
         notify("Something went wrong", "error");
       }
