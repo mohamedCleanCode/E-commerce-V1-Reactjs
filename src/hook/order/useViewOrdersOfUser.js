@@ -1,10 +1,10 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { getOrders } from "../../redux/actions/checkoutActions";
+import { getOrders } from "../../redux/actions/orderActions";
 
 const useViewOrdersOfUser = () => {
   const dispatch = useDispatch();
-  const checkout = useSelector((state) => state.checkout);
+  const order = useSelector((state) => state.order);
 
   const fetchData = async () => {
     await dispatch(getOrders());
@@ -14,7 +14,7 @@ const useViewOrdersOfUser = () => {
     fetchData();
   }, []);
 
-  return [checkout];
+  return [order];
 };
 
 export default useViewOrdersOfUser;

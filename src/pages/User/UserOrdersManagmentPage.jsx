@@ -2,11 +2,11 @@ import React from "react";
 import { Col, Container, Row } from "react-bootstrap";
 import UserOrders from "../../components/User/UserOrders";
 import UserSideBar from "../../components/User/UserSideBar";
-import useViewOrdersOfUser from "../../hook/checkout/useViewOrdersOfUser";
+import useViewOrdersOfUser from "../../hook/order/useViewOrdersOfUser";
 
 const UserOrdersManagmentPage = () => {
-  const [checkout] = useViewOrdersOfUser();
-  console.log(checkout.orders);
+  const [order] = useViewOrdersOfUser();
+  console.log(order.orders);
 
   return (
     <Container className="my-3" style={{ minHeight: "72vh" }}>
@@ -15,7 +15,7 @@ const UserOrdersManagmentPage = () => {
           <UserSideBar />
         </Col>
         <Col xs="9">
-          <UserOrders orders={checkout?.orders?.data} />
+          <UserOrders orders={order?.orders?.data} />
         </Col>
       </Row>
     </Container>
