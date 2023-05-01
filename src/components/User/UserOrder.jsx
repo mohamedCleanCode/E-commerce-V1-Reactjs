@@ -17,6 +17,7 @@ const UserOrder = ({ order }) => {
           {order?.isDelivered === true ? "Delivered" : "Not Delivered"}
         </p>
         <p>Paid: {order?.isPaid === true ? "Paid" : "Not Paid"}</p>
+        <p>Method: {order?.paymentMethodType === "cash" ? "Cash" : "Visa"}</p>
       </div>
     </Col>
   );
