@@ -13,8 +13,10 @@ const UserOrder = ({ order }) => {
         })}
       <div className="user-order-status">
         <p>
-          Status: {order?.isDelivered === true ? "Delivered" : "Not Delivered"}
+          Delivered:
+          {order?.isDelivered === true ? "Delivered" : "Not Delivered"}
         </p>
+        <p>Paid: {order?.isPaid === true ? "Paid" : "Not Paid"}</p>
       </div>
     </Col>
   );
