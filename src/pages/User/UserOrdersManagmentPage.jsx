@@ -6,7 +6,6 @@ import useViewOrdersOfUser from "../../hook/order/useViewOrdersOfUser";
 
 const UserOrdersManagmentPage = () => {
   const [order] = useViewOrdersOfUser();
-  console.log(order.orders);
 
   return (
     <Container className="my-3" style={{ minHeight: "72vh" }}>
@@ -15,7 +14,10 @@ const UserOrdersManagmentPage = () => {
           <UserSideBar />
         </Col>
         <Col xs="9">
-          <UserOrders orders={order?.orders?.data} />
+          <UserOrders
+            orders={order?.orders?.data}
+            result={order?.orders?.results}
+          />
         </Col>
       </Row>
     </Container>
