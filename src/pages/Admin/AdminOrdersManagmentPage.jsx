@@ -2,7 +2,6 @@ import React from "react";
 import { Col, Container, Row } from "react-bootstrap";
 import AdminOrdersManagment from "../../components/Admin/AdminOrdersManagment";
 import AdminSideBar from "../../components/Admin/AdminSideBar";
-import Pagination from "../../components/Utilities/Pagination";
 
 const OrdersManagmentPage = () => {
   return (
@@ -13,7 +12,6 @@ const OrdersManagmentPage = () => {
         </Col>
         <Col xs="9">
           <AdminOrdersManagment />
-          <Pagination />
         </Col>
       </Row>
     </Container>

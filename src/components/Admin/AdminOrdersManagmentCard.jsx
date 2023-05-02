@@ -1,36 +1,39 @@
 import React from "react";
 import { Col, Row } from "react-bootstrap";
-import mobile from "../../assets/images/mobile.png";
 
-const AdminOrdersManagmentCard = () => {
+const AdminOrdersManagmentCard = ({ item }) => {
+  console.log(item);
   return (
-    <Row className="product-cart">
-      <Col xs="12" sm="12" md="4" lg="3">
-        <img src={mobile} alt="mobile" />
-      </Col>
-      <Col xs="12" sm="12" md="8" lg="9">
-        <div className="product-cart-info">
-          <div className="product-cart-info-header d-flex justify-content-between">
-            <p className="product-cart-info-cat product-info-cat">
-              Order num #123
+    <>
+      <Row className="product-cart">
+        <Col xs="12" sm="12" md="8" lg="9">
+          <div className="product-cart-info">
+            <div className="product-cart-info-header d-flex justify-content-between">
+              <p className="product-cart-info-cat product-info-cat">
+                Order num #{item?.id}
+              </p>
+            </div>
+            <p className="product-cart-info-title product-info-title">
+              Order By...{item?.user?.name}
+              <span className="product-info-rat fs-6 ms-2">
+                {item?.user?.phone}
+              </span>
             </p>
-            <button className="product-cart-info-remove-from-cart btn text-dark">
-              Remove <i className="fa-solid fa-trash"></i>
-            </button>
+            <div className="user-order-status">
+              <p>
+                Delivered:
+                {item?.isDelivered === true ? "Delivered" : "Not Delivered"}
+              </p>
+              <p>Paid: {item?.isPaid === true ? "Paid" : "Not Paid"}</p>
+              <p>
+                Method: {item?.paymentMethodType === "cash" ? "Cash" : "Visa"}
+              </p>
+            </div>
+            <p className="product-cart-info-price">${item?.totalOrderPrice}</p>
           </div>
-          <p className="product-cart-info-title product-info-title">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Qui a
-            <span className="product-info-rat fs-6 ms-2">4.5</span>
-          </p>
-          <p className="product-cart-info-brand product-info-brand">
-            Brand: <span className="brand-name">Apple</span>
-          </p>
-          <div className="product-cart-info-color"></div>
-          <input type="number" className="product-cart-info-quantity" />
-          <p className="product-cart-info-price">$3000</p>
-        </div>
-      </Col>
-    </Row>
+        </Col>
+      </Row>
+    </>
   );
 };
 
