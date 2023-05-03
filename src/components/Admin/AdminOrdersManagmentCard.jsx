@@ -1,10 +1,10 @@
 import React from "react";
 import { Col, Row } from "react-bootstrap";
+import { Link } from "react-router-dom";
 
 const AdminOrdersManagmentCard = ({ item }) => {
-  console.log(item);
   return (
-    <>
+    <Link to={`/admin/order/${item?._id}`}>
       <Row className="product-cart">
         <Col xs="12" sm="12" md="8" lg="9">
           <div className="product-cart-info">
@@ -33,7 +33,7 @@ const AdminOrdersManagmentCard = ({ item }) => {
           </div>
         </Col>
       </Row>
-    </>
+    </Link>
   );
 };
 

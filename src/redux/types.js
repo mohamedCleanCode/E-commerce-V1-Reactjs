@@ -46,3 +46,4 @@ export const UPDATE_ITEM_QUANTITY = "UPDATE_ITEM_QUANTITY";
 export const APPLY_CUOPON = "APPLY_CUOPON";
 export const CREATE_CHECK_ORDER = "CREATE_CHECK_ORDER";
 export const GET_ORDERS = "GET_ORDERS";
+export const GET_ORDER = "GET_ORDER";

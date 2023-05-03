@@ -61,7 +61,7 @@ function App() {
             path="/admin/products-managment"
             element={<AdminProductsManagmentPage />}
           />
-          <Route path="/admin/order/25" element={<AdminOrderDetailsPage />} />
+          <Route path="/admin/order/:id" element={<AdminOrderDetailsPage />} />
           <Route path="/admin/add-brnad" element={<AdminAddBrandPage />} />
           <Route
             path="/admin/add-category"
