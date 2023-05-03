@@ -12,7 +12,7 @@ const useViewOrderDetails = (orderId) => {
   useEffect(() => {
     fetchData();
   }, []);
-  console.log(order);
+
   return [order];
 };
 

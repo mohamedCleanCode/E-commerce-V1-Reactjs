@@ -7,8 +7,9 @@ import useViewOrderDetails from "../../hook/admin/useViewOrderDetails";
 
 const AdminOrderDetailsPage = () => {
   const { id } = useParams();
-  console.log(id);
   const [order] = useViewOrderDetails(id);
+  console.log(order?.order);
+
   return (
     <Container className="my-3" style={{ minHeight: "72vh" }}>
       <Row>
@@ -16,7 +17,12 @@ const AdminOrderDetailsPage = () => {
           <AdminSideBar />
         </Col>
         <Col xs="9">
-          <AdminOrderDetails />
+          <AdminOrderDetails
+            orderNum={order?.order?.data?.id}
+            items={order?.order?.data?.cartItems}
+            user={order?.order?.data?.user}
+            totalOrderPrice={order?.order?.data?.totalOrderPrice}
+          />
         </Col>
       </Row>
     </Container>

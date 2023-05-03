@@ -3,16 +3,18 @@ import { Row } from "react-bootstrap";
 import AdminOrderDetailsCard from "./AdminOrderDetailsCard";
 import AdminOrderDetailsUser from "./AdminOrderDetailsUser";
 
-const AdminOrderDetails = () => {
+const AdminOrderDetails = ({ orderNum, items, user, totalOrderPrice }) => {
   return (
     <>
-      <h1>Order Details Num #123</h1>
+      <h1>Order Details Num #{orderNum}</h1>
       <Row className="justify-content-center">
-        <AdminOrderDetailsCard />
-        <AdminOrderDetailsCard />
+        {items?.length >= 1 &&
+          items.map((item) => {
+            return <AdminOrderDetailsCard key={item?._id} item={item} />;
+          })}
       </Row>
       <Row className="bg-white rounded">
-        <AdminOrderDetailsUser />
+        <AdminOrderDetailsUser user={user} totalOrderPrice={totalOrderPrice} />
       </Row>
     </>
   );

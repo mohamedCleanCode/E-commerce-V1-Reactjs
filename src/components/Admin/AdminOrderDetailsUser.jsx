@@ -2,23 +2,23 @@ import React from "react";
 import { Button, Col } from "react-bootstrap";
 import Form from "react-bootstrap/Form";
 
-const AdminOrderDetailsUser = () => {
+const AdminOrderDetailsUser = ({ user, totalOrderPrice }) => {
   return (
     <Col xs="12">
       <div className="admin-order-details-user">
         <h4 className="admin-order-details-user-title">User Details</h4>
         <p className="admin-order-details-user-name">
-          Name: <span>Mohamed</span>
+          Name: <span>{user?.name}</span>
         </p>
         <p className="admin-order-details-user-phone">
-          Phone: <span>0123456789</span>
+          Phone: <span>{user?.phone}</span>
         </p>
         <p className="admin-order-details-user-email">
-          Email: <span>Mohamed@mohamed.com</span>
+          Email: <span>{user?.email}</span>
         </p>
         <div className="admin-order-details-user-actions">
           <div className="admin-order-details-user-actions-total">
-            Total $4000
+            Total ${totalOrderPrice}
           </div>
           <div className="admin-order-details-user-actions-form">
             <Form.Select aria-label="Default select example">
