@@ -1,8 +1,13 @@
 import React from "react";
 import { Button, Col } from "react-bootstrap";
 import Form from "react-bootstrap/Form";
+import { useParams } from "react-router-dom";
+import useChangeOrderStatus from "../../hook/admin/useChangeOrderStatus";
 
 const AdminOrderDetailsUser = ({ user, totalOrderPrice }) => {
+  const { id } = useParams();
+  const [onChangePay] = useChangeOrderStatus(id);
+
   return (
     <Col xs="12">
       <div className="admin-order-details-user">
@@ -25,6 +30,7 @@ const AdminOrderDetailsUser = ({ user, totalOrderPrice }) => {
               <Form.Select
                 aria-label="Default select example"
                 style={{ width: "100px" }}
+                onChange={onChangePay}
               >
                 <option value="0">Pay</option>
                 <option value={true}>yes</option>

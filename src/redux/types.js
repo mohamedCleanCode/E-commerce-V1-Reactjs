@@ -47,3 +47,4 @@ export const APPLY_CUOPON = "APPLY_CUOPON";
 export const CREATE_CHECK_ORDER = "CREATE_CHECK_ORDER";
 export const GET_ORDERS = "GET_ORDERS";
 export const GET_ORDER = "GET_ORDER";
+export const UPDATE_PAY_STATUS = "UPDATE_PAY_STATUS";
