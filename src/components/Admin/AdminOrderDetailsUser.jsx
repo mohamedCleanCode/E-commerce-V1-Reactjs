@@ -6,7 +6,7 @@ import useChangeOrderStatus from "../../hook/admin/useChangeOrderStatus";
 
 const AdminOrderDetailsUser = ({ user, totalOrderPrice }) => {
   const { id } = useParams();
-  const [onChangePay] = useChangeOrderStatus(id);
+  const [onChangePay, changeOrderPay] = useChangeOrderStatus(id);
 
   return (
     <Col xs="12">
@@ -36,7 +36,7 @@ const AdminOrderDetailsUser = ({ user, totalOrderPrice }) => {
                 <option value={true}>yes</option>
                 <option value={false}>no</option>
               </Form.Select>
-              <Button variant="dark" type="submit">
+              <Button variant="dark" type="submit" onClick={changeOrderPay}>
                 Save
               </Button>
             </div>

@@ -26,7 +26,6 @@ const orderReducer = (state = intialState, action) => {
     case UPDATE_PAY_STATUS:
       return {
         ...state,
-        order: action.payload,
         response: action.payload,
         errors: action.payload,
       };

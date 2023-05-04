@@ -1,10 +1,12 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { updatePayStatus } from "../../redux/actions/orderActions";
 
-const useChangeOrderStatus = () => {
+const useChangeOrderStatus = (orderId) => {
   const dispatch = useDispatch();
   const order = useSelector((state) => state.order);
-  const [pay, setPay] = useState();
+  const [loading, setLoading] = useState(false);
+  const [pay, setPay] = useState("0");
 
   const onChangePay = (e) => {
     let value = e.target.value;
@@ -12,9 +14,17 @@ const useChangeOrderStatus = () => {
   };
 
   const changeOrderPay = async () => {
-    await dispatch();
+    console.log(pay);
+    await dispatch(updatePayStatus(orderId));
+    setLoading(true);
   };
-  return [onChangePay];
+
+  useEffect(() => {
+    if (loading) {
+      console.log(order);
+    }
+  }, [loading]);
+  return [onChangePay, changeOrderPay];
 };
 
 export default useChangeOrderStatus;
