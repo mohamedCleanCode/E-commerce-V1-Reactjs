@@ -20,16 +20,33 @@ const AdminOrderDetailsUser = ({ user, totalOrderPrice }) => {
           <div className="admin-order-details-user-actions-total">
             Total ${totalOrderPrice}
           </div>
-          <div className="admin-order-details-user-actions-form">
-            <Form.Select aria-label="Default select example">
-              <option>Order Status</option>
-              <option value="Under construction">Under construction</option>
-              <option value="Created">Created</option>
-              <option value="Cancel">Cancel</option>
-            </Form.Select>
-            <Button className="mt-3" variant="dark" type="submit">
-              Save
-            </Button>
+          <div className="admin-order-details-user-actions-form d-flex">
+            <div className="d-flex me-3">
+              <Form.Select
+                aria-label="Default select example"
+                style={{ width: "100px" }}
+              >
+                <option value="0">Pay</option>
+                <option value={true}>yes</option>
+                <option value={false}>no</option>
+              </Form.Select>
+              <Button variant="dark" type="submit">
+                Save
+              </Button>
+            </div>
+            <div className="d-flex">
+              <Form.Select
+                aria-label="Default select example"
+                style={{ width: "100px" }}
+              >
+                <option value="0">deliver</option>
+                <option value={true}>yes</option>
+                <option value={false}>no</option>
+              </Form.Select>
+              <Button variant="dark" type="submit">
+                Save
+              </Button>
+            </div>
           </div>
         </div>
       </div>
