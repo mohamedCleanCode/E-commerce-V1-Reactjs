@@ -1,4 +1,9 @@
-import { GET_ORDER, GET_ORDERS, UPDATE_PAY_STATUS } from "../types";
+import {
+  GET_ORDER,
+  GET_ORDERS,
+  UPDATE_DELIVER_STATUS,
+  UPDATE_PAY_STATUS,
+} from "../types";
 
 const intialState = {
   orders: {},
@@ -24,6 +29,7 @@ const orderReducer = (state = intialState, action) => {
         errors: action.payload,
       };
     case UPDATE_PAY_STATUS:
+    case UPDATE_DELIVER_STATUS:
       return {
         ...state,
         response: action.payload,

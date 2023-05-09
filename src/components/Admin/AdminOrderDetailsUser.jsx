@@ -2,11 +2,13 @@ import React from "react";
 import { Button, Col } from "react-bootstrap";
 import Form from "react-bootstrap/Form";
 import { useParams } from "react-router-dom";
+import { ToastContainer } from "react-toastify";
 import useChangeOrderStatus from "../../hook/admin/useChangeOrderStatus";
 
 const AdminOrderDetailsUser = ({ user, totalOrderPrice }) => {
   const { id } = useParams();
-  const [onChangePay, changeOrderPay] = useChangeOrderStatus(id);
+  const [onChangePay, changeOrderPay, onChangeDeliver, changeOrderDeliver] =
+    useChangeOrderStatus(id);
 
   return (
     <Col xs="12">
@@ -44,18 +46,20 @@ const AdminOrderDetailsUser = ({ user, totalOrderPrice }) => {
               <Form.Select
                 aria-label="Default select example"
                 style={{ width: "100px" }}
+                onChange={onChangeDeliver}
               >
                 <option value="0">deliver</option>
                 <option value={true}>yes</option>
                 <option value={false}>no</option>
               </Form.Select>
-              <Button variant="dark" type="submit">
+              <Button variant="dark" type="submit" onClick={changeOrderDeliver}>
                 Save
               </Button>
             </div>
           </div>
         </div>
       </div>
+      <ToastContainer />
     </Col>
   );
 };
