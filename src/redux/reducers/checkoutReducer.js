@@ -1,4 +1,4 @@
-import { CREATE_CHECK_ORDER, GET_ORDERS } from "../types";
+import { CREATE_CARD_ORDER, CREATE_CHECK_ORDER, GET_ORDERS } from "../types";
 
 const intialState = {
   orders: {},
@@ -19,6 +19,12 @@ const checkoutReducer = (state = intialState, action) => {
     case GET_ORDERS: {
       return {
         orders: action.payload,
+        response: action.payload,
+        errors: action.payload,
+      };
+    }
+    case CREATE_CARD_ORDER: {
+      return {
         response: action.payload,
         errors: action.payload,
       };
