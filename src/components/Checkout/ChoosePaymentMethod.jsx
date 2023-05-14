@@ -6,7 +6,13 @@ import usePayCash from "../../hook/checkout/usePayCash";
 
 const ChoosePaymentMethod = () => {
   const [addresses, loading] = useUserPersonalAddressesPage();
-  const [choosenAddress, onChangeAddress, createOrderCash] = usePayCash();
+  const [
+    choosenAddress,
+    onChangeAddress,
+    onSubmitMethod,
+    payMethod,
+    onChangePayMethod,
+  ] = usePayCash();
 
   return (
     <div className="choose-payment-method">
@@ -20,12 +26,16 @@ const ChoosePaymentMethod = () => {
               type="radio"
               id="radio-1"
               label="Payment by card"
+              value="card"
+              onClick={onChangePayMethod}
             />
             <Form.Check
               name="payment-mathod"
               type="radio"
               id="radio-2"
               label="Payment by Cash"
+              value="cash"
+              onClick={onChangePayMethod}
             />
             <Form.Select
               name="address"
@@ -52,7 +62,7 @@ const ChoosePaymentMethod = () => {
           <div className="cart-check-out-total bg-white">$335000</div>
           <button
             className="btn bg-dark text-white w-100"
-            onClick={createOrderCash}
+            onClick={onSubmitMethod}
           >
             Checkout
           </button>
