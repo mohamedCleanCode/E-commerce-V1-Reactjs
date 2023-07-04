@@ -1,9 +1,12 @@
 import React from "react";
 import { Carousel } from "react-bootstrap";
-import pord3 from "../../assets/images/prod3.png";
-import pord4 from "../../assets/images/prod4.png";
-import slider1 from "../../assets/images/slider1.png";
-import slider2 from "../../assets/images/slider4.png";
+import slider1 from "../../assets/images/slider/1.png";
+import slider2 from "../../assets/images/slider/2.png";
+import slider3 from "../../assets/images/slider/3.png";
+import slider4 from "../../assets/images/slider/4.png";
+import slider5 from "../../assets/images/slider/5.png";
+import slider6 from "../../assets/images/slider/6.png";
+import slider7 from "../../assets/images/slider/7.png";
 
 const Slider = () => {
   return (
@@ -12,37 +15,36 @@ const Slider = () => {
         <Carousel.Item className="h-100">
           <div>
             <img className="d-block w-100" src={slider1} alt="First slide" />
-            <Carousel.Caption>
-              <h3>there are a huge discount</h3>
-              <p>arrive to 50% when you subscripe</p>
-            </Carousel.Caption>
           </div>
         </Carousel.Item>
         <Carousel.Item className="h-100">
           <div>
             <img className="d-block w-100" src={slider2} alt="Second slide" />
-            <Carousel.Caption>
-              <h3>there are a huge discount</h3>
-              <p>arrive to 50% when you subscripe</p>
-            </Carousel.Caption>
           </div>
         </Carousel.Item>
         <Carousel.Item className="h-100">
           <div>
-            <img className="d-block w-100" src={pord3} alt="Third slide" />
-            <Carousel.Caption>
-              <h3>there are a huge discount</h3>
-              <p>arrive to 50% when you subscripe</p>
-            </Carousel.Caption>
+            <img className="d-block w-100" src={slider3} alt="Third slide" />
           </div>
         </Carousel.Item>
         <Carousel.Item className="h-100">
           <div>
-            <img className="d-block w-100" src={pord4} alt="Third slide" />
-            <Carousel.Caption>
-              <h3>there are a huge discount</h3>
-              <p>arrive to 50% when you subscripe</p>
-            </Carousel.Caption>
+            <img className="d-block w-100" src={slider4} alt="Third slide" />
+          </div>
+        </Carousel.Item>
+        <Carousel.Item className="h-100">
+          <div>
+            <img className="d-block w-100" src={slider5} alt="Third slide" />
+          </div>
+        </Carousel.Item>
+        <Carousel.Item className="h-100">
+          <div>
+            <img className="d-block w-100" src={slider6} alt="Third slide" />
+          </div>
+        </Carousel.Item>
+        <Carousel.Item className="h-100">
+          <div>
+            <img className="d-block w-100" src={slider7} alt="Third slide" />
           </div>
         </Carousel.Item>
       </Carousel>
