@@ -6,6 +6,11 @@ import { ToastContainer } from "react-toastify";
 import useAddProduct from "../../hook/products/useAddProduct";
 
 const AdminAddProduct = () => {
+  const crop = {
+    unit: "%",
+    aspect: 4 / 3,
+    width: "100",
+  };
   const [
     handleSubmit,
     images,
@@ -47,6 +52,7 @@ const AdminAddProduct = () => {
               theme="light"
               allowCrop={false}
               max={4}
+              cropConfig={{ crop }}
             />
           </Form.Label>
           <Form.Control
