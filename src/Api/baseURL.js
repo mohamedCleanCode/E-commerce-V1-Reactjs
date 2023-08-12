@@ -1,5 +1,5 @@
 import axios from "axios";
 
-const baseURL = axios.create({ baseURL: "https://e-commerce-api-v1-nodejs-abm48fvzs-mohamedcleancode.vercel.app" });
+const baseURL = axios.create({ baseURL: "http://localhost:8000" });
 
 export default baseURL;

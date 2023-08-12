@@ -66,6 +66,7 @@ const useSignupPage = () => {
   };
 
   const responseValidation = (auth) => {
+    console.log(auth);
     if (auth) {
       if (auth.user?.token) {
         localStorage.setItem("token", auth.user.token);
@@ -79,15 +80,16 @@ const useSignupPage = () => {
         setTimeout(() => {
           navigate("/login");
         }, 3000);
-      }
-      if (auth.errors?.data) {
-        if (auth.errors.data.errors[0].msg === "E-mail already in use") {
-          notify(auth.errors.data.errors[0].msg, "error");
+      } else if (auth.errors?.data?.errors) {
+        console.log(auth.errors?.data?.errors);
+        if (auth.errors?.data?.errors[0]?.msg === "E-mail already in use") {
+          notify(auth.errors?.data?.errors[0]?.msg, "error");
         }
         if (
-          auth.errors.data.errors[0].msg === "accept only egypt phone numbers"
+          auth.errors?.data?.errors[0]?.msg ===
+          "accept only egypt phone numbers"
         ) {
-          notify(auth.errors.data.errors[0].msg, "error");
+          notify(auth.errors?.data?.errors[0]?.msg, "error");
         }
       }
     }

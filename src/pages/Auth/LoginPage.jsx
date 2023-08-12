@@ -57,8 +57,6 @@ const LoginPage = () => {
           </p>
         </div>
       </Container>
-      <Link to="/admin/orders-managment">login with admin</Link>
-      <Link to="/user/orders-managment">login with admin</Link>
       <ToastContainer />
     </div>
   );
