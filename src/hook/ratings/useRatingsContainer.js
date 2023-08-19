@@ -13,7 +13,7 @@ const useRatingsContainer = (productId, review) => {
 
   const limit = 10;
 
-  const { _id: userproductId } = JSON.parse(localStorage.getItem("user"));
+  const { _id: userproductId } = JSON.parse(localStorage.getItem("user")) || "";
 
   const onPress = (page) => {
     dispatch(getAllReviews(productId, limit, page));
