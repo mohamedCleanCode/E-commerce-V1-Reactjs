@@ -6,6 +6,7 @@ import SubTitle from "../Utilities/SubTitle";
 
 const HomeBrands = () => {
   const [brands, loading] = useHomeBrands();
+  console.log(brands);
   return (
     <div className="home-categories container py-4">
       <SubTitle title="famous brands" btnTitle="More" path="/brands" />
@@ -24,7 +25,7 @@ const HomeBrands = () => {
         </div>
       ) : (
         <Row className="mt-3">
-          {brands ? (
+          {brands?.length >= 1 ? (
             brands.slice(0, 4).map((brand) => {
               return <BrandCard key={brand._id} src={brand.image} />;
             })

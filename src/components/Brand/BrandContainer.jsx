@@ -22,7 +22,7 @@ const BrandContainer = ({ brands, loading }) => {
         </div>
       ) : (
         <Row className="my-3">
-          {brands ? (
+          {brands?.length >= 1 ? (
             brands.map((brand) => {
               return <BrandCard key={brand._id} src={brand.image} />;
             })

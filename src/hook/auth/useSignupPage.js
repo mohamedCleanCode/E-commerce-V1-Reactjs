@@ -66,7 +66,6 @@ const useSignupPage = () => {
   };
 
   const responseValidation = (auth) => {
-    console.log(auth);
     if (auth) {
       if (auth.user?.token) {
         localStorage.setItem("token", auth.user.token);

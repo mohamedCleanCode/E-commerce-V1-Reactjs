@@ -44,9 +44,9 @@ const useAddCategory = () => {
       setImgPath(null);
       setName("");
       setLoading(false);
-      if (res.status === 201) {
+      if (res?.status === 201) {
         notify("Success", "success");
-      } else if (res.status === 400) {
+      } else if (res?.status === 400) {
         notify("Error", "error");
       } else {
         notify("Error", "error");

@@ -23,7 +23,7 @@ const CategriesContainer = ({ data, loading }) => {
         </div>
       ) : (
         <Row className="mt-3">
-          {data ? (
+          {data?.length >= 1 ? (
             data.map((cat, i) => {
               return (
                 <CategoriesCard

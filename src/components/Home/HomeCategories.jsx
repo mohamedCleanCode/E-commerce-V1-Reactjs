@@ -24,7 +24,7 @@ const HomeCategories = () => {
         </div>
       ) : (
         <Row className="mt-5">
-          {categories?.data ? (
+          {categories?.data?.length >= 1 ? (
             categories.data?.slice(0, 4).map((cat, i) => {
               return (
                 <CategoriesCard
