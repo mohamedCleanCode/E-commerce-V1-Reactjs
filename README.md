@@ -2,7 +2,7 @@
 
 ## => Live Demo:
 
-https://e-commerce-v1-react.netlify.app
+https://e-commerce-v1-reactjs.vercel.app
 
 ## INTRODUCTION:
 
